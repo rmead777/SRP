@@ -932,6 +932,34 @@
             animation: slideInRight 0.5s ease-out;
         }
 
+        .price-tracker-close {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .price-tracker-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .price-tracker.mobile-closable .price-tracker-close {
+            display: flex;
+        }
+
         @keyframes slideInRight {
             from {
                 opacity: 0;
@@ -1216,17 +1244,29 @@
             
             .price-tracker {
                 position: fixed;
-                bottom: 10px;
-                right: 10px;
-                padding: 15px;
-                min-width: 120px;
-                font-size: 0.85rem;
+                bottom: 15px;
+                right: 15px;
+                top: auto;
+                padding: 20px 20px 20px 15px;
+                min-width: 180px;
+                max-width: calc(100vw - 30px);
+                font-size: 0.9rem;
                 z-index: 1001;
             }
             
+            .tracker-title {
+                font-size: 0.8rem;
+                margin-bottom: 8px;
+            }
+            
             .tracker-price {
-                font-size: 1.8rem;
-                margin-bottom: 10px;
+                font-size: 2.2rem;
+                margin-bottom: 12px;
+            }
+            
+            .tracker-stats {
+                font-size: 0.8rem;
+                line-height: 1.4;
             }
             
             .notification-container {
@@ -1359,12 +1399,24 @@
                 position: fixed;
                 bottom: 20px;
                 right: 15px;
-                padding: 20px;
-                min-width: 160px;
+                top: auto;
+                padding: 22px 22px 22px 18px;
+                min-width: 200px;
+                max-width: calc(100vw - 30px);
+            }
+            
+            .tracker-title {
+                font-size: 0.85rem;
+                margin-bottom: 10px;
             }
             
             .tracker-price {
-                font-size: 2rem;
+                font-size: 2.4rem;
+                margin-bottom: 15px;
+            }
+            
+            .tracker-stats {
+                font-size: 0.85rem;
             }
             
             .notification-container {
@@ -1507,6 +1559,16 @@
                 min-width: 44px;
                 min-height: 44px;
                 font-size: 2.5rem;
+            }
+            
+            .price-tracker-close {
+                min-width: 32px;
+                min-height: 32px;
+                width: 32px;
+                height: 32px;
+                font-size: 16px;
+                top: 10px;
+                right: 10px;
             }
             
             /* Remove hover effects on touch devices */
@@ -2540,7 +2602,8 @@
     </div>
 
     <!-- Price Tracker -->
-    <div class="price-tracker">
+    <div class="price-tracker" id="price-tracker">
+        <button class="price-tracker-close" onclick="closePriceTracker()" aria-label="Close price tracker">&times;</button>
         <div class="tracker-title">Current Price</div>
         <div class="tracker-price">$<span id="tracker-price">--</span></div>
         <div class="tracker-stats">
@@ -3358,12 +3421,17 @@
             const priceTracker = document.querySelector('.price-tracker');
             const notifications = document.querySelector('.notification-container');
             
-            if (isMobile && priceTracker) {
+            if (isMobile && priceTracker && priceTracker.style.display !== 'none') {
                 // Ensure price tracker doesn't overlap with notifications
                 if (notifications && notifications.children.length > 0) {
                     priceTracker.style.bottom = '120px';
                 } else {
                     priceTracker.style.bottom = '20px';
+                }
+                
+                // Make sure close button is visible on mobile
+                if (!priceTracker.classList.contains('mobile-closable')) {
+                    priceTracker.classList.add('mobile-closable');
                 }
             }
         }
@@ -3543,6 +3611,7 @@
             optimizeScrolling();
             setupLazyLoading();
             setupMobileModalEnhancements();
+            initializePriceTracker();
             
             if (DEBUG) {
                 monitorPerformance();
@@ -4002,6 +4071,38 @@
             }
         }
         
+        // Close price tracker function
+        function closePriceTracker() {
+            const priceTracker = document.getElementById('price-tracker');
+            if (priceTracker) {
+                priceTracker.style.display = 'none';
+                
+                // Store preference in localStorage
+                localStorage.setItem('priceTrackerClosed', 'true');
+                
+                if (DEBUG) {
+                    console.log('Price tracker closed by user');
+                }
+            }
+        }
+
+        // Show price tracker if not closed by user
+        function initializePriceTracker() {
+            const priceTracker = document.getElementById('price-tracker');
+            if (priceTracker) {
+                const wasClosed = localStorage.getItem('priceTrackerClosed');
+                
+                if (wasClosed === 'true') {
+                    priceTracker.style.display = 'none';
+                } else {
+                    // Show close button on mobile
+                    if (isMobile) {
+                        priceTracker.classList.add('mobile-closable');
+                    }
+                }
+            }
+        }
+
         // Purchase handler
         window.purchaseBundle = function() {
             if (currentData.payment_link && currentData.status === 'open') {
