@@ -1,0 +1,1957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Business Bundle - Revolutionary Reverse Auction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1e3a8a;
+            --primary-dark: #172554;
+            --secondary: #F59E0B;
+            --accent: #10B981;
+            --dark: #1F2937;
+            --light: #F9FAFB;
+            --gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            --gradient-secondary: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);
+            --gradient-dark: linear-gradient(135deg, #172554 0%, #1e3a8a 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--light);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #172554 0%, #1e3a8a 100%);
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Floating Elements */
+        .floating-bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-20px) translateX(10px); }
+            50% { transform: translateY(10px) translateX(-10px); }
+            75% { transform: translateY(-10px) translateX(5px); }
+        }
+
+        /* Header Alert Bar */
+        .alert-bar {
+            background: var(--gradient-secondary);
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-weight: 700;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .alert-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Live Activity Bar */
+        .activity-bar {
+            background: rgba(23, 37, 84, 0.95);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--secondary);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .activity-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .live-dot {
+            width: 10px;
+            height: 10px;
+            background: #10B981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .buyers-count {
+            background: rgba(245, 158, 11, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .viewers-count {
+            background: rgba(16, 185, 129, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.02); opacity: 0.9; }
+        }
+
+        .nav-rules a:hover {
+            color: white !important;
+            text-shadow: 0 0 10px rgba(252, 211, 77, 0.8);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Bonanza Logo */
+        .bonanza-logo {
+            margin: 0 auto 30px;
+            text-align: center;
+            animation: floatLogo 3s ease-in-out infinite;
+            filter: drop-shadow(0 10px 30px rgba(245, 158, 11, 0.5));
+        }
+
+        @keyframes floatLogo {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.05); }
+        }
+
+        .auction-badge {
+            display: inline-block;
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4); }
+            50% { box-shadow: 0 4px 30px rgba(245, 158, 11, 0.8); }
+        }
+
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FCD34D 50%, #F59E0B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+            animation: slideInUp 0.8s ease-out;
+            text-shadow: 0 2px 20px rgba(245, 158, 11, 0.3);
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: slideInUp 0.8s ease-out 0.2s both;
+        }
+
+        /* Price Display Card */
+        .price-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(245, 158, 11, 0.4);
+            border-radius: 30px;
+            padding: 50px;
+            margin: 40px auto;
+            max-width: 600px;
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 0.8s ease-out 0.4s both;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: var(--gradient-secondary);
+            border-radius: 30px;
+            z-index: -1;
+            opacity: 0.5;
+            animation: borderRotate 3s linear infinite;
+        }
+
+        @keyframes borderRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .price-label {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .price-display {
+            font-size: 5rem;
+            font-weight: 900;
+            color: white;
+            text-shadow: 0 0 30px rgba(245, 158, 11, 0.5);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .price-change {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            background: #EF4444;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            animation: bounce 0.5s ease-out;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .countdown-wrapper {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .countdown-timer {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary);
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Progress Bar */
+        .auction-progress {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-bar {
+            background: rgba(0, 0, 0, 0.5);
+            height: 12px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-secondary);
+            width: 47%;
+            transition: width 0.5s ease-out;
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 20px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.5);
+            animation: progressPulse 1s ease-in-out infinite;
+        }
+
+        @keyframes progressPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .progress-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 20px 60px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.3s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.6);
+        }
+
+        .cta-button.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+
+        /* Rules Link */
+        .rules-link-container {
+            margin: 20px 0;
+        }
+
+        .rules-link {
+            color: #FCD34D;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border: 1px solid rgba(252, 211, 77, 0.3);
+            border-radius: 25px;
+            display: inline-block;
+        }
+
+        .rules-link:hover {
+            color: white;
+            text-shadow: 0 0 10px rgba(252, 211, 77, 0.8);
+            background: rgba(252, 211, 77, 0.1);
+            border-color: rgba(252, 211, 77, 0.5);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #6B7280;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--dark);
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 20px;
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .modal-content h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin: 20px 0 15px;
+        }
+
+        .modal-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .modal-content li {
+            padding: 15px 0;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .modal-content li strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .modal-cta {
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .modal-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.4);
+        }
+
+        .subscribe-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4);
+        }
+
+        /* Bonus Banner */
+        .bonus-banner {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            margin: 30px auto;
+            max-width: 700px;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        /* Feature Cards */
+        .features {
+            padding: 80px 0;
+            background: #FFFFFF;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 20px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(30, 58, 138, 0.1);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            text-align: center;
+            color: #6B7280;
+            margin-bottom: 60px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #E5E7EB;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-secondary);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+            border-color: var(--secondary);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-secondary);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 10px 0;
+            font-size: 0.85rem;
+            color: #6B7280;
+        }
+
+        .feature-list li {
+            padding: 3px 0;
+        }
+
+        .feature-value {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        /* Value Comparison */
+        .value-comparison {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .comparison-table {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .comparison-column {
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .comparison-column.traditional {
+            background: #FEF2F2;
+            border: 2px solid #FCA5A5;
+        }
+
+        .comparison-column.smart {
+            background: #ECFDF5;
+            border: 2px solid #6EE7B7;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .comparison-column.smart::before {
+            content: 'BEST VALUE';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .comparison-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: var(--dark);
+        }
+
+        .comparison-column ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .comparison-column li {
+            padding: 10px 0;
+            font-size: 1.1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .strike {
+            text-decoration: line-through;
+            color: #EF4444;
+        }
+
+        .check {
+            color: #10B981;
+            font-weight: 600;
+        }
+
+        .total-cost {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #EF4444;
+        }
+
+        .total-savings {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #10B981;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 80px 0;
+            background: #F3F4F6;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .step-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .step-card.special {
+            background: var(--gradient-secondary);
+            color: white;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.4);
+        }
+
+        .step-card.special .step-number {
+            background: white;
+            font-size: 2rem;
+        }
+
+        .step-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .step-card.special h4 {
+            color: white;
+        }
+
+        /* Notification System */
+        .notification-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            max-width: 350px;
+        }
+
+        .notification {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: slideInLeft 0.5s ease-out;
+            border-left: 5px solid var(--accent);
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .notification-header {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        .notification-body {
+            color: #6B7280;
+            font-size: 0.9rem;
+        }
+
+        /* Floating Price Tracker */
+        .price-tracker {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: rgba(23, 37, 84, 0.95);
+            backdrop-filter: blur(20px);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            z-index: 999;
+            min-width: 200px;
+            border: 2px solid rgba(245, 158, 11, 0.4);
+            animation: slideInRight 0.5s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .tracker-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+
+        .tracker-price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .tracker-stats {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: #F8FAFC;
+            border-radius: 20px;
+            padding: 30px;
+            border-left: 4px solid var(--secondary);
+            transition: all 0.3s ease;
+            border: 1px solid #E5E7EB;
+        }
+
+        .faq-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .faq-answer {
+            color: #4B5563;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Trust Section */
+        .trust-section {
+            padding: 60px 0;
+            background: #F9FAFB;
+            border-top: 1px solid #E5E7EB;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .badge-icon {
+            font-size: 2.5rem;
+        }
+
+        .badge-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .badge-text strong {
+            font-size: 1rem;
+            color: var(--dark);
+        }
+
+        .badge-text span {
+            font-size: 0.9rem;
+            color: #6B7280;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .final-cta-content {
+            background: rgba(23, 37, 84, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 60px;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 2px solid rgba(245, 158, 11, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .urgency-box {
+            background: rgba(239, 68, 68, 0.2);
+            border: 2px solid #EF4444;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px auto;
+            max-width: 600px;
+            animation: pulse 2s infinite;
+        }
+
+        .urgency-box p {
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        /* Error States */
+        .price-error {
+            display: none;
+            color: #EF4444;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            background: rgba(239, 68, 68, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #EF4444;
+        }
+
+        .auction-status {
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        .auction-status.closed {
+            color: #EF4444;
+        }
+
+        /* Loading State */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--secondary);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1200px) {
+            .feature-grid { 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .price-display { font-size: 3rem; }
+            .price-card { padding: 30px; }
+            .section-title { font-size: 2rem; }
+            .price-tracker { 
+                top: auto;
+                bottom: 20px;
+                right: 20px;
+                min-width: 150px;
+            }
+            .notification-container {
+                left: 50%;
+                transform: translateX(-50%);
+                max-width: 90%;
+            }
+            .feature-grid { 
+                grid-template-columns: 1fr; 
+                gap: 20px;
+            }
+            .activity-content { 
+                justify-content: center; 
+                flex-direction: column;
+                text-align: center;
+            }
+            .comparison-table { grid-template-columns: 1fr; }
+            .faq-grid { grid-template-columns: 1fr; }
+            .trust-badges { justify-content: center; }
+            .bonanza-logo svg { width: 150px; height: 150px; }
+            .modal-content { 
+                margin: 10% auto;
+                padding: 20px;
+                width: 95%;
+            }
+        }
+
+        /* Animations on scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="floating-bubble" style="width: 100px; height: 100px; top: 10%; left: 5%; animation-delay: 0s;"></div>
+        <div class="floating-bubble" style="width: 150px; height: 150px; top: 60%; right: 10%; animation-delay: 5s;"></div>
+        <div class="floating-bubble" style="width: 80px; height: 80px; bottom: 20%; left: 15%; animation-delay: 10s;"></div>
+    </div>
+
+    <!-- Alert Bar -->
+    <div class="alert-bar">
+        🔥 REVOLUTIONARY REVERSE AUCTION - Price Increases With Every Purchase! 🔥
+    </div>
+
+    <!-- Live Activity Bar -->
+    <div class="activity-bar">
+        <div class="container">
+            <div class="activity-content">
+                <div class="live-indicator">
+                    <div class="live-dot"></div>
+                    <span>LIVE AUCTION</span>
+                </div>
+                <div class="buyers-count">
+                    <span id="buyers-count">--</span> Entrepreneurs Already In
+                </div>
+                <div class="viewers-count">
+                    👁️ <span id="viewers-count">234</span> watching now
+                </div>
+                <div>
+                    Next Price: $<span id="next-price">--</span>
+                </div>
+                <div class="nav-rules">
+                    <a href="#" onclick="openRulesModal(event)" style="color: #FCD34D; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+                        📋 Auction Rules
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Price Tracker -->
+    <div class="price-tracker">
+        <div class="tracker-title">Current Price</div>
+        <div class="tracker-price">$<span id="tracker-price">--</span></div>
+        <div class="tracker-stats">
+            <div>Started at: $1</div>
+            <div>Purchases: <span id="purchase-count">--</span></div>
+        </div>
+    </div>
+
+    <!-- Notification Container -->
+    <div class="notification-container" id="notifications"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <!-- Last Buyer Bonanza Logo -->
+            <div class="bonanza-logo">
+                <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Background circle -->
+                    <circle cx="100" cy="100" r="95" fill="#F59E0B" stroke="#FBBF24" stroke-width="5"/>
+                    
+                    <!-- Burst effect -->
+                    <g transform="translate(100, 100)">
+                        <path d="M0,-90 L10,-70 L0,-50 L-10,-70 Z" fill="#FEF3C7" opacity="0.8" transform="rotate(0)"/>
+                        <path d="M0,-90 L10,-70 L0,-50 L-10,-70 Z" fill="#FEF3C7" opacity="0.8" transform="rotate(45)"/>
+                        <path d="M0,-90 L10,-70 L0,-50 L-10,-70 Z" fill="#FEF3C7" opacity="0.8" transform="rotate(90)"/>
+                        <path d="M0,-90 L10,-70 L0,-50 L-10,-70 Z" fill="#FEF3C7" opacity="0.8" transform="rotate(135)"/>
+                        <path d="M0,-90 L10,-70 L0,-50 L-10,-70 Z" fill="#FEF3C7" opacity="0.8" transform="rotate(180)"/>
+                        <path d="M0,-90 L10,-70 L0,-50 L-10,-70 Z" fill="#FEF3C7" opacity="0.8" transform="rotate(225)"/>
+                        <path d="M0,-90 L10,-70 L0,-50 L-10,-70 Z" fill="#FEF3C7" opacity="0.8" transform="rotate(270)"/>
+                        <path d="M0,-90 L10,-70 L0,-50 L-10,-70 Z" fill="#FEF3C7" opacity="0.8" transform="rotate(315)"/>
+                    </g>
+                    
+                    <!-- Inner circle -->
+                    <circle cx="100" cy="100" r="75" fill="#DC2626" stroke="#B91C1C" stroke-width="3"/>
+                    
+                    <!-- Text -->
+                    <text x="100" y="60" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="24" font-weight="900" fill="white" transform="rotate(-5 100 60)">LAST</text>
+                    <text x="100" y="90" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="28" font-weight="900" fill="white">BUYER</text>
+                    <text x="100" y="115" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="900" fill="white">BONUS</text>
+                    <text x="100" y="140" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="18" font-weight="900" fill="#FEF3C7" transform="rotate(5 100 140)">BONANZA</text>
+                    
+                    <!-- Stars -->
+                    <text x="30" y="50" font-size="20" fill="#FCD34D">⭐</text>
+                    <text x="160" y="50" font-size="20" fill="#FCD34D">⭐</text>
+                    <text x="30" y="160" font-size="20" fill="#FCD34D">⭐</text>
+                    <text x="160" y="160" font-size="20" fill="#FCD34D">⭐</text>
+                </svg>
+                <p style="color: #FCD34D; font-weight: 700; margin-top: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+                    Last Buyer Gets Everything FREE + AI Chatbot!
+                </p>
+            </div>
+            
+            <div class="auction-badge">⚡ Reverse Auction Live</div>
+            
+            <h1 class="hero-title">
+                The World's First AI Business<br>
+                Reverse Auction
+            </h1>
+            
+            <p class="hero-subtitle">
+                Price starts at $1 and increases with each purchase.<br>
+                The earlier you buy, the less you pay. Last buyer gets it FREE!
+            </p>
+            
+            <div class="bonus-banner">
+                🎁 LAST BUYER WINS: FREE Bundle + Custom AI Website Assistant (Worth $2,388/Year)
+            </div>
+            
+            <div class="rules-link-container">
+                <a href="#" class="rules-link" onclick="openRulesModal(event)">📋 Official Auction Rules</a>
+            </div>
+            
+            <div class="price-card">
+                <div class="price-label">Current Auction Price</div>
+                <div class="price-display">
+                    $<span id="main-price">--</span>
+                    <span class="price-change" id="price-change" style="display: none;">+$1</span>
+                </div>
+                <div class="price-error" id="price-error"></div>
+                
+                <div class="countdown-wrapper">
+                    <div>Auction Ends In:</div>
+                    <div class="countdown-timer" id="countdown">--:--:--</div>
+                </div>
+                
+                <div class="auction-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-bar"></div>
+                    </div>
+                    <div class="progress-stats">
+                        <span>Started: $1</span>
+                        <span>Target: $100</span>
+                    </div>
+                </div>
+                
+                <a href="#" class="cta-button" id="main-cta-button" onclick="purchaseBundle()">
+                    <span id="button-text">BUY NOW FOR $<span id="cta-price">--</span></span>
+                    <span class="loading" style="display: none;"></span>
+                </a>
+                
+                <div class="auction-status" id="auction-status"></div>
+                
+                <p style="color: rgba(255,255,255,0.9); font-size: 0.9rem; margin-top: 10px;">
+                    ⚡ Price updates in real-time • 🔒 SSL Encrypted Checkout • ⏰ Instant Access
+                </p>
+                
+                <div style="margin-top: 20px; padding: 20px; background: rgba(255,255,255,0.08); border-radius: 15px; border: 1px solid rgba(255,255,255,0.2);">
+                    <p style="color: white; font-weight: 600; margin-bottom: 10px;">🔔 Get notified for future auctions:</p>
+                    <form onsubmit="handleSubscribe(event)" style="display: flex; gap: 10px; max-width: 400px; margin: 0 auto;">
+                        <input type="email" placeholder="Enter your email" required style="flex: 1; padding: 12px 20px; border-radius: 50px; border: none; font-size: 1rem; background: rgba(255,255,255,0.95); color: var(--dark);">
+                        <button type="submit" class="subscribe-btn" style="background: var(--gradient-secondary); color: white; padding: 12px 25px; border: none; border-radius: 50px; font-weight: 700; cursor: pointer; transition: all 0.3s ease;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features fade-in">
+        <div class="container">
+            <h2 class="section-title">Your Complete AI Business Arsenal</h2>
+            <p class="section-subtitle">$1,388+ worth of tools to build, scale, and automate your business empire</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3 class="feature-title">Magic Bookifier Pro</h3>
+                    <p style="font-size: 0.9rem;">AI-powered book writing assistant. Create full-length books with structured chapters.</p>
+                    <ul class="feature-list">
+                        <li>✓ Write books in 3-7 days</li>
+                        <li>✓ Built-in editing tools</li>
+                        <li>✓ Export to Kindle/PDF</li>
+                    </ul>
+                    <div class="feature-value">$497 Value</div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3 class="feature-title">Summary of Internet</h3>
+                    <p style="font-size: 0.9rem;">Daily AI-curated trend reports. Stay ahead of viral content and market movements.</p>
+                    <ul class="feature-list">
+                        <li>✓ Daily trending topics</li>
+                        <li>✓ Viral content ideas</li>
+                        <li>✓ Market opportunities</li>
+                    </ul>
+                    <div class="feature-value">$397 Value</div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚖️</div>
+                    <h3 class="feature-title">Legal Business Vault</h3>
+                    <p style="font-size: 0.9rem;">50+ lawyer-reviewed templates. Save thousands in legal fees instantly.</p>
+                    <ul class="feature-list">
+                        <li>✓ Service agreements</li>
+                        <li>✓ Privacy policies</li>
+                        <li>✓ Partnership docs</li>
+                    </ul>
+                    <div class="feature-value">$297 Value</div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3 class="feature-title">Financial Models</h3>
+                    <p style="font-size: 0.9rem;">25+ professional Excel models for cash flow, ROI, and business planning.</p>
+                    <ul class="feature-list">
+                        <li>✓ SaaS models</li>
+                        <li>✓ Investment calcs</li>
+                        <li>✓ Valuation tools</li>
+                    </ul>
+                    <div class="feature-value">$197 Value</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Comparison Section -->
+    <section class="value-comparison fade-in">
+        <div class="container">
+            <h2 class="section-title">The Traditional Way vs. The Smart Way</h2>
+            <div class="comparison-table">
+                <div class="comparison-column traditional">
+                    <h3>❌ Traditional Approach</h3>
+                    <ul>
+                        <li><span class="strike">Ghostwriter:</span> $5,000-$25,000</li>
+                        <li><span class="strike">Trend Research Tools:</span> $99/month</li>
+                        <li><span class="strike">Legal Templates:</span> $200-500 each</li>
+                        <li><span class="strike">Financial Consultants:</span> $300/hour</li>
+                        <li><span class="strike">Custom AI Chatbot:</span> $199/month</li>
+                    </ul>
+                    <div class="total-cost">Total: $15,000+ per year</div>
+                </div>
+                <div class="comparison-column smart">
+                    <h3>✅ Your Smart Investment</h3>
+                    <ul>
+                        <li><span class="check">AI Book Writer:</span> Lifetime Access</li>
+                        <li><span class="check">Trend Intelligence:</span> Lifetime Access</li>
+                        <li><span class="check">50+ Legal Docs:</span> Instant Download</li>
+                        <li><span class="check">25+ Financial Models:</span> Full Access</li>
+                        <li><span class="check">Bonus Guides:</span> Included Free</li>
+                    </ul>
+                    <div class="total-savings">Your Price: Starting at $1</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works fade-in">
+        <div class="container">
+            <h2 class="section-title">How The Reverse Auction Works</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h4>Price Starts at $1</h4>
+                    <p>The first buyer gets the entire bundle for just $1. Lucky them!</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h4>Price Increases +$1</h4>
+                    <p>After each purchase, the price goes up by $1. No exceptions.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h4>24-Hour Limit</h4>
+                    <p>When the timer hits zero, the auction ends. No extensions.</p>
+                </div>
+                <div class="step-card special">
+                    <div class="step-number">🎁</div>
+                    <h4>Last Buyer Wins Big!</h4>
+                    <p>The final purchaser gets 100% refund PLUS a custom AI chatbot for their website (worth $2,000+)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section fade-in">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4 class="faq-question">🎯 How does the reverse auction actually work?</h4>
+                    <p class="faq-answer">
+                        Simple! The price starts at $1 and increases by $1 with each purchase. First buyer pays $1, second pays $2, third pays $3, and so on. The auction runs for exactly 24 hours. The earlier you buy, the less you pay!
+                    </p>
+                </div>
+                
+                <div class="faq-item">
+                    <h4 class="faq-question">🎁 What exactly is the "Last Buyer Bonus"?</h4>
+                    <p class="faq-answer">
+                        The final purchaser before the timer expires gets: (1) Full refund of their purchase price, and (2) A customized HiThereChat AI assistant for their website - a intelligent chatbot trained on their business that can answer customer questions, capture leads, and provide 24/7 support. This normally costs $199/month but the last buyer gets 1 full year FREE (worth $2,388).
+                    </p>
+                </div>
+                
+                <div class="faq-item">
+                    <h4 class="faq-question">💳 Are there any monthly fees or hidden costs?</h4>
+                    <p class="faq-answer">
+                        No! This is a one-time purchase with lifetime access to Magic Bookifier and Summary of the Internet. No subscriptions, no monthly fees, no surprises. The legal templates and financial models are instant downloads you keep forever.
+                    </p>
+                </div>
+                
+                <div class="faq-item">
+                    <h4 class="faq-question">🚀 How quickly can I access everything?</h4>
+                    <p class="faq-answer">
+                        Instantly! As soon as your payment is processed, you'll receive login credentials for Magic Bookifier and Summary of the Internet, plus download links for all templates and models. You can start writing your book or tracking trends within minutes.
+                    </p>
+                </div>
+                
+                <div class="faq-item">
+                    <h4 class="faq-question">📚 What if I'm not tech-savvy or a good writer?</h4>
+                    <p class="faq-answer">
+                        Perfect! These tools are designed for busy entrepreneurs, not tech experts or professional writers. Magic Bookifier guides you through simple conversations to create your book. Summary of the Internet sends reports to your email. The templates are ready-to-use Word/Excel files. No technical skills required!
+                    </p>
+                </div>
+                
+                <div class="faq-item">
+                    <h4 class="faq-question">💰 Is there a money-back guarantee?</h4>
+                    <p class="faq-answer">
+                        Yes! You have a full 30-day money-back guarantee. If you're not completely satisfied with your purchase, just contact our support team for a full refund. No questions asked. We're confident you'll love these tools!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section fade-in">
+        <div class="container">
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <div class="badge-icon">🔒</div>
+                    <div class="badge-text">
+                        <strong>Secure Checkout</strong>
+                        <span>256-bit SSL Encryption</span>
+                    </div>
+                </div>
+                <div class="trust-badge">
+                    <div class="badge-icon">💳</div>
+                    <div class="badge-text">
+                        <strong>Safe Payment</strong>
+                        <span>Visa, Mastercard, PayPal</span>
+                    </div>
+                </div>
+                <div class="trust-badge">
+                    <div class="badge-icon">🛡️</div>
+                    <div class="badge-text">
+                        <strong>30-Day Guarantee</strong>
+                        <span>100% Money Back</span>
+                    </div>
+                </div>
+                <div class="trust-badge">
+                    <div class="badge-icon">⚡</div>
+                    <div class="badge-text">
+                        <strong>Instant Access</strong>
+                        <span>Start in 60 Seconds</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta fade-in">
+        <div class="container">
+            <div class="final-cta-content">
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">
+                    The Clock Is Ticking... What Will You Choose?
+                </h2>
+                <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">
+                    💰 Pay $<span id="final-price" style="color: var(--secondary); font-weight: 700;">--</span> now for $1,388 worth of business tools...<br>
+                    🎯 Or wait and risk paying more (current trajectory: $100+ by midnight)<br>
+                    🎁 Or be the last buyer and get EVERYTHING FREE + Custom AI Website Assistant (Worth $2,388/year)!
+                </p>
+                
+                <div class="urgency-box">
+                    <p>⚠️ <strong>WARNING:</strong> At the current rate, the price will exceed $100 in the next 4 hours</p>
+                </div>
+                
+                <a href="#" class="cta-button" id="final-cta-button" onclick="purchaseBundle()">
+                    LOCK IN MY PRICE AT $<span id="final-cta-price">--</span> NOW
+                </a>
+                
+                <p style="margin-top: 20px; opacity: 0.8;">
+                    🛡️ 30-day money-back guarantee • 🔒 Secure checkout • ⚡ Instant access
+                </p>
+                
+                <p style="margin-top: 15px;">
+                    <a href="#" class="rules-link" onclick="openRulesModal(event)">📋 View Official Auction Rules</a>
+                </p>
+                
+                <div class="social-proof">
+                    <p style="margin-top: 30px; font-size: 0.95rem; opacity: 0.9;">
+                        <strong>Join <span id="social-proof-count">--</span>+ smart entrepreneurs</strong> who already secured their bundle at lower prices
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rules Modal -->
+    <div id="rulesModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeRulesModal()">&times;</span>
+            <h2 class="modal-title">Official Auction Rules</h2>
+            
+            <ul>
+                <li>
+                    <strong>Opening Price:</strong> The auction starts at <strong>$1</strong>. Each purchase raises the price by <strong>$1</strong>.
+                </li>
+                <li>
+                    <strong>Delivery:</strong> Your bundle unlock key is sent to your email—usually within <strong>5 minutes</strong> of each purchase.
+                </li>
+                <li>
+                    <strong>Last Buyer Bonus:</strong> The <strong>final purchaser</strong> (last transaction recorded in Stripe) receives a <strong>100% refund</strong>—you get it free!
+                </li>
+                <li>
+                    <strong>Timing & Notification:</strong> We announce the <strong>exact start time</strong> to our email list, so <strong>subscribe</strong> to get the alert. The auction runs for <strong>23–26 hours</strong> after it begins, and we may end it <strong>at any point</strong> during that window. Whoever buys last wins the refund.
+                </li>
+            </ul>
+            
+            <h3>Join the mailing list to get notified first</h3>
+            <form onsubmit="handleSubscribe(event)" style="margin-top: 20px;">
+                <input type="email" placeholder="Enter your email for auction alerts" required style="padding: 12px 20px; border: 2px solid #E5E7EB; border-radius: 10px; font-size: 1rem; width: 100%; max-width: 300px; margin-bottom: 15px;">
+                <br>
+                <button type="submit" class="modal-cta" style="border: none; cursor: pointer;">Subscribe for Auction Alerts</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // API Configuration
+        const API_URL = 'https://kqbkvywvdbglinqikmxx.supabase.co/functions/v1/current';
+        const DEBUG = window.location.search.includes('debug=true');
+        
+        // State Management
+        let currentData = {
+            price: null,
+            status: 'loading',
+            payment_link: '#',
+            purchase_count: null
+        };
+        
+        let refreshInterval = null;
+        let errorCount = 0;
+        let lastPrice = null;
+        let timeLeft = 24 * 3600; // 24 hours in seconds
+        let viewerCount = 234;
+        
+        // Cache DOM elements
+        const elements = {
+            prices: {
+                main: document.getElementById('main-price'),
+                live: document.getElementById('live-price'),
+                floating: document.getElementById('floating-price'),
+                tracker: document.getElementById('tracker-price'),
+                cta: document.getElementById('cta-price'),
+                final: document.getElementById('final-price'),
+                finalCta: document.getElementById('final-cta-price'),
+                next: document.getElementById('next-price')
+            },
+            stats: {
+                buyersCount: document.getElementById('buyers-count'),
+                purchaseCount: document.getElementById('purchase-count'),
+                socialProofCount: document.getElementById('social-proof-count'),
+                viewersCount: document.getElementById('viewers-count')
+            },
+            ui: {
+                progressBar: document.getElementById('progress-bar'),
+                priceChange: document.getElementById('price-change'),
+                countdown: document.getElementById('countdown'),
+                priceError: document.getElementById('price-error'),
+                auctionStatus: document.getElementById('auction-status'),
+                mainCtaButton: document.getElementById('main-cta-button'),
+                finalCtaButton: document.getElementById('final-cta-button'),
+                buttonText: document.getElementById('button-text')
+            }
+        };
+        
+        // Update all price displays
+        function updatePrices(price) {
+            Object.keys(elements.prices).forEach(key => {
+                if (elements.prices[key]) {
+                    if (key === 'next') {
+                        elements.prices[key].textContent = price + 1;
+                    } else {
+                        elements.prices[key].textContent = price;
+                    }
+                }
+            });
+            
+            // Update purchase counts
+            const purchaseCount = currentData.purchase_count || price;
+            if (elements.stats.buyersCount) elements.stats.buyersCount.textContent = purchaseCount;
+            if (elements.stats.purchaseCount) elements.stats.purchaseCount.textContent = purchaseCount;
+            if (elements.stats.socialProofCount) elements.stats.socialProofCount.textContent = purchaseCount;
+            
+            // Update progress bar
+            if (elements.ui.progressBar) {
+                const progress = Math.min((price / 100) * 100, 100);
+                elements.ui.progressBar.style.width = progress + '%';
+            }
+        }
+        
+        // Update buy button state
+        function updateBuyButtons(paymentLink, status) {
+            const buttons = [elements.ui.mainCtaButton, elements.ui.finalCtaButton];
+            
+            buttons.forEach(button => {
+                if (!button) return;
+                
+                if (status === 'open') {
+                    button.href = paymentLink || '#';
+                    button.classList.remove('disabled');
+                    
+                    // Update button text
+                    const priceSpan = button.querySelector('span[id*="price"]');
+                    if (priceSpan && currentData.price) {
+                        button.innerHTML = button.innerHTML.replace(/BUY NOW FOR \$\d+|LOCK IN MY PRICE AT \$\d+ NOW|SECURE MY BUNDLE FOR \$\d+/, 
+                            button.id === 'final-cta-button' ? 
+                            `LOCK IN MY PRICE AT ${currentData.price} NOW` : 
+                            `BUY NOW FOR ${currentData.price}`
+                        );
+                    }
+                } else {
+                    button.classList.add('disabled');
+                    button.innerHTML = button.innerHTML.replace(/BUY NOW|LOCK IN|SECURE/, 'AUCTION CLOSED');
+                }
+            });
+        }
+        
+        // Show price change animation
+        function showPriceChange(oldPrice, newPrice) {
+            if (oldPrice !== null && oldPrice !== newPrice && elements.ui.priceChange) {
+                elements.ui.priceChange.style.display = 'inline-block';
+                elements.ui.priceChange.textContent = `+${newPrice - oldPrice}`;
+                setTimeout(() => {
+                    elements.ui.priceChange.style.display = 'none';
+                }, 3000);
+                
+                // Show notification
+                showPriceIncreaseNotification(oldPrice, newPrice);
+            }
+        }
+        
+        // Show price increase notification
+        function showPriceIncreaseNotification(oldPrice, newPrice) {
+            const names = [
+                'Sarah M.', 'James K.', 'Emma L.', 'Michael T.', 'Lisa R.',
+                'Robert S.', 'Jennifer D.', 'Chris W.', 'Amanda B.', 'Steven H.',
+                'Jessica P.', 'Matthew C.', 'Ashley N.', 'Daniel F.', 'Michelle G.'
+            ];
+            const locations = [
+                'New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix',
+                'Philadelphia', 'San Antonio', 'San Diego', 'Dallas', 'Austin',
+                'Miami', 'Seattle', 'Boston', 'Denver', 'Atlanta'
+            ];
+            
+            const name = names[Math.floor(Math.random() * names.length)];
+            const location = locations[Math.floor(Math.random() * locations.length)];
+            
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.innerHTML = `
+                <div class="notification-header">💰 Price Just Increased!</div>
+                <div class="notification-body">
+                    ${name} from ${location} just purchased at ${oldPrice}. New price is now ${newPrice}!
+                </div>
+            `;
+            
+            const container = document.getElementById('notifications');
+            if (container) {
+                container.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.style.animation = 'slideInLeft 0.5s ease-out reverse';
+                    setTimeout(() => notification.remove(), 500);
+                }, 5000);
+                
+                // Keep only last 3 notifications
+                const allNotifications = container.children;
+                if (allNotifications.length > 3) {
+                    allNotifications[0].remove();
+                }
+            }
+            
+            // Spike viewer count on purchase
+            viewerCount += Math.floor(Math.random() * 20) + 10;
+            updateViewerCount();
+        }
+        
+        // Show error state
+        function showError(message) {
+            if (elements.ui.priceError) {
+                elements.ui.priceError.textContent = message;
+                elements.ui.priceError.style.display = 'block';
+            }
+            
+            // Update all price displays to show error state
+            Object.values(elements.prices).forEach(el => {
+                if (el) el.textContent = '--';
+            });
+        }
+        
+        // Hide error state
+        function hideError() {
+            if (elements.ui.priceError) {
+                elements.ui.priceError.style.display = 'none';
+            }
+        }
+        
+        // Get refresh interval based on error count
+        function getRefreshInterval() {
+            if (errorCount > 5) return 60000; // 60 seconds
+            if (errorCount > 3) return 30000; // 30 seconds
+            if (errorCount > 0) return 10000; // 10 seconds
+            return 5000; // Default 5 seconds
+        }
+        
+        // Main refresh function
+        async function refresh() {
+            try {
+                const response = await fetch(API_URL);
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                
+                const data = await response.json();
+                
+                if (DEBUG) console.log('API Response:', data);
+                
+                // Store old price for comparison
+                const oldPrice = currentData.price;
+                
+                // Update current data
+                currentData = {
+                    price: data.price || 1,
+                    status: data.status || 'open',
+                    payment_link: data.payment_link || '#',
+                    purchase_count: data.purchase_count || data.price || 1
+                };
+                
+                // Clear any errors
+                hideError();
+                errorCount = 0;
+                
+                // Update UI
+                updatePrices(currentData.price);
+                updateBuyButtons(currentData.payment_link, currentData.status);
+                
+                // Show price change animation if price increased
+                if (oldPrice !== null && currentData.price > oldPrice) {
+                    showPriceChange(oldPrice, currentData.price);
+                }
+                
+                // Update auction status
+                if (elements.ui.auctionStatus) {
+                    if (currentData.status !== 'open') {
+                        elements.ui.auctionStatus.textContent = 'Auction has ended!';
+                        elements.ui.auctionStatus.classList.add('closed');
+                    } else {
+                        elements.ui.auctionStatus.textContent = '';
+                        elements.ui.auctionStatus.classList.remove('closed');
+                    }
+                }
+                
+                // Save last successful price
+                lastPrice = currentData.price;
+                
+            } catch (error) {
+                console.error('API error:', error);
+                errorCount++;
+                
+                // Show error message after multiple failures
+                if (errorCount > 2) {
+                    showError('Unable to load current price. Please refresh the page.');
+                }
+                
+                // Use last known price if available
+                if (lastPrice !== null) {
+                    updatePrices(lastPrice);
+                }
+                
+                // Adjust refresh interval based on error count
+                clearInterval(refreshInterval);
+                refreshInterval = setInterval(refresh, getRefreshInterval());
+            }
+        }
+        
+        // Purchase handler
+        window.purchaseBundle = function() {
+            if (currentData.payment_link && currentData.status === 'open') {
+                // Show loading state
+                if (elements.ui.buttonText) {
+                    const originalText = elements.ui.buttonText.innerHTML;
+                    elements.ui.buttonText.innerHTML = '<span class="loading"></span> Processing...';
+                    
+                    // Navigate after brief delay for UX
+                    setTimeout(() => {
+                        window.location.href = currentData.payment_link;
+                    }, 500);
+                }
+            } else {
+                alert('The auction is currently closed. Please try again later.');
+            }
+            return false;
+        };
+        
+        // Modal functions
+        function openRulesModal(event) {
+            event.preventDefault();
+            document.getElementById('rulesModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeRulesModal() {
+            document.getElementById('rulesModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('rulesModal');
+            if (event.target === modal) {
+                closeRulesModal();
+            }
+        }
+        
+        // Handle subscription
+        function handleSubscribe(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            
+            // Show success message
+            const button = event.target.querySelector('button');
+            const originalText = button.textContent;
+            button.textContent = '✓ Subscribed!';
+            button.style.background = '#10B981';
+            
+            // Reset after 3 seconds
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = 'linear-gradient(135deg, #F59E0B 0%, #EF4444 100%)';
+                event.target.reset();
+                if (document.getElementById('rulesModal').style.display === 'block') {
+                    closeRulesModal();
+                }
+            }, 3000);
+            
+            // In production, this would send to your email service
+            if (DEBUG) console.log('Subscribed:', email);
+        }
+        
+        // Update countdown timer
+        function updateCountdown() {
+            if (timeLeft > 0) {
+                timeLeft--;
+                
+                const hours = Math.floor(timeLeft / 3600);
+                const minutes = Math.floor((timeLeft % 3600) / 60);
+                const seconds = timeLeft % 60;
+                
+                const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (elements.ui.countdown) {
+                    elements.ui.countdown.textContent = timeString;
+                    
+                    // Add urgency when time is low
+                    if (timeLeft < 3600) { // Less than 1 hour
+                        elements.ui.countdown.style.color = '#EF4444';
+                    }
+                }
+            }
+        }
+        
+        // Update viewer count
+        function updateViewerCount() {
+            // Random fluctuation
+            const change = Math.floor(Math.random() * 16) - 5;
+            viewerCount = Math.max(150, viewerCount + change);
+            
+            if (elements.stats.viewersCount) {
+                elements.stats.viewersCount.textContent = viewerCount;
+            }
+        }
+        
+        // Handle page visibility
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                clearInterval(refreshInterval);
+            } else {
+                refresh(); // Immediate refresh when page becomes visible
+                refreshInterval = setInterval(refresh, getRefreshInterval());
+            }
+        });
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Start with loading state
+            Object.values(elements.prices).forEach(el => {
+                if (el) el.innerHTML = '<span class="loading"></span>';
+            });
+            
+            // Initial API call
+            refresh();
+            
+            // Set up refresh interval
+            refreshInterval = setInterval(refresh, 5000);
+            
+            // Start countdown timer
+            setInterval(updateCountdown, 1000);
+            
+            // Update viewer count periodically
+            setInterval(updateViewerCount, 5000);
+            
+            // Debug mode helpers
+            if (DEBUG) {
+                window.debugPricing = {
+                    setPrice: (price) => {
+                        currentData.price = price;
+                        updatePrices(price);
+                    },
+                    triggerPurchase: () => showPriceIncreaseNotification(currentData.price, currentData.price + 1),
+                    setStatus: (status) => {
+                        currentData.status = status;
+                        updateBuyButtons(currentData.payment_link, status);
+                    }
+                };
+                console.log('Debug mode enabled. Use window.debugPricing to test.');
+            }
+        });
+    </script>
+</body>
+</html>
