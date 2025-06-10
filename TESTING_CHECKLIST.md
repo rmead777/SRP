@@ -1,16 +1,56 @@
-# Mobile Responsiveness Testing Checklist
+# Mobile Responsiveness & Live Viewer Tracking Testing Checklist
 
 ## 🧪 Testing Instructions
 
 ### **1. Desktop Testing**
-- [ ] Open: https://my-vercel-html-qtw7x8z6g-ryans-projects-d565ecc1.vercel.app
+- [ ] Open: https://lastbuyerbonanza.com
+- [ ] Fallback: https://my-vercel-html-qtr0d5adi-ryans-projects-d565ecc1.vercel.app
 - [ ] Test responsive design by resizing browser window
 - [ ] Verify all 4 feature cards display in grid
 - [ ] Check price tracker position (top-right)
 - [ ] Test modal functionality
 - [ ] Verify hover effects work
+- [ ] **NEW:** Check live viewer count is updating (should show 120-300 viewers)
 
-### **2. Mobile Device Testing**
+### **2. Live Viewer Tracking Testing**
+
+#### **Method A: Debug Mode Testing**
+1. Add `?debug=true` to URL
+2. Open browser console (F12)
+3. Test viewer system:
+   ```javascript
+   // Check current viewer tracking status
+   window.debugPricing.viewerSystem.getCurrentCount()
+   
+   // Check which mode is active
+   window.debugPricing.viewerSystem.isSimulationMode()
+   
+   // Test API endpoints (when available)
+   window.debugPricing.viewerSystem.testApi()
+   
+   // Switch between modes
+   window.debugPricing.viewerSystem.switchToApiMode()
+   window.debugPricing.viewerSystem.switchToSimulationMode()
+   
+   // Simulate viewer changes
+   window.debugPricing.viewerSystem.simulateViewers(150)
+   window.debugPricing.viewerSystem.simulateJoiners() // +3-10 viewers
+   ```
+
+#### **Method B: Multiple Browser Testing**
+1. Open the site in multiple browser tabs/windows
+2. Verify each shows different session IDs in debug mode
+3. Check if viewer counts are realistic (currently using simulation)
+4. Test purchase simulation to see viewer spikes
+
+#### **Method C: Real-time Behavior**
+- [ ] Viewer count updates every 10-30 seconds
+- [ ] Count varies realistically throughout the day
+- [ ] More viewers during business hours (9AM-5PM)
+- [ ] Fewer viewers at night (12AM-6AM)
+- [ ] Purchase events cause +3-10 viewer spike
+
+### **3. Mobile Device Testing**
 
 #### **Method A: Browser Developer Tools**
 1. Open Chrome DevTools (F12)
@@ -26,7 +66,7 @@
 - Verify touch interactions work smoothly
 - Check loading speed on mobile networks
 
-### **3. Debug Mode Testing**
+### **4. Debug Mode Testing**
 - [ ] Add `?debug=true` to URL
 - [ ] Open browser console (F12)
 - [ ] Verify debug tools are available:
@@ -36,7 +76,7 @@
   window.debugPricing.triggerPurchase()
   ```
 
-### **4. Specific Features to Test**
+### **5. Specific Features to Test**
 
 #### **Responsive Breakpoints**
 - [ ] **≤480px:** Single column, full-width buttons, compact design
@@ -62,19 +102,19 @@
 - [ ] Text is readable at all sizes
 - [ ] Contrast ratios are sufficient
 
-### **5. Cross-Browser Testing**
+### **6. Cross-Browser Testing**
 Test on these browsers:
 - [ ] Chrome (mobile & desktop)
 - [ ] Safari (iOS & macOS)
 - [ ] Firefox (mobile & desktop)
 - [ ] Edge (desktop)
 
-### **6. Orientation Testing**
+### **7. Orientation Testing**
 - [ ] Portrait mode: All elements fit properly
 - [ ] Landscape mode: Layout adapts correctly
 - [ ] Orientation change: No layout breaks
 
-### **7. Common Issues to Check**
+### **8. Common Issues to Check**
 - [ ] Text is not too small to read
 - [ ] Buttons are large enough to tap (minimum 44px)
 - [ ] Content doesn't overflow horizontally
@@ -124,5 +164,7 @@ Test on these browsers:
 
 ---
 
-**Quick Test URL:** https://my-vercel-html-qtw7x8z6g-ryans-projects-d565ecc1.vercel.app  
-**Debug Mode URL:** https://my-vercel-html-qtw7x8z6g-ryans-projects-d565ecc1.vercel.app?debug=true
+**Primary Test URL:** https://lastbuyerbonanza.com  
+**Debug Mode URL:** https://lastbuyerbonanza.com?debug=true  
+**Fallback Test URL:** https://my-vercel-html-qtr0d5adi-ryans-projects-d565ecc1.vercel.app  
+**Fallback Debug URL:** https://my-vercel-html-qtr0d5adi-ryans-projects-d565ecc1.vercel.app?debug=true

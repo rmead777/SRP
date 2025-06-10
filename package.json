@@ -1,0 +1,36 @@
+{
+  "name": "ai-business-bundle-auction",
+  "version": "1.0.0",
+  "description": "AI Business Bundle Reverse Auction Website with Live Viewer Tracking",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step required for static site'",
+    "start": "node api/server.js",
+    "api": "cd api && npm install && npm start"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0"
+  },
+  "devDependencies": {
+    "vercel": "^32.0.0"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/ai-business-bundle"
+  },
+  "keywords": [
+    "auction",
+    "ai",
+    "business",
+    "live-tracking",
+    "real-time"
+  ],
+  "author": "Ryan",
+  "license": "MIT"
+}

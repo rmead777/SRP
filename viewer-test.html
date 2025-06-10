@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Viewer System Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-box { 
+            background: #f0f0f0; 
+            padding: 15px; 
+            margin: 10px 0; 
+            border-radius: 8px; 
+        }
+        .viewer-count { 
+            font-size: 24px; 
+            color: #2563eb; 
+            font-weight: bold; 
+        }
+        button { 
+            background: #10b981; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            margin: 5px; 
+        }
+        button:hover { background: #059669; }
+        .log { 
+            background: #1f2937; 
+            color: #10b981; 
+            padding: 10px; 
+            border-radius: 5px; 
+            height: 200px; 
+            overflow-y: auto; 
+            font-family: monospace; 
+        }
+    </style>
+</head>
+<body>
+    <h1>🔴 Live Viewer System Test</h1>
+    
+    <div class="test-box">
+        <h3>Current Status</h3>
+        <div>Live Viewers: <span class="viewer-count" id="viewerCount">Loading...</span></div>
+        <div>Session ID: <span id="sessionId">Loading...</span></div>
+        <div>Last Update: <span id="lastUpdate">Never</span></div>
+    </div>
+    
+    <div class="test-box">
+        <h3>Test Controls</h3>
+        <button onclick="testHeartbeat()">📡 Send Heartbeat</button>
+        <button onclick="simulatePurchase()">💰 Simulate Purchase</button>
+        <button onclick="setViewers(150)">👥 Set 150 Viewers</button>
+        <button onclick="setViewers(500)">🚀 Set 500 Viewers</button>
+        <button onclick="clearLog()">🗑️ Clear Log</button>
+    </div>
+    
+    <div class="test-box">
+        <h3>System Log</h3>
+        <div class="log" id="log"></div>
+    </div>
+    
+    <script>
+        let testLog = [];
+        
+        function log(message) {
+            const timestamp = new Date().toLocaleTimeString();
+            testLog.push(`[${timestamp}] ${message}`);
+            document.getElementById('log').innerHTML = testLog.slice(-20).join('<br>');
+            document.getElementById('log').scrollTop = document.getElementById('log').scrollHeight;
+        }
+        
+        function updateDisplay() {
+            if (window.parent && window.parent.debugPricing) {
+                const viewerSystem = window.parent.debugPricing.viewerSystem;
+                document.getElementById('viewerCount').textContent = viewerSystem.getCurrentCount();
+                document.getElementById('sessionId').textContent = viewerSystem.getSessionId().substring(0, 20) + '...';
+                document.getElementById('lastUpdate').textContent = new Date().toLocaleTimeString();
+            } else {
+                log('❌ Debug system not available - open this in the main auction page');
+            }
+        }
+        
+        function testHeartbeat() {
+            if (window.parent && window.parent.debugPricing) {
+                window.parent.debugPricing.viewerSystem.sendHeartbeat();
+                log('📡 Heartbeat sent');
+                setTimeout(updateDisplay, 1000);
+            }
+        }
+        
+        function simulatePurchase() {
+            if (window.parent && window.parent.debugPricing) {
+                const oldCount = window.parent.debugPricing.viewerSystem.getCurrentCount();
+                window.parent.debugPricing.viewerSystem.simulateJoiners();
+                const newCount = window.parent.debugPricing.viewerSystem.getCurrentCount();
+                log(`💰 Purchase simulated: ${oldCount} → ${newCount} viewers (+${newCount - oldCount})`);
+                updateDisplay();
+            }
+        }
+        
+        function setViewers(count) {
+            if (window.parent && window.parent.debugPricing) {
+                window.parent.debugPricing.viewerSystem.simulateViewers(count);
+                log(`👥 Viewer count set to ${count}`);
+                updateDisplay();
+            }
+        }
+        
+        function clearLog() {
+            testLog = [];
+            document.getElementById('log').innerHTML = '';
+            log('🗑️ Log cleared');
+        }
+        
+        // Initialize
+        log('🚀 Live Viewer Test System Started');
+        log('📋 Instructions: Open this page in a frame/popup from the main auction site');
+        log('🔧 Or run the test functions in the main page console');
+        
+        // Update display every 5 seconds
+        setInterval(updateDisplay, 5000);
+        updateDisplay();
+    </script>
+</body>
+</html>

@@ -544,13 +544,24 @@
             right: 20px;
             font-size: 2rem;
             font-weight: bold;
-            color: #6B7280;
+            color: rgba(255,255,255,0.8);
             cursor: pointer;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            z-index: 10;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
         }
 
         .modal-close:hover {
-            color: var(--dark);
+            color: white;
+            background: rgba(255,255,255,0.2);
+            transform: scale(1.1);
         }
 
         .modal-title {
@@ -1712,6 +1723,772 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Enhanced Rules Modal Styles */
+        .enhanced-rules-modal {
+            max-width: 800px;
+            padding: 0;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            overflow-y: auto;
+            max-height: 90vh;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(59, 130, 246, 0.3) transparent;
+        }
+        
+        /* Custom scrollbar for webkit browsers */
+        .enhanced-rules-modal::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .enhanced-rules-modal::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 4px;
+        }
+        
+        .enhanced-rules-modal::-webkit-scrollbar-thumb {
+            background: rgba(59, 130, 246, 0.3);
+            border-radius: 4px;
+        }
+        
+        .enhanced-rules-modal::-webkit-scrollbar-thumb:hover {
+            background: rgba(59, 130, 246, 0.5);
+        }
+        
+        .modal-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .modal-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: shimmer 20s linear infinite;
+        }
+        
+        .rules-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            display: block;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+        
+        .modal-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin: 0 0 10px 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: none;
+            -webkit-text-fill-color: white;
+        }
+        
+        .modal-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin: 0;
+            font-weight: 500;
+        }
+        
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 40px;
+        }
+        
+        .rule-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .rule-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-secondary);
+        }
+        
+        .rule-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-color: rgba(59, 130, 246, 0.2);
+        }
+        
+        .special-rule {
+            background: linear-gradient(135deg, #fef3c7 0%, #ffffff 100%);
+            border-color: #f59e0b;
+        }
+        
+        .special-rule::before {
+            background: linear-gradient(90deg, #f59e0b, #ef4444);
+        }
+        
+        .rule-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .rule-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin: 0 0 15px 0;
+        }
+        
+        .rule-content p {
+            margin: 0 0 8px 0;
+            color: #4b5563;
+            line-height: 1.6;
+        }
+        
+        .rule-detail {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        .highlight-price {
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: inline-block;
+        }
+        
+        .bonus-list {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+        }
+        
+        .bonus-list li {
+            padding: 5px 0;
+            color: #059669;
+            font-weight: 500;
+        }
+        
+        .key-points {
+            background: #f8fafc;
+            margin: 0 40px 40px 40px;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .key-points h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin: 0 0 20px 0;
+            text-align: center;
+        }
+        
+        .points-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        
+        /* On medium screens, show 2x2 layout */
+        @media (max-width: 900px) {
+            .points-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+        }
+        
+        /* On small screens, stack vertically */
+        @media (max-width: 600px) {
+            .points-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+        
+        .point {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: white;
+            border-radius: 12px;
+            font-weight: 500;
+            color: #374151;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .point-icon {
+            font-size: 1.2rem;
+        }
+        
+        .newsletter-section {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .newsletter-header h3 {
+            font-size: 1.8rem;
+            margin: 0 0 10px 0;
+            font-weight: 900;
+            color: white;
+        }
+        
+        .newsletter-header p {
+            margin: 0 0 25px 0;
+            opacity: 0.9;
+        }
+        
+        .newsletter-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .email-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .email-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+        
+        .email-input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .email-input:focus {
+            outline: none;
+            border-color: #fbbf24;
+            background: rgba(255,255,255,0.15);
+        }
+        
+        .modal-cta {
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            white-space: nowrap;
+            width: 100%;
+        }
+        
+        .modal-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.4);
+        }
+        
+        .btn-icon {
+            font-size: 1.1rem;
+        }
+        
+        .privacy-note {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin: 0;
+        }
+        
+        /* Mobile Responsive Enhancements */
+        @media (max-width: 768px) {
+            .enhanced-rules-modal {
+                max-width: 95%;
+                margin: 2% auto;
+                max-height: 95vh;
+                overflow-y: auto;
+            }
+            
+            .modal-header {
+                padding: 25px 20px;
+            }
+            
+            .modal-title {
+                font-size: 2rem;
+            }
+            
+            .rules-grid {
+                grid-template-columns: 1fr;
+                padding: 20px;
+                gap: 20px;
+            }
+            
+            .rule-card {
+                padding: 25px 20px;
+            }
+            
+            .key-points {
+                margin: 0 20px 20px 20px;
+                padding: 20px;
+            }
+            
+            .points-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .newsletter-section {
+                padding: 25px 20px;
+            }
+            
+            .email-input-group {
+                flex-direction: column;
+            }
+            
+            .modal-cta {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        
+        /* TL;DR Summary Section */
+        .tldr-section {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            color: white;
+            padding: 20px 30px;
+            margin: 0;
+            text-align: center;
+            border-bottom: 3px solid #f59e0b;
+        }
+        
+        .tldr-title {
+            font-size: 1.2rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .tldr-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .flow-step {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 10px 15px;
+            border-radius: 12px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .flow-arrow {
+            font-size: 1.5rem;
+            color: #fbbf24;
+            font-weight: 900;
+        }
+        
+        /* Mini FAQ Section */
+        .mini-faq {
+            background: #f8fafc;
+            padding: 30px 40px;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .mini-faq h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin: 0 0 20px 0;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        .faq-quick-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .faq-quick-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--secondary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .faq-quick-question {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .faq-quick-answer {
+            color: #6b7280;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .faq-trust-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #059669;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        
+        .stripe-highlight {
+            background: linear-gradient(135deg, #6772e5, #5469d4);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+        
+        /* Mobile Responsive for TL;DR and Mini FAQ */
+        @media (max-width: 768px) {
+            .tldr-section {
+                padding: 15px 20px;
+            }
+            
+            .tldr-flow {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .flow-step {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .flow-arrow {
+                transform: rotate(90deg);
+                font-size: 1.2rem;
+            }
+            
+            .mini-faq {
+                padding: 20px 25px;
+            }
+            
+            .faq-quick-list {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .faq-quick-item {
+                padding: 18px;
+                margin-bottom: 5px;
+            }
+            
+            .faq-quick-question {
+                font-size: 1rem;
+                margin-bottom: 10px;
+            }
+            
+            .faq-trust-badge {
+                margin-left: 0;
+                margin-top: 8px;
+                display: block;
+                width: fit-content;
+            }
+        }
+        
+        /* Micro-Stepper Below Hero */
+        .micro-stepper {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+        
+        .micro-stepper-content {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .micro-step {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .step-arrow {
+            color: var(--secondary);
+            font-weight: 900;
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 600px) {
+            .micro-stepper {
+                padding: 15px;
+                font-size: 1rem;
+            }
+            
+            .micro-stepper-content {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .step-arrow {
+                transform: rotate(90deg);
+                font-size: 1rem;
+            }
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: var(--gradient-dark);
+            padding: 40px 0 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--secondary);
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+            margin-top: 15px;
+        }
+
+        /* Terms Modal Styles */
+        .terms-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        .terms-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .terms-modal-content {
+            background: white;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+        }
+
+        .terms-modal-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 25px 30px;
+            border-radius: 20px 20px 0 0;
+            position: relative;
+        }
+
+        .terms-modal-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .terms-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .terms-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .terms-modal-body {
+            padding: 0;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .terms-content {
+            padding: 30px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .terms-content h2 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin: 25px 0 15px 0;
+            font-weight: 600;
+        }
+
+        .terms-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .terms-content h3 {
+            color: var(--primary-dark);
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+            font-weight: 600;
+        }
+
+        .terms-content p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .terms-content ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .terms-content li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .terms-content strong {
+            color: var(--primary-dark);
+        }
+
+        .terms-content .highlight {
+            background: rgba(30, 58, 138, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid var(--primary);
+        }
+
+        /* Mobile responsiveness for footer and terms */
+        @media (max-width: 768px) {
+            .footer {
+                padding: 30px 0 15px;
+            }
+
+            .footer-link {
+                display: block;
+                margin: 8px 0;
+            }
+
+            .terms-modal-content {
+                margin: 10px;
+                max-height: 95vh;
+            }
+
+            .terms-modal-header {
+                padding: 20px 25px;
+            }
+
+            .terms-modal-title {
+                font-size: 1.5rem;
+                padding-right: 50px;
+            }
+
+            .terms-content {
+                padding: 20px;
+            }
+
+            .terms-content h2 {
+                font-size: 1.2rem;
+            }
+
+            .terms-content h3 {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1739,7 +2516,7 @@
                     <span id="buyers-count">--</span> Entrepreneurs Already In
                 </div>
                 <div class="viewers-count">
-                    👁️ <span id="viewers-count">234</span> watching now
+                    👁️ <span id="viewers-count">--</span> watching now
                 </div>
                 <div>
                     Next Price: $<span id="next-price">--</span>
@@ -1872,6 +2649,23 @@
         </div>
     </section>
 
+    <!-- Micro-Stepper -->
+    <div class="micro-stepper">
+        <div class="micro-stepper-content">
+            <div class="micro-step">
+                🛒 Buy now
+            </div>
+            <div class="step-arrow">→</div>
+            <div class="micro-step">
+                💲 Price rises
+            </div>
+            <div class="step-arrow">→</div>
+            <div class="micro-step">
+                🎁 Last buyer gets everything (+ the Grand Prize) FREE!
+            </div>
+        </div>
+    </div>
+
     <!-- Features Section -->
     <section class="features fade-in">
         <div class="container">
@@ -1984,7 +2778,7 @@
                 <div class="step-card special">
                     <div class="step-number">🎁</div>
                     <h4>Last Buyer Wins Big!</h4>
-                    <p>The final purchaser gets 100% refund PLUS a custom AI chatbot for their website (worth $2,000+)</p>
+                    <p>The final purchaser gets 100% refund PLUS a custom AI Intelligent Assistant for their website (worth $2,000+)</p>
                 </div>
             </div>
         </div>
@@ -2115,40 +2909,309 @@
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#" class="footer-link" onclick="openTermsModal(event)">Terms of Use</a>
+                <span style="color: rgba(255, 255, 255, 0.4);">•</span>
+                <a href="mailto:support@supremerobotpictures.com" class="footer-link">Contact Support</a>
+            </div>
+            <div class="footer-copyright">
+                © 2024 Supreme Robot Pictures LLC. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
     <!-- Rules Modal -->
     <div id="rulesModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content enhanced-rules-modal">
             <span class="modal-close" onclick="closeRulesModal()">&times;</span>
-            <h2 class="modal-title">Official Auction Rules</h2>
             
-            <ul>
-                <li>
-                    <strong>Opening Price:</strong> The auction starts at <strong>$1</strong>. Each purchase raises the price by <strong>$1</strong>.
-                </li>
-                <li>
-                    <strong>Delivery:</strong> Your bundle unlock key is sent to your email—usually within <strong>5 minutes</strong> of each purchase.
-                </li>
-                <li>
-                    <strong>Last Buyer Bonus:</strong> The <strong>final purchaser</strong> (last transaction recorded in Stripe) receives a <strong>100% refund</strong>—you get it free!
-                </li>
-                <li>
-                    <strong>Timing & Notification:</strong> We announce the <strong>exact start time</strong> to our email list, so <strong>subscribe</strong> to get the alert. The auction runs for <strong>23–26 hours</strong> after it begins, and we may end it <strong>at any point</strong> during that window. Whoever buys last wins the refund.
-                </li>
-            </ul>
+            <!-- Header Section -->
+            <div class="modal-header">
+                <div class="rules-icon">📋</div>
+                <h2 class="modal-title">Official Auction Rules</h2>
+                <p class="modal-subtitle">Everything you need to know about our revolutionary reverse auction</p>
+            </div>
             
-            <h3>Join the mailing list to get notified first</h3>
-            <form onsubmit="handleSubscribe(event)" style="margin-top: 20px;">
-                <input type="email" placeholder="Enter your email for auction alerts" required style="padding: 12px 20px; border: 2px solid #E5E7EB; border-radius: 10px; font-size: 1rem; width: 100%; max-width: 300px; margin-bottom: 15px;">
-                <br>
-                <button type="submit" class="modal-cta" style="border: none; cursor: pointer;">Subscribe for Auction Alerts</button>
-            </form>
+            <!-- TL;DR Summary -->
+            <div class="tldr-section">
+                <div class="tldr-title">⚡ TL;DR - How It Works</div>
+                <div class="tldr-flow">
+                    <div class="flow-step">
+                        💰 Buy now (starts at $1)
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        📈 Price increases +$1
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        🎁 Last buyer gets bundle for FREE and the Grand Prize
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Rules Cards -->
+            <div class="rules-grid">
+                <div class="rule-card opening-price">
+                    <div class="rule-icon">💰</div>
+                    <h3 class="rule-title">Opening Price</h3>
+                    <div class="rule-content">
+                        <p>The auction starts at <span class="highlight-price">$1</span></p>
+                        <p class="rule-detail">Each purchase raises the price by exactly <span class="highlight">$1</span></p>
+                    </div>
+                </div>
+                
+                <div class="rule-card delivery">
+                    <div class="rule-icon">📧</div>
+                    <h3 class="rule-title">Instant Delivery</h3>
+                    <div class="rule-content">
+                        <p>Your bundle unlock key is sent to your email</p>
+                        <p class="rule-detail">Usually within <span class="highlight">5 minutes</span> of purchase</p>
+                    </div>
+                </div>
+                
+                <div class="rule-card last-buyer special-rule">
+                    <div class="rule-icon">🎁</div>
+                    <h3 class="rule-title">Last Buyer Bonus</h3>
+                    <div class="rule-content">
+                        <p>The <span class="highlight">final purchaser</span> gets:</p>
+                        <ul class="bonus-list">
+                            <li>✅ <span class="highlight">100% refund</span> - You get it FREE!</li>
+                            <li>✅ Custom AI Website Assistant</li>
+                            <li>✅ Worth <span class="highlight">$2,388/year</span></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="rule-card timing">
+                    <div class="rule-icon">⏰</div>
+                    <h3 class="rule-title">Timing & Duration</h3>
+                    <div class="rule-content">
+                        <p>Auction runs for <span class="highlight">23-26 hours</span></p>
+                        <p class="rule-detail">Start time announced to email subscribers first</p>
+                        <p class="rule-detail">May end at any point during the window</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Key Points Summary -->
+            <div class="key-points">
+                <h3>🔑 Key Points</h3>
+                <div class="points-grid">
+                    <div class="point">
+                        <span class="point-icon">🏃‍♂️</span>
+                        <span>First buyer pays only $1</span>
+                    </div>
+                    <div class="point">
+                        <span class="point-icon">📈</span>
+                        <span>Price increases with each sale</span>
+                    </div>
+                    <div class="point">
+                        <span class="point-icon">🎯</span>
+                        <span>Last buyer wins everything FREE</span>
+                    </div>
+                    <div class="point">
+                        <span class="point-icon">💌</span>
+                        <span>Email alerts for auction start</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Newsletter Signup -->
+            <div class="newsletter-section">
+                <div class="newsletter-header">
+                    <h3>🚀 Get Notified First</h3>
+                    <p>Join our VIP list to receive auction start alerts and exclusive updates</p>
+                </div>
+                <form onsubmit="handleSubscribe(event)" class="newsletter-form">
+                    <div class="email-input-group">
+                        <input type="email" placeholder="Enter your email for auction alerts" required class="email-input">
+                        <button type="submit" class="modal-cta">
+                            <span>Subscribe</span>
+                            <span class="btn-icon">🔔</span>
+                        </button>
+                    </div>
+                    <p class="privacy-note">
+                        🔒 We respect your privacy. No spam, unsubscribe anytime.
+                    </p>
+                </form>
+            </div>
+            
+            <!-- Mini FAQ Section -->
+            <div class="mini-faq">
+                <h3>❓ Most Common Questions</h3>
+                <div class="faq-quick-list">
+                    <div class="faq-quick-item">
+                        <div class="faq-quick-question">When does the auction start?</div>
+                        <div class="faq-quick-answer">We announce start times to email subscribers first. Join the list above to get notified!</div>
+                    </div>
+                    <div class="faq-quick-item">
+                        <div class="faq-quick-question">How do I know if I'm the last buyer?</div>
+                        <div class="faq-quick-answer">The auction ends when the timer reaches zero. The inal recorded purchase in Stripe wins the refund.</div>
+                    </div>
+                    <div class="faq-quick-item">
+                        <div class="faq-quick-question">What if I buy and someone buys after me?</div>
+                        <div class="faq-quick-answer">You keep your bundle at the price you paid. Only the very last buyer gets the refund + bonus.</div>
+                    </div>
+                    <div class="faq-quick-item">
+                        <div class="faq-quick-question">Is this legit or a scam?</div>
+                        <div class="faq-quick-answer">100% legitimate with 30-day money-back guarantee. Thousands of entrepreneurs have already participated. <span class="faq-trust-badge">🔒 Stripe Verified</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms of Use Modal -->
+    <div id="termsModal" class="terms-modal">
+        <div class="terms-modal-content">
+            <div class="terms-modal-header">
+                <h2 class="terms-modal-title">Terms of Use</h2>
+                <button class="terms-close" onclick="closeTermsModal()">&times;</button>
+            </div>
+            <div class="terms-modal-body">
+                <div class="terms-content">
+                    <h2>Welcome to Supreme Robot Pictures LLC</h2>
+                    <p>These Terms of Use govern your participation in our revolutionary reverse auction system for the AI Business Bundle. By participating, you agree to these terms.</p>
+
+                    <h2>About Our Reverse Auction</h2>
+                    <p>Our innovative auction system works differently from traditional auctions:</p>
+                    <ul>
+                        <li><strong>Price Increases Over Time:</strong> The bundle price starts low and continuously increases</li>
+                        <li><strong>Limited Quantity:</strong> Only a specific number of bundles are available</li>
+                        <li><strong>First-Come, First-Served:</strong> When you purchase, you lock in the current price</li>
+                        <li><strong>Real-Time Updates:</strong> Prices and quantities update live across all participants</li>
+                    </ul>
+
+                    <div class="highlight">
+                        <strong>Important:</strong> Once you complete your purchase, your price is locked and guaranteed. You cannot cancel to wait for a lower price.
+                    </div>
+
+                    <h2>Product Details</h2>
+                    <p>The AI Business Bundle includes:</p>
+                    <ul>
+                        <li>Premium AI Tools and Software</li>
+                        <li>Business Automation Suite</li>
+                        <li>Marketing and Content Creation Tools</li>
+                        <li>Legal Business Document Templates</li>
+                        <li>Customer Support</li>
+                        <li>Lifetime Updates and New Tool Additions</li>
+                    </ul>
+
+                    <h3>Digital Delivery</h3>
+                    <p>All products are delivered digitally via email within 24 hours of purchase confirmation. You will receive:</p>
+                    <ul>
+                        <li>Download links for all software and tools</li>
+                        <li>License keys and activation instructions</li>
+                        <li>Setup guides and tutorials</li>
+                    </ul>
+
+                    <h2>Pricing and Payment</h2>
+                    <h3>Auction Mechanics</h3>
+                    <p>Our reverse auction operates on a sophisticated algorithm that:</p>
+                    <ul>
+                        <li>Increases prices after each purchase</li>
+                        <li>Adjusts based on real-time demand</li>
+                        <li>Ensures fair pricing for all participants</li>
+                        <li>Maintains inventory accuracy across all sessions</li>
+                    </ul>
+
+                    <h3>Payment Processing</h3>
+                    <p>We accept all major credit cards and PayPal. All transactions are secured through Stripe, ensuring your payment information is protected with bank-level security.</p>
+
+                    <h2>Refund Policy</h2>
+                    <div class="highlight">
+                        <strong>30-Day Money-Back Guarantee:</strong> We stand behind our products. If you're not completely satisfied within 30 days of purchase, contact us for a full refund.
+                    </div>
+
+                    <h3>Refund Process</h3>
+                    <p>To request a refund:</p>
+                    <ul>
+                        <li>Contact our support team within 30 days</li>
+                        <li>Provide your order number and reason for refund</li>
+                        <li>We'll process your refund within 5-7 business days</li>
+                        <li>Refunds are issued to your original payment method</li>
+                    </ul>
+
+                    <h2>User Responsibilities</h2>
+                    <p>By participating in our auction, you agree to:</p>
+                    <ul>
+                        <li>Provide accurate contact and payment information</li>
+                        <li>Use the purchased software in accordance with individual license terms</li>
+                        <li>Not attempt to manipulate or interfere with the auction system</li>
+                        <li>Respect intellectual property rights of included software</li>
+                        <li>Not resell or redistribute the bundle or individual components</li>
+                    </ul>
+
+                    <h2>Technical Requirements</h2>
+                    <p>To participate in our auction and use the AI Business Bundle:</p>
+                    <ul>
+                        <li>Modern web browser (Chrome, Firefox, Safari, Edge)</li>
+                        <li>Stable internet connection</li>
+                        <li>JavaScript enabled</li>
+                        <li>Compatible operating system for included software</li>
+                    </ul>
+
+                    <h2>Privacy and Data Protection</h2>
+                    <p>We respect your privacy and protect your personal information:</p>
+                    <ul>
+                        <li>We collect only necessary information for order processing</li>
+                        <li>Your data is never sold to third parties</li>
+                        <li>Payment information is handled securely by Stripe</li>
+                        <li>You can request data deletion at any time</li>
+                    </ul>
+
+                    <h2>Limitation of Liability</h2>
+                    <p>Supreme Robot Pictures LLC provides the AI Business Bundle "as is" without warranties. Our liability is limited to the purchase price of the bundle. We are not responsible for:</p>
+                    <ul>
+                        <li>Individual software performance or compatibility issues</li>
+                        <li>Business results or outcomes from using the tools</li>
+                        <li>Third-party software updates or discontinuation</li>
+                        <li>Technical difficulties during the auction process</li>
+                    </ul>
+
+                    <h2>Modifications to Terms</h2>
+                    <p>We reserve the right to update these terms at any time. Changes will be posted on this page and take effect immediately. Continued participation constitutes acceptance of modified terms.</p>
+
+                    <h2>Contact Information</h2>
+                    <p><strong>Supreme Robot Pictures LLC</strong></p>
+                    <p>Email: <a href="mailto:support@supremerobotpictures.com">support@supremerobotpictures.com</a></p>
+                    <p>Business Hours: Monday-Friday, 9 AM - 6 PM EST</p>
+                    <p>Response Time: Within 24 hours</p>
+
+                    <div class="highlight">
+                        <strong>Questions?</strong> Our support team is here to help! Contact us anytime with questions about the auction, products, or these terms.
+                    </div>
+
+                    <p style="margin-top: 30px; font-size: 0.9rem; color: #666; text-align: center;">
+                        Last Updated: June 10, 2025<br>
+                        © 2024 Supreme Robot Pictures LLC. All rights reserved.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
         // API Configuration
         const API_URL = 'https://kqbkvywvdbglinqikmxx.supabase.co/functions/v1/current';
-        const VIEWER_API_URL = 'https://kqbkvywvdbglinqikmxx.supabase.co/functions/v1'; // Base URL for viewer endpoints
+        
+        // Live Viewer API Configuration - Use lastbuyerbonanza.com as primary
+        const VIEWER_API_URL = 'https://lastbuyerbonanza.com/api'; // Primary production domain
+        
+        // Fallback URLs for development/testing
+        const VIEWER_API_FALLBACKS = [
+            window.location.origin + '/api', // Try current domain
+            'https://my-vercel-html-kb3mmdegq-ryans-projects-d565ecc1.vercel.app/api',
+            'https://my-vercel-html-lirarz4hg-ryans-projects-d565ecc1.vercel.app/api',
+            'http://localhost:3001/api'
+        ];
+        
+        // Enable real API mode for live viewer tracking!
+        const USE_SIMULATION_MODE = false; // Real API mode enabled at lastbuyerbonanza.com
         const DEBUG = window.location.search.includes('debug=true');
         
         // Detect device capabilities
@@ -2518,41 +3581,99 @@
         let viewerCount = 0;
         let lastHeartbeat = Date.now();
         let sessionId = generateSessionId();
+        let currentApiUrl = VIEWER_API_URL; // Track which API URL is working
+        let apiFailCount = 0;
         
         // Generate unique session ID for this viewer
         function generateSessionId() {
             return 'viewer_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
         }
         
-        // Send viewer heartbeat to track live viewers
-        async function sendViewerHeartbeat() {
-            try {
-                const response = await fetch(VIEWER_API_URL + '/viewers', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        session_id: sessionId,
-                        timestamp: Date.now(),
-                        page_url: window.location.href,
-                        user_agent: navigator.userAgent.substring(0, 100) // Truncate for privacy
-                    })
-                });
-                
-                if (response.ok) {
-                    const data = await response.json();
-                    if (data.live_viewers !== undefined) {
-                        viewerCount = data.live_viewers;
-                        updateViewerCount();
+        // Try API endpoints in order until one works
+        async function tryViewerAPI(endpoint, body, method = 'POST') {
+            const urlsToTry = [currentApiUrl, ...VIEWER_API_FALLBACKS].filter((url, index, self) => 
+                self.indexOf(url) === index // Remove duplicates
+            );
+            
+            for (const apiUrl of urlsToTry) {
+                try {
+                    const response = await fetch(apiUrl + endpoint, {
+                        method: method,
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: body ? JSON.stringify(body) : undefined
+                    });
+                    
+                    if (response.ok) {
+                        const data = await response.json();
+                        currentApiUrl = apiUrl; // Remember working API
+                        apiFailCount = 0; // Reset fail counter
+                        return data;
+                    }
+                } catch (error) {
+                    if (DEBUG) {
+                        console.log(`API ${apiUrl} failed:`, error.message);
                     }
                 }
+            }
+            
+            // All APIs failed
+            apiFailCount++;
+            throw new Error('All viewer API endpoints failed');
+        }
+        
+        // Send viewer heartbeat to track live viewers
+        async function sendViewerHeartbeat() {
+            // Check if we should use simulation mode
+            if (USE_SIMULATION_MODE) {
+                simulateViewerCount();
+                if (DEBUG) {
+                    console.log('Using simulation mode for viewer tracking');
+                }
+                return;
+            }
+            
+            try {
+                const data = await tryViewerAPI('/viewers', {
+                    session_id: sessionId,
+                    timestamp: Date.now(),
+                    page_url: window.location.href,
+                    user_agent: navigator.userAgent.substring(0, 100) // Truncate for privacy
+                });
+                
+                if (data.live_viewers !== undefined) {
+                    viewerCount = data.live_viewers;
+                    updateViewerCount();
+                    
+                    if (DEBUG) {
+                        console.log(`Live viewers from API: ${viewerCount} (${data.is_new_session ? 'new session' : 'existing session'})`);
+                    }
+                }
+                
             } catch (error) {
                 if (DEBUG) {
-                    console.log('Viewer heartbeat failed:', error);
+                    console.log('All viewer APIs failed, using simulation:', error.message);
                 }
-                // Fallback to simulated count if API fails
+                // Fallback to simulated count if all APIs fail
                 simulateViewerCount();
+            }
+        }
+        
+        // Send leave notification when user exits
+        async function sendViewerLeave() {
+            try {
+                // Use sendBeacon for reliability during page unload
+                const data = JSON.stringify({
+                    session_id: sessionId,
+                    timestamp: Date.now()
+                });
+                
+                navigator.sendBeacon(currentApiUrl + '/viewers/leave', data);
+            } catch (error) {
+                if (DEBUG) {
+                    console.log('Failed to send viewer leave notification:', error);
+                }
             }
         }
         
@@ -2905,10 +4026,29 @@
         
         // Close modal when clicking outside
         window.onclick = function(event) {
-            const modal = document.getElementById('rulesModal');
-            if (event.target === modal) {
+            const rulesModal = document.getElementById('rulesModal');
+            const termsModal = document.getElementById('termsModal');
+            
+            if (event.target === rulesModal) {
                 closeRulesModal();
             }
+            if (event.target === termsModal) {
+                closeTermsModal();
+            }
+        }
+
+        // Terms Modal functions
+        function openTermsModal(event) {
+            event.preventDefault();
+            const termsModal = document.getElementById('termsModal');
+            termsModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeTermsModal() {
+            const termsModal = document.getElementById('termsModal');
+            termsModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
         
         // Handle subscription
@@ -2985,10 +4125,7 @@
             
             // Send final heartbeat when page unloads
             window.addEventListener('beforeunload', () => {
-                navigator.sendBeacon(VIEWER_API_URL + '/viewers/leave', JSON.stringify({
-                    session_id: sessionId,
-                    timestamp: Date.now()
-                }));
+                sendViewerLeave();
             });
         }
         
@@ -3069,12 +4206,38 @@
                     viewerSystem: {
                         getCurrentCount: () => viewerCount,
                         getSessionId: () => sessionId,
+                        getCurrentApiUrl: () => currentApiUrl,
+                        getApiFailCount: () => apiFailCount,
+                        isSimulationMode: () => USE_SIMULATION_MODE,
+                        switchToApiMode: () => {
+                            USE_SIMULATION_MODE = false;
+                            console.log('Switched to API mode');
+                            sendViewerHeartbeat();
+                        },
+                        switchToSimulationMode: () => {
+                            USE_SIMULATION_MODE = true;
+                            console.log('Switched to simulation mode');
+                            simulateViewerCount();
+                        },
                         simulateViewers: (count) => {
                             viewerCount = count;
                             updateViewerCount();
                         },
                         sendHeartbeat: sendViewerHeartbeat,
-                        simulateJoiners: updateViewersOnPurchase
+                        simulateJoiners: updateViewersOnPurchase,
+                        sendLeave: sendViewerLeave,
+                        testApi: async () => {
+                            console.log('Testing viewer API endpoints...');
+                            for (const url of [currentApiUrl, ...VIEWER_API_FALLBACKS]) {
+                                try {
+                                    const response = await fetch(url + '/health');
+                                    const data = await response.json();
+                                    console.log(`✅ ${url}/health:`, data);
+                                } catch (error) {
+                                    console.log(`❌ ${url}/health:`, error.message);
+                                }
+                            }
+                        }
                     }
                 };
                 console.log('Debug mode enabled. Use window.debugPricing to test.');
