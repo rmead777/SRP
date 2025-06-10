@@ -217,6 +217,7 @@
             margin-bottom: 20px;
             background: linear-gradient(135deg, #FFFFFF 0%, #FCD34D 50%, #F59E0B 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             line-height: 1.1;
             animation: slideInUp 0.8s ease-out;
@@ -504,6 +505,7 @@
             margin-bottom: 20px;
             background: var(--gradient-secondary);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -577,6 +579,7 @@
             margin-bottom: 20px;
             background: var(--gradient-primary);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 2px 10px rgba(30, 58, 138, 0.1);
         }
@@ -1540,6 +1543,27 @@
         const API_URL = 'https://kqbkvywvdbglinqikmxx.supabase.co/functions/v1/current';
         const DEBUG = window.location.search.includes('debug=true');
         
+        // Enhanced error logging
+        function logError(error, context = '') {
+            const errorInfo = {
+                timestamp: new Date().toISOString(),
+                context: context,
+                error: error.message || error,
+                userAgent: navigator.userAgent,
+                url: window.location.href
+            };
+            
+            console.error('Auction App Error:', errorInfo);
+            
+            // In production, send to error tracking service
+            if (!DEBUG && window.gtag) {
+                gtag('event', 'exception', {
+                    description: `${context}: ${error.message || error}`,
+                    fatal: false
+                });
+            }
+        }
+        
         // State Management
         let currentData = {
             price: null,
@@ -1554,7 +1578,7 @@
         let timeLeft = 24 * 3600; // 24 hours in seconds
         let viewerCount = 234;
         
-        // Cache DOM elements
+        // Cache DOM elements with validation
         const elements = {
             prices: {
                 main: document.getElementById('main-price'),
@@ -1583,6 +1607,26 @@
                 buttonText: document.getElementById('button-text')
             }
         };
+
+        // Validate DOM elements exist
+        function validateElements() {
+            const missingElements = [];
+            
+            Object.keys(elements).forEach(category => {
+                Object.keys(elements[category]).forEach(key => {
+                    if (!elements[category][key]) {
+                        missingElements.push(`${category}.${key}`);
+                    }
+                });
+            });
+            
+            if (missingElements.length > 0) {
+                logError(`Missing DOM elements: ${missingElements.join(', ')}`, 'DOM_VALIDATION');
+                console.warn('Missing DOM elements:', missingElements);
+            }
+            
+            return missingElements.length === 0;
+        }
         
         // Update all price displays
         function updatePrices(price) {
@@ -1773,6 +1817,7 @@
                 lastPrice = currentData.price;
                 
             } catch (error) {
+                logError(error, 'API_FETCH');
                 console.error('API error:', error);
                 errorCount++;
                 
@@ -1919,6 +1964,9 @@
         
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
+            // Validate DOM elements first
+            validateElements();
+            
             // Start with loading state
             Object.values(elements.prices).forEach(el => {
                 if (el) el.innerHTML = '<span class="loading"></span>';
@@ -1947,7 +1995,9 @@
                     setStatus: (status) => {
                         currentData.status = status;
                         updateBuyButtons(currentData.payment_link, status);
-                    }
+                    },
+                    validateElements: validateElements,
+                    logError: logError
                 };
                 console.log('Debug mode enabled. Use window.debugPricing to test.');
             }
