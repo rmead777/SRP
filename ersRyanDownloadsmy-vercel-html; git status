@@ -1,0 +1,25 @@
+[1mdiff --git a/index.html b/index.html[m
+[1mindex 34150fd..a0f2849 100644[m
+[1m--- a/index.html[m
+[1m+++ b/index.html[m
+[36m@@ -2450,6 +2450,11 @@[m
+             border-radius: 10px;[m
+             margin: 20px 0;[m
+             border-left: 4px solid var(--primary);[m
+[32m+[m[32m            color: #1F2937;[m
+[32m+[m[32m        }[m
+[32m+[m
+[32m+[m[32m        .terms-content .highlight strong {[m
+[32m+[m[32m            color: #1F2937;[m
+         }[m
+ [m
+         /* Mobile responsiveness for footer and terms */[m
+[36m@@ -3050,7 +3055,7 @@[m
+                     </div>[m
+                     <div class="faq-quick-item">[m
+                         <div class="faq-quick-question">How do I know if I'm the last buyer?</div>[m
+[31m-                        <div class="faq-quick-answer">The auction ends when the timer reaches zero. The inal recorded purchase in Stripe wins the refund.</div>[m
+[32m+[m[32m                        <div class="faq-quick-answer">The auction ends when the timer reaches zero. The final recorded purchase in Stripe wins the refund.</div>[m
+                     </div>[m
+                     <div class="faq-quick-item">[m
+                         <div class="faq-quick-question">What if I buy and someone buys after me?</div>[m
