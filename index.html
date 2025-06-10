@@ -22,6 +22,47 @@
             --gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
             --gradient-secondary: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);
             --gradient-dark: linear-gradient(135deg, #172554 0%, #1e3a8a 100%);
+            
+            /* Mobile-first responsive variables */
+            --container-padding: 20px;
+            --section-padding: 80px 0;
+            --card-padding: 30px 20px;
+            --border-radius: 20px;
+            --font-size-h1: 4rem;
+            --font-size-h2: 3rem;
+            --font-size-h3: 1.2rem;
+            --font-size-body: 1rem;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            
+            /* Viewport height for mobile */
+            --vh: 1vh;
+        }
+        
+        /* Mobile-first variable adjustments */
+        @media (max-width: 480px) {
+            :root {
+                --container-padding: 15px;
+                --section-padding: 40px 0;
+                --card-padding: 20px 15px;
+                --border-radius: 15px;
+                --font-size-h1: 2rem;
+                --font-size-h2: 1.75rem;
+                --font-size-h3: 1.1rem;
+                --font-size-body: 0.9rem;
+            }
+        }
+        
+        @media (min-width: 481px) and (max-width: 768px) {
+            :root {
+                --section-padding: 60px 0;
+                --card-padding: 25px 20px;
+                --font-size-h1: 2.8rem;
+                --font-size-h2: 2.2rem;
+            }
         }
 
         body {
@@ -35,7 +76,14 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 var(--container-padding);
+        }
+        
+        /* Better container responsive behavior */
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1320px;
+            }
         }
 
         /* Animated Background */
@@ -171,10 +219,17 @@
 
         /* Hero Section */
         .hero {
-            padding: 80px 0;
+            padding: var(--section-padding);
             color: white;
             text-align: center;
             position: relative;
+            min-height: calc(var(--vh, 1vh) * 100);
+            display: flex;
+            align-items: center;
+        }
+        
+        .hero .container {
+            width: 100%;
         }
 
         /* Bonanza Logo */
@@ -212,7 +267,7 @@
 
         .hero-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 4rem;
+            font-size: var(--font-size-h1);
             font-weight: 700;
             margin-bottom: 20px;
             background: linear-gradient(135deg, #FFFFFF 0%, #FCD34D 50%, #F59E0B 100%);
@@ -573,7 +628,7 @@
         }
 
         .section-title {
-            font-size: 3rem;
+            font-size: var(--font-size-h2);
             font-weight: 800;
             text-align: center;
             margin-bottom: 20px;
@@ -1050,47 +1105,599 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Mobile Responsive */
-        @media (max-width: 1200px) {
-            .feature-grid { 
-                grid-template-columns: repeat(2, 1fr); 
+        /* Enhanced Mobile-First Responsive Design */
+        
+        /* Extra Small Devices (320px and up) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero {
+                padding: 40px 0;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+                line-height: 1.2;
+                margin-bottom: 15px;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+                margin-bottom: 25px;
+                padding: 0 10px;
+            }
+            
+            .price-display {
+                font-size: 2.5rem;
+                margin-bottom: 15px;
+            }
+            
+            .price-card {
+                padding: 20px;
+                margin: 20px auto;
+                border-radius: 20px;
+            }
+            
+            .countdown-timer {
+                font-size: 1.5rem;
+            }
+            
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 1rem;
+                margin: 15px 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .alert-bar {
+                font-size: 0.85rem;
+                padding: 10px 5px;
+            }
+            
+            .bonanza-logo svg {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .activity-content {
+                flex-direction: column;
+                gap: 10px;
+                font-size: 0.85rem;
+            }
+            
+            .activity-content > div {
+                margin: 2px 0;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+                margin-bottom: 15px;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 30px;
+            }
+            
+            .features {
+                padding: 40px 0;
+            }
+            
+            .feature-card {
+                padding: 20px 15px;
+                margin-bottom: 15px;
+            }
+            
+            .feature-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+            
+            .feature-title {
+                font-size: 1.1rem;
+                margin-bottom: 8px;
+            }
+            
+            .price-tracker {
+                position: fixed;
+                bottom: 10px;
+                right: 10px;
+                padding: 15px;
+                min-width: 120px;
+                font-size: 0.85rem;
+                z-index: 1001;
+            }
+            
+            .tracker-price {
+                font-size: 1.8rem;
+                margin-bottom: 10px;
+            }
+            
+            .notification-container {
+                bottom: 10px;
+                left: 10px;
+                right: 10px;
+                max-width: none;
+                transform: none;
+            }
+            
+            .notification {
+                padding: 15px;
+                margin-bottom: 10px;
+                font-size: 0.85rem;
+            }
+            
+            .modal-content {
+                margin: 5% auto;
+                padding: 15px;
+                width: 95%;
+                max-height: 90vh;
+                border-radius: 15px;
+            }
+            
+            .modal-title {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+            
+            .faq-question {
+                font-size: 1rem;
+                margin-bottom: 10px;
+            }
+            
+            .faq-answer {
+                font-size: 0.9rem;
+            }
+            
+            .comparison-column {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+            
+            .step-card {
+                padding: 20px;
+                margin-bottom: 15px;
+            }
+            
+            .final-cta-content {
+                padding: 30px 20px;
+                border-radius: 20px;
+            }
+            
+            .final-cta h2 {
+                font-size: 1.75rem;
+                margin-bottom: 15px;
+            }
+            
+            .urgency-box {
+                padding: 15px;
+                margin: 20px auto;
+                font-size: 0.95rem;
+            }
+            
+            .trust-badges {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .badge-text {
+                align-items: center;
+                text-align: center;
+            }
+        }
+        
+        /* Small Devices (481px to 768px) */
+        @media (min-width: 481px) and (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+                line-height: 1.1;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 30px;
+            }
+            
+            .price-display {
+                font-size: 3.5rem;
+            }
+            
+            .price-card {
+                padding: 35px;
+                margin: 30px auto;
+            }
+            
+            .cta-button {
+                padding: 18px 40px;
+                font-size: 1.1rem;
+                width: auto;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .activity-content {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+            
+            .price-tracker {
+                position: fixed;
+                bottom: 20px;
+                right: 15px;
+                padding: 20px;
+                min-width: 160px;
+            }
+            
+            .tracker-price {
+                font-size: 2rem;
+            }
+            
+            .notification-container {
+                bottom: 15px;
+                left: 15px;
+                max-width: 300px;
+                transform: none;
+            }
+            
+            .comparison-table {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .faq-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .trust-badges {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 25px;
+            }
+            
+            .modal-content {
+                margin: 8% auto;
+                padding: 25px;
+                width: 90%;
+            }
+        }
+        
+        /* Medium Devices (769px to 1024px) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                max-width: 960px;
+                padding: 0 25px;
+            }
+            
+            .hero-title {
+                font-size: 3.2rem;
+            }
+            
+            .price-display {
+                font-size: 4rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+            
+            .activity-content {
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            
+            .price-tracker {
+                top: 120px;
+                right: 25px;
+                padding: 25px;
+                min-width: 180px;
+            }
+            
+            .comparison-table {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            
+            .faq-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+            
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
                 gap: 25px;
             }
         }
-
-        @media (max-width: 768px) {
-            .hero-title { font-size: 2.5rem; }
-            .price-display { font-size: 3rem; }
-            .price-card { padding: 30px; }
-            .section-title { font-size: 2rem; }
-            .price-tracker { 
-                top: auto;
-                bottom: 20px;
-                right: 20px;
-                min-width: 150px;
+        
+        /* Large Tablets and Small Desktops (1025px to 1200px) */
+        @media (min-width: 1025px) and (max-width: 1200px) {
+            .container {
+                max-width: 1140px;
             }
-            .notification-container {
-                left: 50%;
-                transform: translateX(-50%);
-                max-width: 90%;
+            
+            .feature-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
             }
-            .feature-grid { 
-                grid-template-columns: 1fr; 
-                gap: 20px;
+            
+            .activity-content {
+                justify-content: space-between;
             }
-            .activity-content { 
-                justify-content: center; 
-                flex-direction: column;
-                text-align: center;
+            
+            .comparison-table {
+                grid-template-columns: repeat(2, 1fr);
             }
-            .comparison-table { grid-template-columns: 1fr; }
-            .faq-grid { grid-template-columns: 1fr; }
-            .trust-badges { justify-content: center; }
-            .bonanza-logo svg { width: 150px; height: 150px; }
-            .modal-content { 
-                margin: 10% auto;
+            
+            .faq-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Large Screens (1201px and up) */
+        @media (min-width: 1201px) {
+            .feature-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .faq-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .steps-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        /* Touch Device Optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            /* Enhanced touch targets */
+            .cta-button {
+                min-height: 48px;
+                padding: 18px 40px;
+            }
+            
+            .rules-link {
+                min-height: 44px;
+                padding: 12px 20px;
+            }
+            
+            .subscribe-btn {
+                min-height: 48px;
+                padding: 15px 25px;
+            }
+            
+            .modal-close {
+                min-width: 44px;
+                min-height: 44px;
+                font-size: 2.5rem;
+            }
+            
+            /* Remove hover effects on touch devices */
+            .feature-card:hover,
+            .step-card:hover,
+            .faq-item:hover {
+                transform: none;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            }
+            
+            .cta-button:hover {
+                transform: none;
+                box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+            }
+            
+            /* Prevent zoom on input focus for iOS */
+            input[type="email"] {
+                font-size: 16px;
+            }
+        }
+        
+        /* High DPI/Retina Display Optimizations */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .bonanza-logo svg {
+                image-rendering: -webkit-optimize-contrast;
+                image-rendering: crisp-edges;
+            }
+            
+            .floating-bubble {
+                will-change: transform;
+            }
+        }
+        
+        /* Landscape Orientation on Mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero {
+                padding: 30px 0;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+                margin-bottom: 10px;
+            }
+            
+            .hero-subtitle {
+                font-size: 0.95rem;
+                margin-bottom: 20px;
+            }
+            
+            .price-card {
                 padding: 20px;
-                width: 95%;
+                margin: 15px auto;
+            }
+            
+            .price-display {
+                font-size: 2.5rem;
+                margin-bottom: 10px;
+            }
+            
+            .countdown-wrapper {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+            
+            .countdown-timer {
+                font-size: 1.3rem;
+            }
+            
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 0.95rem;
+            }
+            
+            .bonanza-logo svg {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .features,
+            .value-comparison,
+            .how-it-works,
+            .faq-section {
+                padding: 40px 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .final-cta {
+                padding: 40px 0;
+            }
+            
+            .final-cta-content {
+                padding: 25px 20px;
+            }
+            
+            .final-cta h2 {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            .animated-bg,
+            .floating-bubble,
+            .price-tracker,
+            .notification-container,
+            .activity-bar,
+            .modal {
+                display: none !important;
+            }
+            
+            .hero,
+            .features,
+            .value-comparison {
+                page-break-inside: avoid;
+            }
+            
+            .cta-button {
+                border: 2px solid #333;
+                background: white !important;
+                color: #333 !important;
+            }
+        }
+        
+        /* Reduced Motion Preferences */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            .animated-bg::before {
+                animation: none;
+            }
+            
+            .floating-bubble {
+                animation: none;
+            }
+            
+            .alert-bar::after {
+                animation: none;
+            }
+        }
+        
+        /* Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+            .features,
+            .value-comparison,
+            .faq-section {
+                background: #111827;
+                color: #F9FAFB;
+            }
+            
+            .feature-card,
+            .step-card,
+            .faq-item,
+            .modal-content {
+                background: #1F2937;
+                border-color: #374151;
+                color: #F9FAFB;
+            }
+            
+            .how-it-works {
+                background: #0F172A;
+            }
+            
+            .section-title {
+                color: #F9FAFB;
+            }
+            
+            .section-subtitle,
+            .faq-answer {
+                color: #D1D5DB;
+            }
+        }
+        
+        /* Legacy Browser Support */
+        @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+            /* IE11 fallbacks */
+            .feature-grid {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            
+            .feature-card {
+                flex: 1 1 300px;
+                margin: 10px;
+            }
+            
+            .comparison-table {
+                display: block;
+            }
+            
+            .comparison-column {
+                width: 100%;
+                margin-bottom: 20px;
             }
         }
 
@@ -1543,6 +2150,336 @@
         const API_URL = 'https://kqbkvywvdbglinqikmxx.supabase.co/functions/v1/current';
         const DEBUG = window.location.search.includes('debug=true');
         
+        // Detect device capabilities
+        function detectDevice() {
+            isMobile = window.innerWidth <= 768;
+            isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            
+            // Enable performance mode on older/slower devices
+            const isOldDevice = /Android [1-6]|iPhone [1-8]|iPad[1-6]/.test(navigator.userAgent);
+            const isSlowConnection = navigator.connection && navigator.connection.effectiveType === 'slow-2g';
+            performanceMode = isOldDevice || isSlowConnection || window.devicePixelRatio > 2;
+            
+            if (performanceMode) {
+                document.body.classList.add('performance-mode');
+                console.log('Performance mode enabled');
+            }
+            
+            if (DEBUG) {
+                console.log('Device info:', {
+                    isMobile,
+                    isTouch,
+                    performanceMode,
+                    screenWidth: window.innerWidth,
+                    pixelRatio: window.devicePixelRatio,
+                    connection: navigator.connection?.effectiveType
+                });
+            }
+        }
+        
+        // Enhanced touch handling
+        function setupTouchEnhancements() {
+            if (!isTouch) return;
+            
+            // Add touch feedback to buttons
+            const touchElements = document.querySelectorAll('.cta-button, .rules-link, .subscribe-btn, .modal-cta');
+            
+            touchElements.forEach(element => {
+                element.addEventListener('touchstart', function() {
+                    this.style.transform = 'scale(0.98)';
+                    this.style.transition = 'transform 0.1s ease';
+                }, { passive: true });
+                
+                element.addEventListener('touchend', function() {
+                    this.style.transform = '';
+                    this.style.transition = 'transform 0.3s ease';
+                }, { passive: true });
+                
+                element.addEventListener('touchcancel', function() {
+                    this.style.transform = '';
+                    this.style.transition = 'transform 0.3s ease';
+                }, { passive: true });
+            });
+            
+            // Prevent zoom on double tap for iOS
+            let lastTouchEnd = 0;
+            document.addEventListener('touchend', function(event) {
+                const now = (new Date()).getTime();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, false);
+        }
+        
+        // Optimize animations for mobile
+        function optimizeAnimations() {
+            if (performanceMode) {
+                // Disable heavy animations on slow devices
+                const style = document.createElement('style');
+                style.textContent = `
+                    .performance-mode .animated-bg::before,
+                    .performance-mode .floating-bubble,
+                    .performance-mode .shimmer {
+                        animation: none !important;
+                    }
+                    .performance-mode .backdrop-filter {
+                        backdrop-filter: none !important;
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            if (isMobile) {
+                // Reduce motion intensity on mobile
+                const mobileStyle = document.createElement('style');
+                mobileStyle.textContent = `
+                    @media (max-width: 768px) {
+                        .feature-card:hover,
+                        .step-card:hover,
+                        .faq-item:hover {
+                            transform: translateY(-2px) !important;
+                        }
+                        .floating-bubble {
+                            animation-duration: 30s !important;
+                        }
+                    }
+                `;
+                document.head.appendChild(mobileStyle);
+            }
+        }
+        
+        // Enhanced viewport handling
+        function handleViewportChanges() {
+            // Update on orientation change
+            window.addEventListener('orientationchange', function() {
+                setTimeout(() => {
+                    detectDevice();
+                    // Refresh layout
+                    updateViewportHeight();
+                }, 100);
+            });
+            
+            // Handle resize with debouncing
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    detectDevice();
+                    updateViewportHeight();
+                    repositionFloatingElements();
+                }, 250);
+            });
+        }
+        
+        // Fix viewport height on mobile
+        function updateViewportHeight() {
+            if (isMobile) {
+                const vh = window.innerHeight * 0.01;
+                document.documentElement.style.setProperty('--vh', `${vh}px`);
+            }
+        }
+        
+        // Reposition floating elements on small screens
+        function repositionFloatingElements() {
+            const priceTracker = document.querySelector('.price-tracker');
+            const notifications = document.querySelector('.notification-container');
+            
+            if (isMobile && priceTracker) {
+                // Ensure price tracker doesn't overlap with notifications
+                if (notifications && notifications.children.length > 0) {
+                    priceTracker.style.bottom = '120px';
+                } else {
+                    priceTracker.style.bottom = '20px';
+                }
+            }
+        }
+        
+        // Enhanced scroll performance
+        function optimizeScrolling() {
+            let ticking = false;
+            
+            function updateOnScroll() {
+                // Intersection observer handles most animations
+                // Only do critical updates here
+                repositionFloatingElements();
+                ticking = false;
+            }
+            
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    requestAnimationFrame(updateOnScroll);
+                    ticking = true;
+                }
+            }, { passive: true });
+        }
+        
+        // Smart loading for heavy content
+        function setupLazyLoading() {
+            // Lazy load heavy animations
+            const heavyAnimations = document.querySelectorAll('.animated-bg, .floating-bubble');
+            
+            if ('IntersectionObserver' in window) {
+                const animationObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animated');
+                            animationObserver.unobserve(entry.target);
+                        }
+                    });
+                });
+                
+                heavyAnimations.forEach(element => {
+                    if (!performanceMode) {
+                        animationObserver.observe(element);
+                    }
+                });
+            }
+        }
+        
+        // Enhanced notification system for mobile
+        function showMobileOptimizedNotification(header, body) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            
+            // Shorter text on mobile
+            if (isMobile && body.length > 60) {
+                body = body.substring(0, 57) + '...';
+            }
+            
+            notification.innerHTML = `
+                <div class="notification-header">${header}</div>
+                <div class="notification-body">${body}</div>
+            `;
+            
+            const container = document.getElementById('notifications');
+            if (container) {
+                container.appendChild(notification);
+                
+                // Auto-remove faster on mobile
+                const timeout = isMobile ? 3000 : 5000;
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.style.animation = 'slideInLeft 0.5s ease-out reverse';
+                        setTimeout(() => notification.remove(), 500);
+                    }
+                }, timeout);
+                
+                // Keep fewer notifications on mobile
+                const maxNotifications = isMobile ? 2 : 3;
+                const allNotifications = container.children;
+                if (allNotifications.length > maxNotifications) {
+                    allNotifications[0].remove();
+                }
+            }
+        }
+        
+        // Enhanced modal handling for mobile
+        function setupMobileModalEnhancements() {
+            const modal = document.getElementById('rulesModal');
+            if (!modal) return;
+            
+            // Prevent background scrolling when modal is open
+            function preventBodyScroll(prevent) {
+                if (prevent) {
+                    document.body.style.overflow = 'hidden';
+                    document.body.style.position = 'fixed';
+                    document.body.style.width = '100%';
+                } else {
+                    document.body.style.overflow = '';
+                    document.body.style.position = '';
+                    document.body.style.width = '';
+                }
+            }
+            
+            // Enhanced modal open
+            window.openRulesModal = function(event) {
+                event.preventDefault();
+                modal.style.display = 'block';
+                preventBodyScroll(true);
+                
+                // Focus management for accessibility
+                const closeButton = modal.querySelector('.modal-close');
+                if (closeButton) closeButton.focus();
+            };
+            
+            // Enhanced modal close
+            window.closeRulesModal = function() {
+                modal.style.display = 'none';
+                preventBodyScroll(false);
+            };
+            
+            // Touch-friendly modal closing
+            modal.addEventListener('touchstart', function(event) {
+                if (event.target === modal) {
+                    closeRulesModal();
+                }
+            }, { passive: true });
+            
+            // Escape key support
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && modal.style.display === 'block') {
+                    closeRulesModal();
+                }
+            });
+        }
+        
+        // Performance monitoring
+        function monitorPerformance() {
+            if (!DEBUG) return;
+            
+            // Monitor frame rate
+            let frames = 0;
+            let lastTime = performance.now();
+            
+            function countFrames() {
+                frames++;
+                const currentTime = performance.now();
+                
+                if (currentTime >= lastTime + 1000) {
+                    console.log(`FPS: ${frames}`);
+                    frames = 0;
+                    lastTime = currentTime;
+                }
+                
+                requestAnimationFrame(countFrames);
+            }
+            
+            requestAnimationFrame(countFrames);
+            
+            // Monitor memory usage
+            if (performance.memory) {
+                setInterval(() => {
+                    const memory = performance.memory;
+                    console.log('Memory usage:', {
+                        used: Math.round(memory.usedJSHeapSize / 1048576) + 'MB',
+                        total: Math.round(memory.totalJSHeapSize / 1048576) + 'MB',
+                        limit: Math.round(memory.jsHeapSizeLimit / 1048576) + 'MB'
+                    });
+                }, 30000);
+            }
+        }
+        
+        // Initialize mobile enhancements
+        function initializeMobileEnhancements() {
+            detectDevice();
+            updateViewportHeight();
+            setupTouchEnhancements();
+            optimizeAnimations();
+            handleViewportChanges();
+            optimizeScrolling();
+            setupLazyLoading();
+            setupMobileModalEnhancements();
+            
+            if (DEBUG) {
+                monitorPerformance();
+            }
+            
+            // Add CSS custom properties for JavaScript
+            document.documentElement.style.setProperty('--is-mobile', isMobile ? '1' : '0');
+            document.documentElement.style.setProperty('--is-touch', isTouch ? '1' : '0');
+        }
+        
         // Enhanced error logging
         function logError(error, context = '') {
             const errorInfo = {
@@ -1694,7 +2631,7 @@
             }
         }
         
-        // Show price increase notification
+        // Show price increase notification (mobile-optimized)
         function showPriceIncreaseNotification(oldPrice, newPrice) {
             const names = [
                 'Sarah M.', 'James K.', 'Emma L.', 'Michael T.', 'Lisa R.',
@@ -1710,28 +2647,35 @@
             const name = names[Math.floor(Math.random() * names.length)];
             const location = locations[Math.floor(Math.random() * locations.length)];
             
-            const notification = document.createElement('div');
-            notification.className = 'notification';
-            notification.innerHTML = `
-                <div class="notification-header">💰 Price Just Increased!</div>
-                <div class="notification-body">
-                    ${name} from ${location} just purchased at ${oldPrice}. New price is now ${newPrice}!
-                </div>
-            `;
+            const header = '💰 Price Just Increased!';
+            const body = `${name} from ${location} just purchased at $${oldPrice}. New price is now $${newPrice}!`;
             
-            const container = document.getElementById('notifications');
-            if (container) {
-                container.appendChild(notification);
+            // Use mobile-optimized notification if function exists
+            if (typeof showMobileOptimizedNotification === 'function') {
+                showMobileOptimizedNotification(header, body);
+            } else {
+                // Fallback to regular notification
+                const notification = document.createElement('div');
+                notification.className = 'notification';
+                notification.innerHTML = `
+                    <div class="notification-header">${header}</div>
+                    <div class="notification-body">${body}</div>
+                `;
                 
-                setTimeout(() => {
-                    notification.style.animation = 'slideInLeft 0.5s ease-out reverse';
-                    setTimeout(() => notification.remove(), 500);
-                }, 5000);
-                
-                // Keep only last 3 notifications
-                const allNotifications = container.children;
-                if (allNotifications.length > 3) {
-                    allNotifications[0].remove();
+                const container = document.getElementById('notifications');
+                if (container) {
+                    container.appendChild(notification);
+                    
+                    setTimeout(() => {
+                        notification.style.animation = 'slideInLeft 0.5s ease-out reverse';
+                        setTimeout(() => notification.remove(), 500);
+                    }, 5000);
+                    
+                    // Keep only last 3 notifications
+                    const allNotifications = container.children;
+                    if (allNotifications.length > 3) {
+                        allNotifications[0].remove();
+                    }
                 }
             }
             
@@ -1964,7 +2908,10 @@
         
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
-            // Validate DOM elements first
+            // Initialize mobile enhancements first
+            initializeMobileEnhancements();
+            
+            // Validate DOM elements
             validateElements();
             
             // Start with loading state
@@ -1997,7 +2944,14 @@
                         updateBuyButtons(currentData.payment_link, status);
                     },
                     validateElements: validateElements,
-                    logError: logError
+                    logError: logError,
+                    deviceInfo: () => ({
+                        isMobile,
+                        isTouch,
+                        performanceMode,
+                        screenWidth: window.innerWidth,
+                        pixelRatio: window.devicePixelRatio
+                    })
                 };
                 console.log('Debug mode enabled. Use window.debugPricing to test.');
             }
