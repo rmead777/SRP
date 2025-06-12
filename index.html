@@ -2215,17 +2215,17 @@
             padding: 40px 0;
         }
 
-        /* Trust Section - Restored 4 Horizontal Boxes Layout */
+        /* Trust Section - Restored Premium 4-Column Horizontal Layout */
         .trust-section {
             background: white;
-            padding: 50px 0;
+            padding: 40px 0;
             border-top: 1px solid #e5e7eb;
         }
 
         .trust-badges {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
+            gap: 24px;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
@@ -2236,46 +2236,48 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            padding: 25px 20px;
+            padding: 20px 16px;
             background: white;
             border-radius: 12px;
             border: 1px solid #e5e7eb;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
+            min-width: 180px;
         }
 
         .trust-badge:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
         }
 
         .badge-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+            font-size: 2.2rem;
+            margin-bottom: 12px;
         }
 
         .badge-text {
             text-align: center;
+            gap: 0.25rem;
         }
 
         .badge-text strong {
             display: block;
             color: var(--dark);
             font-weight: 700;
-            font-size: 1rem;
-            margin-bottom: 8px;
+            font-size: 0.95rem;
+            margin-bottom: 6px;
         }
 
         .badge-text span {
             color: #6b7280;
-            font-size: 0.875rem;
+            font-size: 0.85rem;
             line-height: 1.4;
         }
 
-        /* FAQ Section Styling - Restored Clean Grid Layout */
+        /* FAQ Section - Restored Premium 3x2 Grid Layout */
         .faq-section {
             background: white;
-            padding: 60px 0;
+            padding: 50px 0;
         }
 
         .faq-section .container {
@@ -2287,22 +2289,27 @@
         .faq-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 24px;
             margin-top: 30px;
+            grid-template-rows: repeat(2, 1fr);
         }
 
         .faq-item {
             background: white;
-            padding: 25px;
+            padding: 20px;
             border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             border: 1px solid #e5e7eb;
             transition: all 0.3s ease;
+            height: fit-content;
+            min-height: 160px;
+            display: flex;
+            flex-direction: column;
         }
 
         .faq-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
         }
 
         .faq-question {
@@ -2318,13 +2325,14 @@
             line-height: 1.5;
             margin: 0;
             font-size: 0.9rem;
+            flex-grow: 1;
         }
 
-        /* Clock is Ticking Section - Restored Original Layout */
+        /* Clock is Ticking Section - Restored Sharp Premium Layout */
         .final-cta {
             background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
             color: white;
-            padding: 60px 0;
+            padding: 50px 0;
             text-align: center;
             position: relative;
         }
@@ -2350,14 +2358,16 @@
             line-height: 1.6;
         }
 
+        /* Enhanced Warning Box with Sharp Design */
         .urgency-box {
-            background: linear-gradient(135deg, #ff6b9d 0%, #f093fb 100%);
-            border: none;
-            border-radius: 12px;
-            padding: 20px;
+            background: #f472b6;
+            padding: 1.5rem 2rem;
+            border-radius: 10px;
             margin: 25px auto;
             max-width: 600px;
-            box-shadow: 0 4px 16px rgba(255, 107, 157, 0.3);
+            box-shadow: 0 6px 16px rgba(244, 114, 182, 0.3);
+            font-weight: 600;
+            text-align: center;
         }
 
         .urgency-box p {
@@ -2367,16 +2377,17 @@
             font-size: 1rem;
         }
 
+        /* Restored Glowing Gradient CTA Button */
         .cta-button {
             display: inline-block;
-            background: linear-gradient(135deg, #ff6b9d 0%, #f093fb 100%);
+            background: linear-gradient(135deg, #f97316, #ec4899);
             color: white;
-            padding: 18px 40px;
+            padding: 1rem 2rem;
             border-radius: 12px;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 700;
             text-decoration: none;
-            box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
+            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
             transition: all 0.3s ease;
             margin: 20px 0;
             border: none;
@@ -2384,8 +2395,8 @@
         }
 
         .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(249, 115, 22, 0.5);
         }
 
         /* Floating Price Tracker */
@@ -2474,7 +2485,7 @@
 
         /* General Section Spacing - Reduced Vertical Whitespace */
         section {
-            padding: 50px 0;
+            padding: 40px 0;
         }
 
         .section-title {
@@ -2485,20 +2496,137 @@
             color: var(--dark);
         }
 
+        /* Enhanced Feature Cards with Modular Feel */
+        .feature-card {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+            text-align: center;
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
         /* Expertise Revenue Section - Tighter Spacing */
         .expertise-revenue {
             background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            padding: 50px 0 !important;
+            padding: 40px 0 !important;
         }
 
         .revenue-streams-grid {
-            margin-bottom: 40px !important;
+            margin-bottom: 30px !important;
+            gap: 20px !important;
         }
 
-        /* Mobile responsiveness - Restored Clean Layouts */
+        /* Product Cards Enhancement */
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .product-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* ROI Calculator Fixes */
+        .roi-calculator {
+            padding: 40px 0 !important;
+        }
+
+        /* Fix ROI percentage display to prevent giant numbers */
+        #roiPercent {
+            display: inline-block;
+        }
+
+        /* Enhanced container constraints */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Mobile responsiveness - Preserved Grid Layouts */
         @media (max-width: 768px) {
             .container {
                 padding: 0 15px;
+            }
+
+            /* FAQ - 1 column on mobile, preserve 3x2 on larger screens */
+            .faq-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                grid-template-rows: none;
+            }
+
+            .faq-item {
+                padding: 18px;
+                min-height: auto;
+            }
+
+            /* Trust badges - 1 column on mobile */
+            .trust-badges {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .trust-badge {
+                padding: 18px 16px;
+                min-width: auto;
+            }
+
+            /* Reduce section padding on mobile */
+            section {
+                padding: 30px 0;
+            }
+
+            .final-cta {
+                padding: 35px 0;
+            }
+
+            .final-cta h2 {
+                font-size: 1.8rem !important;
+            }
+
+            .final-cta p {
+                font-size: 1rem !important;
+            }
+
+            .urgency-box {
+                padding: 1.2rem 1.5rem;
+                margin: 20px auto;
+            }
+
+            .cta-button {
+                padding: 0.9rem 1.5rem;
+                font-size: 1.1rem;
+            }
+
+            .floating-price-tracker {
+                top: 10px;
+                right: 10px;
+                min-width: 160px;
+                padding: 12px 15px;
+            }
+
+            .floating-price-tracker .current-price {
+                font-size: 1.5rem;
+            }
+
+            .revenue-streams-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
             }
 
             .comparison-table {
@@ -2533,67 +2661,14 @@
             .step-card {
                 padding: 25px 20px;
             }
-
-            /* FAQ - Stack to 1 column on mobile, 2 on tablet */
-            .faq-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .faq-item {
-                padding: 20px;
-            }
-
-            /* Trust badges - Stack to 1 column on mobile */
-            .trust-badges {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .trust-badge {
-                padding: 20px;
-            }
-
-            .final-cta h2 {
-                font-size: 1.8rem !important;
-            }
-
-            .final-cta p {
-                font-size: 1rem !important;
-            }
-
-            .urgency-box {
-                padding: 15px;
-                margin: 20px auto;
-            }
-
-            .cta-button {
-                padding: 15px 30px;
-                font-size: 1.1rem;
-            }
-
-            .floating-price-tracker {
-                top: 10px;
-                right: 10px;
-                min-width: 160px;
-                padding: 12px 15px;
-            }
-
-            .floating-price-tracker .current-price {
-                font-size: 1.5rem;
-            }
-
-            .revenue-streams-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
         }
 
-        /* Tablet responsiveness */
+        /* Tablet responsiveness - 2 columns for FAQ and Trust */
         @media (min-width: 769px) and (max-width: 1024px) {
             .faq-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
+                grid-template-rows: repeat(3, 1fr);
             }
 
             .trust-badges {
@@ -4835,7 +4910,7 @@
             });
         });
 
-        // ROI Calculator Function
+        // ROI Calculator Function with Percentage Cap
         function calculateROI() {
             // Get input values
             const weeklyHours = parseFloat(document.getElementById('weeklyHours').value) || 30;
@@ -4852,10 +4927,10 @@
             const monthlyIncrease = monthlyRevenue * (growthPercent / 100);
             const totalRevenuePotential = monthlyIncrease * 12; // Annual revenue increase
             
-            // Calculate total value and ROI
+            // Calculate total value and ROI with reasonable cap
             const totalValue = totalTimeSavings + totalRevenuePotential;
             const bundleCost = Math.max(1, currentData.price || 1); // Use current auction price or minimum $1
-            const roiPercent = Math.round((totalValue / bundleCost) * 100);
+            const roiPercent = Math.min(Math.round((totalValue / bundleCost) * 100), 9999); // Cap at 9,999%
             
             // Update display elements
             document.getElementById('weeklySavings').textContent = Math.round(weeklySavings).toLocaleString();
