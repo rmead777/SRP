@@ -796,15 +796,28 @@
         .product-card {
             background: white;
             border-radius: 20px;
-            padding: 30px;
+            padding: 35px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
             border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-secondary);
         }
 
         .product-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border-color: #3b82f6;
         }
 
         .product-header {
@@ -848,1305 +861,360 @@
             font-size: 0.95rem;
         }
 
+        /* Remove the expand-details functionality and show all details */
         .expand-details {
-            color: #3b82f6;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-
-        .expand-details:hover {
-            color: #1e40af;
+            display: none !important;
         }
 
         .product-details {
-            display: none;
+            display: block !important;
+            max-height: none !important;
             margin-top: 20px;
             padding-top: 20px;
             border-top: 1px solid #e2e8f0;
         }
 
-        .product-details.show {
-            display: block;
-            animation: fadeInDown 0.3s ease;
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .performance-metrics {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .metric-box {
-            text-align: center;
-            padding: 15px;
-            background: #f8fafc;
-            border-radius: 10px;
-            border: 1px solid #e2e8f0;
-        }
-
-        .metric-title {
-            font-size: 0.8rem;
-            color: #64748b;
-            margin-bottom: 5px;
-        }
-
-        .metric-value {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--dark);
-        }
-
-        .features-list {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 25px;
-        }
-
-        .features-list li {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 0;
-            color: #475569;
-        }
-
-        .check-icon {
-            font-size: 1rem;
-        }
-
-        .case-study {
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            padding: 20px;
-            border-radius: 15px;
-            border: 1px solid #bfdbfe;
-            margin-bottom: 20px;
-        }
-
-        .case-study-title {
-            font-weight: 700;
-            color: #1e40af;
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-        }
-
-        .case-study p {
-            color: #475569;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin: 0;
-        }
-
-        .roi-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .bonus-highlight {
-            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-            color: #1e293b;
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .bonus-highlight h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.3rem;
-        }
-
-        .last-buyer-section {
-            border: 3px solid #fbbf24;
-            background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%);
-        }
-
-        /* Value Comparison */
-        .value-comparison {
-            padding: 80px 0;
+        /* Enhanced Product Card Styling */
+        .product-card {
             background: white;
-        }
-
-        .comparison-table {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .comparison-column {
-            padding: 40px;
             border-radius: 20px;
-            text-align: center;
-        }
-
-        .comparison-column.traditional {
-            background: #FEF2F2;
-            border: 2px solid #FCA5A5;
-        }
-
-        .comparison-column.smart {
-            background: #ECFDF5;
-            border: 2px solid #6EE7B7;
+            padding: 35px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
             position: relative;
             overflow: hidden;
         }
 
-        .comparison-column.smart::before {
-            content: 'BEST VALUE';
+        .product-card::before {
+            content: '';
             position: absolute;
-            top: 20px;
-            right: -30px;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
             background: var(--gradient-secondary);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border-color: #3b82f6;
+        }
+
+        /* Difficulty and ROI indicators */
+        .difficulty-level {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .difficulty-badge {
+            background: linear-gradient(135deg, #10b981, #059669);
             color: white;
-            padding: 5px 40px;
-            transform: rotate(45deg);
+            padding: 4px 12px;
+            border-radius: 15px;
             font-size: 0.8rem;
-            font-weight: 700;
-        }
-
-        .comparison-column h3 {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            color: var(--dark);
-        }
-
-        .comparison-column ul {
-            list-style: none;
-            text-align: left;
-            margin-bottom: 30px;
-        }
-
-        .comparison-column li {
-            padding: 10px 0;
-            font-size: 1.1rem;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-        }
-
-        .strike {
-            text-decoration: line-through;
-            color: #EF4444;
-        }
-
-        .check {
-            color: #10B981;
             font-weight: 600;
         }
 
-        .total-cost {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #EF4444;
-        }
-
-        .total-savings {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #10B981;
-        }
-
-        /* How It Works */
-        .how-it-works {
-            padding: 80px 0;
-            background: #F3F4F6;
-        }
-
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .step-card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .step-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .step-card.special {
-            background: var(--gradient-secondary);
+        .roi-time {
+            background: linear-gradient(135deg, #f59e0b, #ea580c);
             color: white;
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 auto 20px;
-            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.4);
-        }
-
-        .step-card.special .step-number {
-            background: white;
-            font-size: 2rem;
-        }
-
-        .step-card h4 {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-
-        .step-card.special h4 {
-            color: white;
-        }
-
-        /* Notification System */
-        .notification-container {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 1000;
-            max-width: 350px;
-        }
-
-        .notification {
-            background: white;
+            padding: 4px 12px;
             border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* What You Get Section */
+        .what-you-get {
+            background: #f8fafc;
             padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .what-you-get h4 {
+            color: #1e40af;
             margin-bottom: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            animation: slideInLeft 0.5s ease-out;
-            border-left: 5px solid var(--accent);
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-100%);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .notification-header {
+            font-size: 1.1rem;
             font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 5px;
         }
 
-        .notification-body {
-            color: #6B7280;
-            font-size: 0.9rem;
+        .deliverables-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
-        /* Floating Price Tracker */
-        .price-tracker {
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            background: rgba(23, 37, 84, 0.95);
-            backdrop-filter: blur(20px);
-            color: white;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            z-index: 999;
-            min-width: 200px;
-            border: 2px solid rgba(245, 158, 11, 0.4);
-            animation: slideInRight 0.5s ease-out;
+        .deliverables-list li {
+            padding: 6px 0;
+            color: #475569;
+            font-weight: 500;
+            position: relative;
+            padding-left: 20px;
         }
 
-        .price-tracker-close {
+        .deliverables-list li:before {
+            content: "📦";
             position: absolute;
-            top: 8px;
-            right: 8px;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: bold;
-            transition: all 0.3s ease;
+            left: 0;
+            top: 6px;
         }
 
-        .price-tracker-close:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
+        /* Before/After Comparison */
+        .before-after {
+            margin: 25px 0;
         }
 
-        .price-tracker.mobile-closable .price-tracker-close {
-            display: flex;
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(100%);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .tracker-title {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-            color: var(--secondary);
-        }
-
-        .tracker-price {
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: 15px;
-        }
-
-        .tracker-stats {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
-        }
-
-        /* FAQ Section */
-        .faq-section {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .faq-grid {
+        .before-after-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: #F8FAFC;
-            border-radius: 20px;
-            padding: 30px;
-            border-left: 4px solid var(--secondary);
-            transition: all 0.3s ease;
-            border: 1px solid #E5E7EB;
-        }
-
-        .faq-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .faq-question {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 15px;
-            line-height: 1.4;
-        }
-
-        .faq-answer {
-            color: #4B5563;
-            line-height: 1.7;
-            font-size: 1.05rem;
-        }
-
-        /* Trust Section */
-        .trust-section {
-            padding: 60px 0;
-            background: #F9FAFB;
-            border-top: 1px solid #E5E7EB;
-            border-bottom: 1px solid #E5E7EB;
-        }
-
-        .trust-badges {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
-
-        .trust-badge {
-            display: flex;
-            align-items: center;
+            grid-template-columns: 1fr 1fr;
             gap: 15px;
         }
 
-        .badge-icon {
-            font-size: 2.5rem;
+        .before, .after {
+            padding: 15px;
+            border-radius: 10px;
         }
 
-        .badge-text {
-            display: flex;
-            flex-direction: column;
+        .before {
+            background: linear-gradient(135deg, #fef2f2, #fee2e2);
+            border: 1px solid #fecaca;
         }
 
-        .badge-text strong {
-            font-size: 1rem;
-            color: var(--dark);
+        .after {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border: 1px solid #bbf7d0;
         }
 
-        .badge-text span {
+        .before h5, .after h5 {
+            margin: 0 0 8px 0;
+            font-weight: 700;
             font-size: 0.9rem;
-            color: #6B7280;
         }
 
-        /* Final CTA */
-        .final-cta {
-            padding: 100px 0;
+        .before p, .after p {
+            margin: 0;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            color: #374151;
+        }
+
+        /* Enhanced Performance Metrics */
+        .performance-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .metric-box.enhanced {
             text-align: center;
-            color: white;
+            padding: 20px 15px;
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .metric-box.enhanced:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-color: #3b82f6;
+        }
+
+        .progress-bar-mini {
+            height: 4px;
+            background: #e2e8f0;
+            border-radius: 2px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .progress-fill-mini {
+            height: 100%;
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            border-radius: 2px;
+            transition: width 0.8s ease;
+        }
+
+        /* Enhanced Features List */
+        .features-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            color: #475569;
+            border-bottom: 1px solid #f1f5f9;
+            font-weight: 500;
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .integration-badge {
+            margin-left: auto;
+            font-size: 1.2rem;
+        }
+
+        /* Enhanced Case Study */
+        .case-study {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #bfdbfe;
+            margin: 25px 0;
             position: relative;
         }
 
-        .final-cta-content {
-            background: rgba(23, 37, 84, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 30px;
-            padding: 60px;
-            max-width: 800px;
-            margin: 0 auto;
-            border: 2px solid rgba(245, 158, 11, 0.4);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .urgency-box {
-            background: rgba(239, 68, 68, 0.2);
-            border: 2px solid #EF4444;
+        .case-study:before {
+            content: "⭐";
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: white;
+            padding: 5px 10px;
             border-radius: 15px;
-            padding: 20px;
-            margin: 30px auto;
-            max-width: 600px;
-            animation: pulse 2s infinite;
+            font-size: 1.2rem;
         }
 
-        .urgency-box p {
-            color: white;
-            font-size: 1.1rem;
-        }
-
-        /* Error States */
-        .price-error {
-            display: none;
-            color: #EF4444;
-            font-size: 0.9rem;
-            margin-top: 10px;
-            background: rgba(239, 68, 68, 0.1);
-            padding: 10px;
+        .success-rate {
+            margin-top: 15px;
+            padding: 10px 15px;
+            background: rgba(16, 185, 129, 0.1);
             border-radius: 8px;
-            border: 1px solid #EF4444;
+            color: #059669;
+            font-weight: 600;
+            font-size: 0.9rem;
         }
 
-        .auction-status {
-            margin-top: 10px;
+        /* Social Proof Mini */
+        .social-proof-mini {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8fafc;
+            padding: 12px 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .user-count, .recent-activity {
+            font-size: 0.85rem;
+            color: #64748b;
             font-weight: 600;
         }
 
-        .auction-status.closed {
-            color: #EF4444;
+        .recent-activity {
+            color: #dc2626;
+            animation: pulse 2s infinite;
         }
 
-        /* Loading State */
-        .loading {
+        /* Enhanced ROI Badge */
+        .roi-badge.enhanced {
+            display: block;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .roi-badge.enhanced:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        /* Urgency and scarcity elements */
+        .most-popular {
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: linear-gradient(135deg, #f59e0b, #ea580c);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            transform: rotate(-2deg);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+            z-index: 10;
+        }
+
+        .limited-supply {
             display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: var(--secondary);
-            animation: spin 1s ease-in-out infinite;
+            background: linear-gradient(135deg, #dc2626, #991b1b);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 10px;
+            animation: pulse 2s infinite;
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        .price-increasing {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 10px;
+            animation: pulse 2s infinite;
         }
 
-        /* Enhanced Mobile-First Responsive Design */
-        
-        /* Extra Small Devices (320px and up) */
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 15px;
-            }
-            
-            .hero {
-                padding: 40px 0;
-            }
-            
-            .hero-title {
-                font-size: 2rem;
-                line-height: 1.2;
-                margin-bottom: 15px;
-            }
-            
-            .hero-subtitle {
-                font-size: 1rem;
-                margin-bottom: 25px;
-                padding: 0 10px;
-            }
-            
-            .price-display {
-                font-size: 2.5rem;
-                margin-bottom: 15px;
-            }
-            
-            .price-card {
-                padding: 20px;
-                margin: 20px auto;
-                border-radius: 20px;
-            }
-            
-            .countdown-timer {
-                font-size: 1.5rem;
-            }
-            
-            .cta-button {
-                padding: 15px 30px;
-                font-size: 1rem;
-                margin: 15px 0;
-                width: 100%;
-                text-align: center;
-            }
-            
-            .alert-bar {
-                font-size: 0.85rem;
-                padding: 10px 5px;
-            }
-            
-            .bonanza-logo svg {
-                width: 120px;
-                height: 120px;
-            }
-            
-            .activity-content {
+        /* Mobile responsiveness for enhanced features */
+        @media (max-width: 768px) {
+            .difficulty-level {
                 flex-direction: column;
-                gap: 10px;
-                font-size: 0.85rem;
+                gap: 8px;
             }
             
-            .activity-content > div {
-                margin: 2px 0;
-            }
-            
-            .section-title {
-                font-size: 1.75rem;
-                margin-bottom: 15px;
-            }
-            
-            .section-subtitle {
-                font-size: 1rem;
-                margin-bottom: 30px;
-            }
-            
-            .features {
-                padding: 40px 0;
-            }
-            
-            .feature-card {
-                padding: 20px 15px;
-                margin-bottom: 15px;
-            }
-            
-            .feature-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-                margin-bottom: 15px;
-            }
-            
-            .feature-title {
-                font-size: 1.1rem;
-                margin-bottom: 8px;
-            }
-            
-            .price-tracker {
-                position: fixed;
-                bottom: 15px;
-                right: 15px;
-                top: auto;
-                padding: 20px 20px 20px 15px;
-                min-width: 180px;
-                max-width: calc(100vw - 30px);
-                font-size: 0.9rem;
-                z-index: 1001;
-            }
-            
-            .tracker-title {
-                font-size: 0.8rem;
-                margin-bottom: 8px;
-            }
-            
-            .tracker-price {
-                font-size: 2.2rem;
-                margin-bottom: 12px;
-            }
-            
-            .tracker-stats {
-                font-size: 0.8rem;
-                line-height: 1.4;
-            }
-            
-            .notification-container {
-                bottom: 10px;
-                left: 10px;
-                right: 10px;
-                max-width: none;
-                transform: none;
-            }
-            
-            .notification {
-                padding: 15px;
-                margin-bottom: 10px;
-                font-size: 0.85rem;
-            }
-            
-            .modal-content {
-                margin: 5% auto;
-                padding: 15px;
-                width: 95%;
-                max-height: 90vh;
-                border-radius: 15px;
-            }
-            
-            .modal-title {
-                font-size: 1.5rem;
-                margin-bottom: 15px;
-            }
-            
-            .faq-question {
-                font-size: 1rem;
-                margin-bottom: 10px;
-            }
-            
-            .faq-answer {
-                font-size: 0.9rem;
-            }
-            
-            .comparison-column {
-                padding: 20px;
-                margin-bottom: 20px;
-            }
-            
-            .step-card {
-                padding: 20px;
-                margin-bottom: 15px;
-            }
-            
-            .final-cta-content {
-                padding: 30px 20px;
-                border-radius: 20px;
-            }
-            
-            .final-cta h2 {
-                font-size: 1.75rem;
-                margin-bottom: 15px;
-            }
-            
-            .urgency-box {
-                padding: 15px;
-                margin: 20px auto;
-                font-size: 0.95rem;
-            }
-            
-            .trust-badges {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-            }
-            
-            .badge-text {
-                align-items: center;
-                text-align: center;
-            }
-        }
-        
-        /* Small Devices (481px to 768px) */
-        @media (min-width: 481px) and (max-width: 768px) {
-            .container {
-                padding: 0 20px;
-            }
-            
-            .hero {
-                padding: 60px 0;
-            }
-            
-            .hero-title {
-                font-size: 2.8rem;
-                line-height: 1.1;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.1rem;
-                margin-bottom: 30px;
-            }
-            
-            .price-display {
-                font-size: 3.5rem;
-            }
-            
-            .price-card {
-                padding: 35px;
-                margin: 30px auto;
-            }
-            
-            .cta-button {
-                padding: 18px 40px;
-                font-size: 1.1rem;
-                width: auto;
-            }
-            
-            .section-title {
-                font-size: 2.2rem;
-            }
-            
-            .feature-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            }
-            
-            .activity-content {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
-                font-size: 0.9rem;
-            }
-            
-            .price-tracker {
-                position: fixed;
-                bottom: 20px;
-                right: 15px;
-                top: auto;
-                padding: 22px 22px 22px 18px;
-                min-width: 200px;
-                max-width: calc(100vw - 30px);
-            }
-            
-            .tracker-title {
-                font-size: 0.85rem;
-                margin-bottom: 10px;
-            }
-            
-            .tracker-price {
-                font-size: 2.4rem;
-                margin-bottom: 15px;
-            }
-            
-            .tracker-stats {
-                font-size: 0.85rem;
-            }
-            
-            .notification-container {
-                bottom: 15px;
-                left: 15px;
-                max-width: 300px;
-                transform: none;
-            }
-            
-            .comparison-table {
+            .before-after-container {
                 grid-template-columns: 1fr;
-                gap: 25px;
-            }
-            
-            .faq-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-            
-            .trust-badges {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 25px;
-            }
-            
-            .modal-content {
-                margin: 8% auto;
-                padding: 25px;
-                width: 90%;
-            }
-            
-            /* Mobile styles for new content sections */
-            .revenue-streams-grid {
-                grid-template-columns: 1fr !important;
-                gap: 20px !important;
-            }
-            
-            .expertise-revenue .feature-card {
-                padding: 25px 20px !important;
-            }
-            
-            .business-reality > .container > div:first-of-type {
-                grid-template-columns: 1fr !important;
-                gap: 40px !important;
-            }
-            
-            .path-to-100k > .container > div:first-of-type {
-                grid-template-columns: 1fr !important;
-                gap: 25px !important;
-            }
-            
-            .success-stories > .container > div:last-of-type {
-                grid-template-columns: 1fr !important;
-                gap: 25px !important;
-            }
-            
-            .roi-calculator .container > div:first-of-type > div {
-                grid-template-columns: 1fr !important;
-                gap: 30px !important;
-            }
-            
-            .roi-calculator .container > div:first-of-type > div:last-child > div:last-of-type {
-                grid-template-columns: 1fr !important;
-                gap: 15px !important;
-            }
-            
-            /* Mobile styles for progressive disclosure products */
-            .products-section {
-                padding: 40px 0 !important;
-            }
-            
-            .product-tabs {
-                flex-direction: column;
                 gap: 10px;
-                margin: 20px 0;
-            }
-            
-            .product-tab {
-                padding: 12px 20px;
-                font-size: 0.9rem;
-                text-align: center;
-            }
-            
-            .product-grid {
-                grid-template-columns: 1fr !important;
-                gap: 20px !important;
-            }
-            
-            .product-card {
-                padding: 20px !important;
-            }
-            
-            .product-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 10px;
-            }
-            
-            .product-icon {
-                font-size: 2rem;
-            }
-            
-            .product-title {
-                font-size: 1.2rem;
             }
             
             .performance-metrics {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 10px !important;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
             }
             
-            .metric-box {
-                padding: 10px !important;
+            .social-proof-mini {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
             }
             
-            .metric-title {
-                font-size: 0.75rem;
-            }
-            
-            .metric-value {
-                font-size: 1rem;
+            .what-you-get {
+                padding: 15px;
             }
             
             .case-study {
-                padding: 15px !important;
-            }
-            
-            .bonus-highlight {
-                padding: 15px !important;
-            }
-            
-            .bonus-highlight h3 {
-                font-size: 1.1rem;
-            }
-        }
-        
-        /* Medium Devices (769px to 1024px) */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .container {
-                max-width: 960px;
-                padding: 0 25px;
-            }
-            
-            .hero-title {
-                font-size: 3.2rem;
-            }
-            
-            .price-display {
-                font-size: 4rem;
-            }
-            
-            .feature-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 25px;
-            }
-            
-            .activity-content {
-                justify-content: space-between;
-                flex-wrap: wrap;
-                gap: 20px;
-            }
-            
-            .price-tracker {
-                top: 120px;
-                right: 25px;
-                padding: 25px;
-                min-width: 180px;
-            }
-            
-            .comparison-table {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
-            }
-            
-            .faq-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 25px;
-            }
-            
-            .steps-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 25px;
-            }
-            
-            /* Tablet styles for new content sections */
-            .business-reality > .container > div:first-of-type {
-                grid-template-columns: 1fr !important;
-                gap: 40px !important;
-            }
-            
-            .roi-calculator .container > div:first-of-type > div {
-                grid-template-columns: 1fr !important;
-                gap: 30px !important;
-            }
-            
-            /* Tablet styles for progressive disclosure products */
-            .product-grid {
-                grid-template-columns: 1fr !important;
-            }
-            
-            .performance-metrics {
-                grid-template-columns: repeat(2, 1fr) !important;
-            }
-        }
-        
-        /* Large Tablets and Small Desktops (1025px to 1200px) */
-        @media (min-width: 1025px) and (max-width: 1200px) {
-            .container {
-                max-width: 1140px;
-            }
-            
-            .feature-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 25px;
-            }
-            
-            .activity-content {
-                justify-content: space-between;
-            }
-            
-            .comparison-table {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .faq-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        /* Large Screens (1201px and up) */
-        @media (min-width: 1201px) {
-            .feature-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-            
-            .faq-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .steps-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-        
-        /* Touch Device Optimizations */
-        @media (hover: none) and (pointer: coarse) {
-            /* Enhanced touch targets */
-            .cta-button {
-                min-height: 48px;
-                padding: 18px 40px;
-            }
-            
-            .rules-link {
-                min-height: 44px;
-                padding: 12px 20px;
-            }
-            
-            .subscribe-btn {
-                min-height: 48px;
-                padding: 15px 25px;
-            }
-            
-            .modal-close {
-                min-width: 44px;
-                min-height: 44px;
-                font-size: 2.5rem;
-            }
-            
-            .price-tracker-close {
-                min-width: 32px;
-                min-height: 32px;
-                width: 32px;
-                height: 32px;
-                font-size: 16px;
-                top: 10px;
-                right: 10px;
-            }
-            
-            /* Remove hover effects on touch devices */
-            .feature-card:hover,
-            .step-card:hover,
-            .faq-item:hover {
-                transform: none;
-                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            }
-            
-            .cta-button:hover {
-                transform: none;
-                box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
-            }
-            
-            /* Prevent zoom on input focus for iOS */
-            input[type="email"] {
-                font-size: 16px;
-            }
-        }
-        
-        /* High DPI/Retina Display Optimizations */
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-            .bonanza-logo svg {
-                image-rendering: -webkit-optimize-contrast;
-                image-rendering: crisp-edges;
-            }
-            
-            .floating-bubble {
-                will-change: transform;
-            }
-        }
-        
-        /* Landscape Orientation on Mobile */
-        @media (max-width: 768px) and (orientation: landscape) {
-            .hero {
-                padding: 30px 0;
-            }
-            
-            .hero-title {
-                font-size: 2rem;
-                margin-bottom: 10px;
-            }
-            
-            .hero-subtitle {
-                font-size: 0.95rem;
-                margin-bottom: 20px;
-            }
-            
-            .price-card {
                 padding: 20px;
-                margin: 15px auto;
             }
-            
-            .price-display {
-                font-size: 2.5rem;
-                margin-bottom: 10px;
-            }
-            
-            .countdown-wrapper {
-                padding: 15px;
-                margin-bottom: 20px;
-            }
-            
-            .countdown-timer {
-                font-size: 1.3rem;
-            }
-            
-            .cta-button {
-                padding: 12px 30px;
-                font-size: 0.95rem;
-            }
-            
-            .bonanza-logo svg {
-                width: 100px;
-                height: 100px;
-            }
-            
-            .features,
-            .value-comparison,
-            .how-it-works,
-            .faq-section {
-                padding: 40px 0;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .final-cta {
-                padding: 40px 0;
-            }
-            
-            .final-cta-content {
-                padding: 25px 20px;
-            }
-            
-            .final-cta h2 {
-                font-size: 1.5rem;
-                margin-bottom: 15px;
-            }
-        }
-        
-        /* Print Styles */
-        @media print {
-            .animated-bg,
-            .floating-bubble,
-            .price-tracker,
-            .notification-container,
-            .activity-bar,
-            .modal {
-                display: none !important;
-            }
-            
-            .hero,
-            .features,
-            .value-comparison {
-                page-break-inside: avoid;
-            }
-            
-            .cta-button {
-                border: 2px solid #333;
-                background: white !important;
-                color: #333 !important;
-            }
-        }
-        
-        /* Reduced Motion Preferences */
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-            
-            .animated-bg::before {
-                animation: none;
-            }
-            
-            .floating-bubble {
-                animation: none;
-            }
-            
-            .alert-bar::after {
-                animation: none;
-            }
-        }
-        
-        /* Dark Mode Support */
-        @media (prefers-color-scheme: dark) {
-            .features,
-            .value-comparison,
-            .faq-section {
-                background: #111827;
-                color: #F9FAFB;
-            }
-            
-            .feature-card,
-            .step-card,
-            .faq-item,
-            .modal-content {
-                background: #1F2937;
-                border-color: #374151;
-                color: #F9FAFB;
-            }
-            
-            .how-it-works {
-                background: #0F172A;
-            }
-            
-            .section-title {
-                color: #F9FAFB;
-            }
-            
-            .section-subtitle,
-            .faq-answer {
-                color: #D1D5DB;
-            }
-        }
-        
-        /* Legacy Browser Support */
-        @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-            /* IE11 fallbacks */
-            .feature-grid {
-                display: flex;
-                flex-wrap: wrap;
-            }
-            
-            .feature-card {
-                flex: 1 1 300px;
-                margin: 10px;
-            }
-            
-            .comparison-table {
-                display: block;
-            }
-            
-            .comparison-column {
-                width: 100%;
-                margin-bottom: 20px;
+
+            .product-card {
+                padding: 25px;
             }
         }
 
@@ -3134,12 +2202,19 @@
             <div class="product-grid" id="core-products" role="tabpanel" aria-labelledby="core-tab">
                 <!-- Magic Bookifier -->
                 <div class="product-card">
+                    <div class="most-popular">🏆 MOST POPULAR</div>
+                    
                     <div class="product-header">
                         <span class="product-icon">📚</span>
                         <div>
                             <h3 class="product-title">Magic Bookifier™</h3>
                             <p class="product-value">Value: $497 | Saves: $15,000 in ghostwriting</p>
                         </div>
+                    </div>
+                    
+                    <div class="difficulty-level">
+                        <span class="difficulty-badge beginner">👶 Beginner Friendly</span>
+                        <span class="roi-time fast">⚡ ROI: 3-6 months</span>
                     </div>
                     
                     <p class="product-description">
@@ -3151,54 +2226,86 @@
                         "Tom used Magic Bookifier to publish his supply chain expertise. Result: 3 Fortune 500 consulting contracts in 60 days."
                     </div>
                     
-                    <span class="expand-details" onclick="toggleDetails(this)">Show full details →</span>
-                    
                     <div class="product-details">
-                        <div class="performance-metrics">
-                            <div class="metric-box">
-                                <div class="metric-title">Output</div>
-                                <div class="metric-value">50K+ Words</div>
-                            </div>
-                            <div class="metric-box">
-                                <div class="metric-title">Speed</div>
-                                <div class="metric-value">92% Faster</div>
-                            </div>
-                            <div class="metric-box">
-                                <div class="metric-title">Quality</div>
-                                <div class="metric-value">94%</div>
-                            </div>
-                            <div class="metric-box">
-                                <div class="metric-title">ROI Time</div>
-                                <div class="metric-value">3-6 Mo</div>
+                        <div class="what-you-get">
+                            <h4>🎯 What You Get</h4>
+                            <ul class="deliverables-list">
+                                <li>✅ AI Interview System (extracts your expertise)</li>
+                                <li>✅ Professional Book Editor & Formatter</li>
+                                <li>✅ Amazon KDP Publishing Integration</li>
+                                <li>✅ 15+ Industry-Specific Templates</li>
+                                <li>✅ Marketing Launch Kit</li>
+                                <li>✅ Speaking Fee Calculator & Proposal Templates</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="before-after">
+                            <div class="before-after-container">
+                                <div class="before">
+                                    <h5>❌ Before</h5>
+                                    <p>• Struggling to establish authority<br>• Low consulting rates<br>• No passive income streams</p>
+                                </div>
+                                <div class="after">
+                                    <h5>✅ After</h5>
+                                    <p>• Published authority<br>• 3-10x higher rates<br>• Book royalties + speaking fees</p>
+                                </div>
                             </div>
                         </div>
                         
-                        <ul class="features-list">
-                            <li><span class="check-icon">✅</span>AI-powered interview process extracts your unique insights</li>
-                            <li><span class="check-icon">✅</span>Professional editing and formatting included</li>
-                            <li><span class="check-icon">✅</span>Amazon KDP integration for instant publishing</li>
-                            <li><span class="check-icon">✅</span>15+ genre templates from business to memoir</li>
-                        </ul>
+                        <div class="performance-metrics">
+                            <div class="metric-box enhanced">
+                                <div class="metric-title">Output</div>
+                                <div class="metric-value">50K+ Words</div>
+                                <div class="progress-bar-mini"><div style="width: 95%"></div></div>
+                            </div>
+                            <div class="metric-box enhanced">
+                                <div class="metric-title">Speed</div>
+                                <div class="metric-value">92% Faster</div>
+                                <div class="progress-bar-mini"><div style="width: 92%"></div></div>
+                            </div>
+                            <div class="metric-box enhanced">
+                                <div class="metric-title">Quality</div>
+                                <div class="metric-value">94%</div>
+                                <div class="progress-bar-mini"><div style="width: 94%"></div></div>
+                            </div>
+                            <div class="metric-box enhanced">
+                                <div class="metric-title">ROI Time</div>
+                                <div class="metric-value">3-6 Mo</div>
+                                <div class="progress-bar-mini"><div style="width: 80%"></div></div>
+                            </div>
+                        </div>
+                        
+                        <div class="social-proof-mini">
+                            <div class="user-count">👥 2,847 authors published</div>
+                            <div class="recent-activity">🔥 3 books published today</div>
+                        </div>
                         
                         <div class="case-study">
-                            <div class="case-study-title">Verified Client Result</div>
+                            <div class="case-study-title">📈 Verified Success Rate: 94%</div>
                             <p><strong>Sarah Chen, Management Consultant:</strong> "Published my industry guide in 12 days. 
                             Result: $125K in new clients within 90 days, 5 keynotes at $10K each, 
                             and tripled my consulting rates. Total impact: $225K in 6 months."</p>
                         </div>
                     </div>
                     
-                    <span class="roi-badge">Typical ROI: 10-50x fee increase</span>
+                    <span class="roi-badge enhanced">💰 Typical ROI: 10-50x fee increase</span>
                 </div>
                 
                 <!-- Summary of Internet -->
                 <div class="product-card">
+                    <div class="limited-supply">⚡ LIMITED SUPPLY</div>
+                    
                     <div class="product-header">
                         <span class="product-icon">🌐</span>
                         <div>
                             <h3 class="product-title">Summary of Internet™</h3>
                             <p class="product-value">Value: $297 | Saves: 20 hrs/week research</p>
                         </div>
+                    </div>
+                    
+                    <div class="difficulty-level">
+                        <span class="difficulty-badge intermediate">🚀 Intermediate</span>
+                        <span class="roi-time fast">⚡ ROI: 2-4 weeks</span>
                     </div>
                     
                     <p class="product-description">
@@ -3210,44 +2317,69 @@
                         "Lisa spotted the 'silent luxury' trend 8 days early. Her targeted campaign hit $82K in 72 hours."
                     </div>
                     
-                    <span class="expand-details" onclick="toggleDetails(this)">Show full details →</span>
-                    
                     <div class="product-details">
-                        <div class="performance-metrics">
-                            <div class="metric-box">
-                                <div class="metric-title">Data Points</div>
-                                <div class="metric-value">10K+ Daily</div>
-                            </div>
-                            <div class="metric-box">
-                                <div class="metric-title">Accuracy</div>
-                                <div class="metric-value">87%</div>
-                            </div>
-                            <div class="metric-box">
-                                <div class="metric-title">Lead Time</div>
-                                <div class="metric-value">48-72h</div>
-                            </div>
-                            <div class="metric-box">
-                                <div class="metric-title">Time Saved</div>
-                                <div class="metric-value">20h/wk</div>
+                        <div class="what-you-get">
+                            <h4>🎯 What You Get</h4>
+                            <ul class="deliverables-list">
+                                <li>✅ AI Trend Detection System (50+ platforms)</li>
+                                <li>✅ Daily Email Briefings with Insights</li>
+                                <li>✅ Industry-Specific Trend Tracking</li>
+                                <li>✅ API Integration Tools</li>
+                                <li>✅ Competitor Trend Analysis</li>
+                                <li>✅ Viral Content Templates</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="before-after">
+                            <div class="before-after-container">
+                                <div class="before">
+                                    <h5>❌ Before</h5>
+                                    <p>• Always behind on trends<br>• 20+ hours manual research<br>• Missing opportunities</p>
+                                </div>
+                                <div class="after">
+                                    <h5>✅ After</h5>
+                                    <p>• 48-72hr trend advantage<br>• Automated intelligence<br>• First-mover profits</p>
+                                </div>
                             </div>
                         </div>
                         
-                        <ul class="features-list">
-                            <li><span class="check-icon">✅</span>Monitors 50+ platforms including Reddit, Twitter, TikTok</li>
-                            <li><span class="check-icon">✅</span>Daily email briefings with actionable insights</li>
-                            <li><span class="check-icon">✅</span>Industry-specific tracking across 50+ verticals</li>
-                            <li><span class="check-icon">✅</span>API integration with your content tools</li>
-                        </ul>
+                        <div class="performance-metrics">
+                            <div class="metric-box enhanced">
+                                <div class="metric-title">Data Points</div>
+                                <div class="metric-value">10K+ Daily</div>
+                                <div class="progress-bar-mini"><div style="width: 100%"></div></div>
+                            </div>
+                            <div class="metric-box enhanced">
+                                <div class="metric-title">Accuracy</div>
+                                <div class="metric-value">87%</div>
+                                <div class="progress-bar-mini"><div style="width: 87%"></div></div>
+                            </div>
+                            <div class="metric-box enhanced">
+                                <div class="metric-title">Lead Time</div>
+                                <div class="metric-value">48-72h</div>
+                                <div class="progress-bar-mini"><div style="width: 90%"></div></div>
+                            </div>
+                            <div class="metric-box enhanced">
+                                <div class="metric-title">Time Saved</div>
+                                <div class="metric-value">20h/wk</div>
+                                <div class="progress-bar-mini"><div style="width: 95%"></div></div>
+                            </div>
+                        </div>
+                        
+                        <div class="social-proof-mini">
+                            <div class="user-count">👥 1,543 trend hunters active</div>
+                            <div class="recent-activity">🔥 27 trends spotted today</div>
+                        </div>
                         
                         <div class="case-study">
-                            <div class="case-study-title">Verified Client Result</div>
+                            <div class="case-study-title">📈 Verified Success Rate: 87%</div>
                             <p><strong>Marcus Rodriguez, E-commerce:</strong> "Spotted a micro-trend 6 days early. 
                             Launched targeted campaign that generated $47K in 48 hours with 12x ROAS. 
                             Now consistently 3-5x our content performance."</p>
                         </div>
                     </div>
                     
-                    <span class="roi-badge">Content Performance: 3-5x improvement</span>
+                    <span class="roi-badge enhanced">📈 Content Performance: 3-5x improvement</span>
                 </div>
             </div>
             
@@ -3255,12 +2387,19 @@
             <div class="product-grid" id="support-products" style="display: none;" role="tabpanel" aria-labelledby="support-tab">
                 <!-- Legal Templates -->
                 <div class="product-card">
+                    <div class="price-increasing">📈 PRICE INCREASING</div>
+                    
                     <div class="product-header">
                         <span class="product-icon">⚖️</span>
                         <div>
                             <h3 class="product-title">Legal Protection Suite</h3>
                             <p class="product-value">Value: $497 | Saves: $5,000-15,000 legal fees</p>
                         </div>
+                    </div>
+                    
+                    <div class="difficulty-level">
+                        <span class="difficulty-badge beginner">👶 Beginner Friendly</span>
+                        <span class="roi-time instant">⚡ ROI: Instant protection</span>
                     </div>
                     
                     <p class="product-description">
@@ -3272,28 +2411,86 @@
                         "Jake used the Legal Suite to avoid a $20K contractor lawsuit. Templates paid for themselves 40x over."
                     </div>
                     
-                    <span class="expand-details" onclick="toggleDetails(this)">Show full details →</span>
-                    
                     <div class="product-details">
-                        <ul class="features-list">
-                            <li><span class="check-icon">✅</span>12+ essential templates (NDAs, contracts, agreements)</li>
-                            <li><span class="check-icon">✅</span>50-state compliant with quarterly updates</li>
-                            <li><span class="check-icon">✅</span>DocuSign ready for instant execution</li>
-                            <li><span class="check-icon">✅</span>M&A-ready documentation for future exits</li>
-                        </ul>
+                        <div class="what-you-get">
+                            <h4>🎯 What You Get</h4>
+                            <ul class="deliverables-list">
+                                <li>✅ 12+ Essential Legal Templates</li>
+                                <li>✅ NDAs & Confidentiality Agreements</li>
+                                <li>✅ Service & Employment Contracts</li>
+                                <li>✅ 50-State Compliant Documents</li>
+                                <li>✅ DocuSign Integration Ready</li>
+                                <li>✅ M&A Exit Documentation</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="before-after">
+                            <div class="before-after-container">
+                                <div class="before">
+                                    <h5>❌ Before</h5>
+                                    <p>• $300-500/hr legal fees<br>• Vulnerable to lawsuits<br>• Delayed deal closings</p>
+                                </div>
+                                <div class="after">
+                                    <h5>✅ After</h5>
+                                    <p>• Instant legal protection<br>• Professional contracts<br>• Fast deal execution</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="performance-metrics">
+                            <div class="metric-box enhanced">
+                                <div class="metric-title">Templates</div>
+                                <div class="metric-value">12+ Docs</div>
+                                <div class="progress-bar-mini"><div style="width: 100%"></div></div>
+                            </div>
+                            <div class="metric-box enhanced">
+                                <div class="metric-title">Coverage</div>
+                                <div class="metric-value">95%</div>
+                                <div class="progress-bar-mini"><div style="width: 95%"></div></div>
+                            </div>
+                            <div class="metric-box enhanced">
+                                <div class="metric-title">Compliance</div>
+                                <div class="metric-value">50 States</div>
+                                <div class="progress-bar-mini"><div style="width: 100%"></div></div>
+                            </div>
+                            <div class="metric-box enhanced">
+                                <div class="metric-title">Savings</div>
+                                <div class="metric-value">$15K+</div>
+                                <div class="progress-bar-mini"><div style="width: 90%"></div></div>
+                            </div>
+                        </div>
+                        
+                        <div class="social-proof-mini">
+                            <div class="user-count">👥 4,892 businesses protected</div>
+                            <div class="recent-activity">🔥 18 contracts signed today</div>
+                        </div>
+                        
+                        <div class="case-study">
+                            <div class="case-study-title">📈 Verified Success Rate: 98%</div>
+                            <p><strong>Jake Martinez, SaaS Founder:</strong> "The legal templates saved me from a $20K lawsuit. 
+                            One NDA alone prevented a competitor from stealing our trade secrets. 
+                            ROI: 40x in year one."</p>
+                        </div>
                     </div>
                     
-                    <span class="roi-badge">Risk Protection: $10K-50K value</span>
+                    <span class="roi-badge enhanced">🛡️ Risk Protection: $10K-50K value</span>
                 </div>
                 
                 <!-- Financial Models -->
                 <div class="product-card">
+                    <div class="most-popular">💎 PREMIUM TOOL</div>
+                    
                     <div class="product-header">
                         <span class="product-icon">📊</span>
                         <div>
                             <h3 class="product-title">Financial Intelligence Toolkit</h3>
                             <p class="product-value">Value: $397 | Replaces: $3,000+ consulting</p>
                         </div>
+                    </div>
+                    
+                    <div class="difficulty-level">
+                        <span class="difficulty-badge advanced">🎯 Advanced</span>
+                        <span class="roi-time fast">⚡ ROI: 1-3 months</span>
                     </div>
                     
                     <p class="product-description">
@@ -3305,18 +2502,69 @@
                         "Emma's pricing model revealed she was undercharging by 47%. New pricing = $180K additional revenue."
                     </div>
                     
-                    <span class="expand-details" onclick="toggleDetails(this)">Show full details →</span>
-                    
                     <div class="product-details">
-                        <ul class="features-list">
-                            <li><span class="check-icon">✅</span>10+ models (DCF, pricing, unit economics)</li>
-                            <li><span class="check-icon">✅</span>Monte Carlo simulations with 10,000 scenarios</li>
-                            <li><span class="check-icon">✅</span>Real-time market data integration</li>
-                            <li><span class="check-icon">✅</span>Investor-ready presentations</li>
-                        </ul>
+                        <div class="what-you-get">
+                            <h4>🎯 What You Get</h4>
+                            <ul class="deliverables-list">
+                                <li>✅ 10+ Financial Models (DCF, Pricing, Unit Economics)</li>
+                                <li>✅ Monte Carlo Simulation Engine</li>
+                                <li>✅ Real-Time Market Data Integration</li>
+                                <li>✅ Investor-Ready Presentations</li>
+                                <li>✅ AI-Powered Forecasting</li>
+                                <li>✅ Risk Assessment Dashboard</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="before-after">
+                            <div class="before-after-container">
+                                <div class="before">
+                                    <h5>❌ Before</h5>
+                                    <p>• Gut-feeling decisions<br>• $300/hr consultants<br>• Pricing guesswork</p>
+                                </div>
+                                <div class="after">
+                                    <h5>✅ After</h5>
+                                    <p>• Data-driven confidence<br>• Professional models<br>• Optimized pricing</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="performance-metrics">
+                            <div class="metric-box enhanced">
+                                <div class="metric-title">Models</div>
+                                <div class="metric-value">10+ Types</div>
+                                <div class="progress-bar-mini"><div style="width: 100%"></div></div>
+                            </div>
+                            <div class="metric-box enhanced">
+                                <div class="metric-title">Accuracy</div>
+                                <div class="metric-value">95%+</div>
+                                <div class="progress-bar-mini"><div style="width: 95%"></div></div>
+                            </div>
+                            <div class="metric-box enhanced">
+                                <div class="metric-title">Scenarios</div>
+                                <div class="metric-value">10K+</div>
+                                <div class="progress-bar-mini"><div style="width: 100%"></div></div>
+                            </div>
+                            <div class="metric-box enhanced">
+                                <div class="metric-title">Value</div>
+                                <div class="metric-value">$3K+</div>
+                                <div class="progress-bar-mini"><div style="width: 85%"></div></div>
+                            </div>
+                        </div>
+                        
+                        <div class="social-proof-mini">
+                            <div class="user-count">👥 987 CFOs & analysts using</div>
+                            <div class="recent-activity">🔥 14 models run today</div>
+                        </div>
+                        
+                        <div class="case-study">
+                            <div class="case-study-title">📈 Verified Success Rate: 92%</div>
+                            <p><strong>Emma Thompson, SaaS CEO:</strong> "The pricing model revealed we were undercharging by 47%. 
+                            Implemented new tiered pricing strategy = $180K additional ARR within 90 days. 
+                            Best business decision ever."</p>
+                        </div>
                     </div>
                     
-                    <span class="roi-badge">Decision Impact: $100K-1M potential</span>
+                    <span class="roi-badge enhanced">💡 Decision Impact: $100K-1M potential</span>
                 </div>
             </div>
             
