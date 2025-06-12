@@ -1,5 +1,11 @@
 {
   "buildCommand": "echo 'No build needed'",
   "outputDirectory": ".",
-  "installCommand": "npm install"
+  "installCommand": "npm install",
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/LastBuyerBonusBonanza.html"
+    }
+  ]
 }
