@@ -217,6 +217,7 @@
             margin-bottom: 20px;
             background: linear-gradient(135deg, #FFFFFF 0%, #FCD34D 50%, #F59E0B 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             line-height: 1.1;
             animation: slideInUp 0.8s ease-out;
@@ -444,9 +445,7 @@
             text-shadow: 0 0 10px rgba(252, 211, 77, 0.8);
             background: rgba(252, 211, 77, 0.1);
             border-color: rgba(252, 211, 77, 0.5);
-        }
-
-        /* Modal Styles */
+        }        /* Enhanced Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -455,94 +454,362 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.8);
-            animation: fadeIn 0.3s ease-out;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            visibility: visible;
         }
 
         .modal-content {
-            background: white;
-            margin: 5% auto;
-            padding: 40px;
+            background: #ffffff;
             border-radius: 20px;
             width: 90%;
-            max-width: 600px;
-            max-height: 80vh;
-            overflow-y: auto;
+            max-width: 650px;
+            max-height: 90vh;
+            overflow: hidden;
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
+                        0 0 0 1px rgba(0, 0, 0, 0.05);
+        }
+
+        .modal.show .modal-content {
+            transform: scale(1) translateY(0);
+        }
+
+        /* Modal Header */
+        .modal-header {
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            padding: 28px 32px;
             position: relative;
-            animation: slideDown 0.3s ease-out;
+            text-align: center;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        .modal-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 0;
         }
 
         .modal-close {
             position: absolute;
             top: 20px;
             right: 20px;
-            font-size: 2rem;
-            font-weight: bold;
-            color: #6B7280;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
             cursor: pointer;
-            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 0;
         }
 
         .modal-close:hover {
-            color: var(--dark);
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
         }
 
-        .modal-title {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--dark);
-            margin-bottom: 20px;
-            background: var(--gradient-secondary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .modal-close::before,
+        .modal-close::after {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 2px;
+            background: #fff;
         }
 
-        .modal-content h3 {
-            font-size: 1.5rem;
-            color: var(--dark);
-            margin: 20px 0 15px;
+        .modal-close::before {
+            transform: rotate(45deg);
         }
 
-        .modal-content ul {
-            list-style: none;
-            padding: 0;
+        .modal-close::after {
+            transform: rotate(-45deg);
         }
 
-        .modal-content li {
-            padding: 15px 0;
-            border-bottom: 1px solid #E5E7EB;
+        /* Modal Content Body */
+        .modal-body {
+            padding: 32px;
+            overflow-y: auto;
+            max-height: calc(90vh - 200px);
+            background: #fafafa;
         }
 
-        .modal-content li strong {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .modal-cta {
-            background: var(--gradient-secondary);
+        /* Everyone Wins Banner */
+        .everyone-wins-banner {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 20px;
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .everyone-wins-banner::before {
+            content: '✨';
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 30px;
+            opacity: 0.8;
+        }
+
+        .everyone-wins-banner::after {
+            content: '✨';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 30px;
+            opacity: 0.8;
+        }
+
+        .everyone-wins-banner h3 {
+            font-size: 22px;
             font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .everyone-wins-banner p {
+            font-size: 16px;
+            opacity: 0.95;
+            line-height: 1.5;
+        }
+
+        /* How It Works Cards */
+        .how-it-works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .work-card {
+            background: #fff;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
             transition: all 0.3s ease;
         }
 
-        .modal-cta:hover {
+        .work-card:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.4);
+        }
+
+        .work-card-icon {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .work-card h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .work-card p {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+
+        .price-highlight {
+            color: #059669;
+            font-weight: 700;
+        }
+
+        /* Rules Section */
+        .rules-section {
+            margin-bottom: 32px;
+        }
+
+        .rules-section h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Rule Items */
+        .rule-item {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .rule-item:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+        }
+
+        .rule-icon {
+            background: #3b82f6;
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .rule-icon.check {
+            background: #10b981;
+            font-size: 20px;
+        }
+
+        .rule-text {
+            flex: 1;
+            line-height: 1.6;
+            color: #374151;
+            font-size: 15px;
+        }
+
+        .rule-text strong {
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        /* Last Buyer Special */
+        .last-buyer-special {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 28px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .last-buyer-special::before {
+            content: '🎉';
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 60px;
+            opacity: 0.2;
+            transform: rotate(-15deg);
+        }
+
+        .last-buyer-special h4 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .last-buyer-special p {
+            color: #000;
+            line-height: 1.6;
+            position: relative;
+            font-size: 15px;
+        }
+
+        .last-buyer-special ul {
+            list-style: none;
+            margin-top: 12px;
+            position: relative;
+            padding: 0;
+        }
+
+        .last-buyer-special li {
+            color: #000;
+            padding-left: 24px;
+            position: relative;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .last-buyer-special li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+
+        /* Bundle Contents */
+        .bundle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .bundle-item {
+            background: #f3f4f6;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #374151;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .bundle-item::before {
+            content: '✓';
+            color: #10b981;
+            font-weight: 700;
+        }
+
+        /* Modal Footer */
+        .modal-footer {
+            padding: 24px 32px;
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+        }
+
+        .understand-btn {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: #fff;
+            border: none;
+            padding: 16px 48px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .understand-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
         }
 
         .subscribe-btn:hover {
@@ -576,6 +843,7 @@
             text-align: center;
             margin-bottom: 20px;
             background: var(--gradient-primary);
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 2px 10px rgba(30, 58, 138, 0.1);
@@ -1503,35 +1771,118 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Rules Modal -->
+    </section>    <!-- Rules Modal -->
     <div id="rulesModal" class="modal">
         <div class="modal-content">
-            <span class="modal-close" onclick="closeRulesModal()">&times;</span>
-            <h2 class="modal-title">Official Auction Rules</h2>
-            
-            <ul>
-                <li>
-                    <strong>Opening Price:</strong> The auction starts at <strong>$1</strong>. Each purchase raises the price by <strong>$1</strong>.
-                </li>
-                <li>
-                    <strong>Delivery:</strong> Your bundle unlock key is sent to your email—usually within <strong>5 minutes</strong> of each purchase.
-                </li>
-                <li>
-                    <strong>Last Buyer Bonus:</strong> The <strong>final purchaser</strong> (last transaction recorded in Stripe) receives a <strong>100% refund</strong>—you get it free!
-                </li>
-                <li>
-                    <strong>Timing & Notification:</strong> We announce the <strong>exact start time</strong> to our email list, so <strong>subscribe</strong> to get the alert. The auction runs for <strong>23–26 hours</strong> after it begins, and we may end it <strong>at any point</strong> during that window. Whoever buys last wins the refund.
-                </li>
-            </ul>
-            
-            <h3>Join the mailing list to get notified first</h3>
-            <form onsubmit="handleSubscribe(event)" style="margin-top: 20px;">
-                <input type="email" placeholder="Enter your email for auction alerts" required style="padding: 12px 20px; border: 2px solid #E5E7EB; border-radius: 10px; font-size: 1rem; width: 100%; max-width: 300px; margin-bottom: 15px;">
-                <br>
-                <button type="submit" class="modal-cta" style="border: none; cursor: pointer;">Subscribe for Auction Alerts</button>
-            </form>
+            <!-- Header -->
+            <div class="modal-header">
+                <h2 class="modal-title">🎯 Reverse Auction Rules</h2>
+                <button class="modal-close" onclick="closeRulesModal()"></button>
+            </div>
+
+            <!-- Content -->
+            <div class="modal-body">
+                <!-- Everyone Wins Banner -->
+                <div class="everyone-wins-banner">
+                    <h3>🎊 EVERYONE WINS! Every Buyer Gets The Full Bundle!</h3>
+                    <p>The only difference? The earlier you buy, the less you pay!</p>
+                </div>
+
+                <!-- How It Works -->
+                <div class="how-it-works-grid">
+                    <div class="work-card">
+                        <div class="work-card-icon">💰</div>
+                        <h4>Buy Early, Pay Less</h4>
+                        <p>First buyer pays <span class="price-highlight">$1</span><br>
+                        Second buyer pays <span class="price-highlight">$2</span><br>
+                        Price increases $1 each time</p>
+                    </div>
+                    
+                    <div class="work-card">
+                        <div class="work-card-icon">📦</div>
+                        <h4>Everyone Gets Everything</h4>
+                        <p>All buyers receive the complete $1,388+ bundle instantly - no matter when you buy!</p>
+                    </div>
+                    
+                    <div class="work-card">
+                        <div class="work-card-icon">🏆</div>
+                        <h4>Last Buyer Grand Prize</h4>
+                        <p>Final buyer gets the bundle <strong>FREE</strong> + Custom AI Assistant worth $2,388!</p>
+                    </div>
+                </div>
+
+                <!-- What Everyone Gets -->
+                <div class="rules-section">
+                    <h3>📦 What EVERY Buyer Receives (Worth $1,388+)</h3>
+                    
+                    <div class="bundle-grid">
+                        <div class="bundle-item">Magic Bookifier (AI Book Writer)</div>
+                        <div class="bundle-item">Summary of the Internet</div>
+                        <div class="bundle-item">12+ Legal Templates</div>
+                        <div class="bundle-item">10+ Financial Models</div>
+                    </div>
+                </div>
+
+                <!-- Rules -->
+                <div class="rules-section">
+                    <h3>📋 Simple Auction Rules</h3>
+                    
+                    <div class="rule-item">
+                        <div class="rule-icon">1</div>
+                        <div class="rule-text">
+                            <strong>24-Hour Timer:</strong> The auction runs for exactly 24 hours. No extensions, no exceptions.
+                        </div>
+                    </div>
+
+                    <div class="rule-item">
+                        <div class="rule-icon">2</div>
+                        <div class="rule-text">
+                            <strong>Automatic Price Increase:</strong> After each purchase, the price goes up by exactly $1. Current price is always displayed.
+                        </div>
+                    </div>
+
+                    <div class="rule-item">
+                        <div class="rule-icon">3</div>
+                        <div class="rule-text">
+                            <strong>Instant Access:</strong> All buyers get immediate access to all digital products after payment.
+                        </div>
+                    </div>
+
+                    <div class="rule-item">
+                        <div class="rule-icon">4</div>
+                        <div class="rule-text">
+                            <strong>One Purchase Per Person:</strong> Fair play only - multiple purchases from the same person not allowed.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Last Buyer Special -->
+                <div class="last-buyer-special">
+                    <h4>🎁 Last Buyer MEGA BONUS</h4>
+                    <p>The final purchaser before the timer expires receives:</p>
+                    <ul>
+                        <li>100% Full Refund (Bundle is FREE!)</li>
+                        <li>Custom HiThereChat AI Assistant for your website</li>
+                        <li>1 Full Year of AI Chat Service (Worth $2,388)</li>
+                        <li>24/7 Intelligent Customer Support Bot</li>
+                    </ul>
+                </div>
+
+                <!-- Final Notice -->
+                <div class="rule-item" style="background: #f0f9ff; border-color: #3b82f6;">
+                    <div class="rule-icon check">✓</div>
+                    <div class="rule-text">
+                        <strong>Remember:</strong> Everyone wins in this auction! The only question is how much you'll save. Buy early for the best price, or take your chances for the grand prize!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="modal-footer">
+                <button class="understand-btn" onclick="closeRulesModal()">
+                    I Understand - Let's Go! 🚀
+                </button>
+            </div>
         </div>
     </div>
 
@@ -1810,16 +2161,21 @@
             }
             return false;
         };
-        
-        // Modal functions
+          // Modal functions
         function openRulesModal(event) {
             event.preventDefault();
-            document.getElementById('rulesModal').style.display = 'block';
+            const modal = document.getElementById('rulesModal');
+            modal.style.display = 'flex';
+            modal.classList.add('show');
             document.body.style.overflow = 'hidden';
         }
         
         function closeRulesModal() {
-            document.getElementById('rulesModal').style.display = 'none';
+            const modal = document.getElementById('rulesModal');
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
             document.body.style.overflow = 'auto';
         }
         
@@ -1830,6 +2186,13 @@
                 closeRulesModal();
             }
         }
+        
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeRulesModal();
+            }
+        });
         
         // Handle subscription
         function handleSubscribe(event) {
