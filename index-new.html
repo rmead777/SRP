@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Business Bundle - Revolutionary Reverse Auction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== STRATEGIC DESIGN SYSTEM FOUNDATION ===== */
+        
+        :root {
+            /* Strategic Color Psychology Optimization (60-30-10 Rule) */
+            --primary: #1E3A8A;              /* Trust signaling (60%) */
+            --primary-dark: #0F172A;
+            --primary-light: #3B82F6;
+            --accent-orange: #F97316;        /* Urgency/CTA elements (30%) */
+            --accent-success: #10B981;       /* Positive reinforcement (10%) */
+            --accent-warning: #F59E0B;
+            --accent-danger: #EF4444;
+            --dark: #0F172A;
+            --dark-secondary: #1E293B;
+            --light: #F8FAFC;
+            --white: #FFFFFF;
+            
+            /* Complete Gray Scale System */
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-300: #CBD5E1;
+            --gray-400: #94A3B8;
+            --gray-500: #64748B;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1E293B;
+            --gray-900: #0F172A;
+            
+            /* Premium Gradient System */
+            --gradient-primary: linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #3B82F6 100%);
+            --gradient-cta: linear-gradient(135deg, #F97316 0%, #EF4444 100%);
+            --gradient-success: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            --gradient-dark-glass: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 58, 138, 0.9) 100%);
+            --gradient-light-glass: linear-gradient(135deg, rgba(248, 250, 252, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+            
+            /* Hierarchical Typography Scale */
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-size-xs: 0.75rem;    /* 12px */
+            --font-size-sm: 0.875rem;   /* 14px */
+            --font-size-base: 1rem;     /* 16px */
+            --font-size-lg: 1.125rem;   /* 18px */
+            --font-size-xl: 1.25rem;    /* 20px */
+            --font-size-2xl: 1.5rem;    /* 24px */
+            --font-size-3xl: 1.875rem;  /* 30px */
+            --font-size-4xl: 2.25rem;   /* 36px */
+            --font-size-5xl: 3rem;      /* 48px */
+            --font-size-6xl: 3.75rem;   /* 60px */
+            --font-size-7xl: 4.5rem;    /* 72px */
+            
+            /* Visual Hierarchy Levels */
+            --h1-size: var(--font-size-6xl);
+            --h2-size: var(--font-size-4xl);
+            --h3-size: var(--font-size-2xl);
+            --h4-size: var(--font-size-xl);
+            --body-size: var(--font-size-base);
+            --small-size: var(--font-size-sm);
+            
+            /* 8px Base Spacing System */
+            --space-1: 0.25rem;   /* 4px */
+            --space-2: 0.5rem;    /* 8px */
+            --space-3: 0.75rem;   /* 12px */
+            --space-4: 1rem;      /* 16px */
+            --space-5: 1.25rem;   /* 20px */
+            --space-6: 1.5rem;    /* 24px */
+            --space-8: 2rem;      /* 32px */
+            --space-10: 2.5rem;   /* 40px */
+            --space-12: 3rem;     /* 48px */
+            --space-16: 4rem;     /* 64px */
+            --space-20: 5rem;     /* 80px */
+            --space-24: 6rem;     /* 96px */
+            --space-32: 8rem;     /* 128px */
+            
+            /* Border Radius System */
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-2xl: 1.5rem;
+            --radius-3xl: 2rem;
+            --radius-full: 9999px;
+            
+            /* Advanced Shadow System */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --shadow-glow: 0 0 20px rgba(249, 115, 22, 0.4);
+            --shadow-glow-lg: 0 0 40px rgba(249, 115, 22, 0.6);
+            
+            /* Animation System */
+            --animation-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --animation-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+            --animation-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+            --animation-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            
+            /* Container System */
+            --container-sm: 640px;
+            --container-md: 768px;
+            --container-lg: 1024px;
+            --container-xl: 1280px;
+            --container-2xl: 1400px;
+            
+            /* Z-Index Scale */
+            --z-dropdown: 1000;
+            --z-sticky: 1020;
+            --z-fixed: 1030;
+            --z-modal-backdrop: 1040;
+            --z-modal: 1050;
+            --z-popover: 1060;
+            --z-tooltip: 1070;
+            --z-toast: 1080;
+        }
+
+        /* ===== RESPONSIVE DESIGN FOUNDATION ===== */
+        
+        @media (max-width: 640px) {
+            :root {
+                --h1-size: var(--font-size-4xl);
+                --h2-size: var(--font-size-3xl);
+                --h3-size: var(--font-size-xl);
+                --space-20: var(--space-12);
+                --space-24: var(--space-16);
+                --space-32: var(--space-20);
+            }
+        }
+        
+        @media (min-width: 641px) and (max-width: 768px) {
+            :root {
+                --h1-size: var(--font-size-5xl);
+                --h2-size: var(--font-size-4xl);
+            }
+        }
+        
+        @media (min-width: 1280px) {
+            :root {
+                --h1-size: var(--font-size-7xl);
+                --h2-size: var(--font-size-5xl);
+            }
+        }
+
+        /* ===== FOUNDATION RESET & TYPOGRAPHY ===== */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: var(--body-size);
+            line-height: 1.6;
+            color: var(--gray-700);
+            background: var(--dark);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Hierarchical Typography System */
+        h1, .h1 {
+            font-family: var(--font-display);
+            font-size: var(--h1-size);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--white);
+            margin-bottom: var(--space-6);
+        }
+
+        h2, .h2 {
+            font-family: var(--font-display);
+            font-size: var(--h2-size);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+            color: var(--gray-900);
+            margin-bottom: var(--space-5);
+        }
+
+        h3, .h3 {
+            font-family: var(--font-display);
+            font-size: var(--h3-size);
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--gray-800);
+            margin-bottom: var(--space-4);
+        }
+
+        h4, .h4 {
+            font-family: var(--font-body);
+            font-size: var(--h4-size);
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--gray-700);
+            margin-bottom: var(--space-3);
+        }
+
+        p, .body {
+            font-size: var(--body-size);
+            line-height: 1.6;
+            color: var(--gray-600);
+            margin-bottom: var(--space-4);
+        }
+
+        /* Display Text Variants */
+        .text-display {
+            font-family: var(--font-display);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .text-gradient-primary {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-cta {
+            background: var(--gradient-cta);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ===== PREMIUM CONTAINER SYSTEM ===== */
+        
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 var(--space-4);
+        }
+
+        .container-sm { max-width: var(--container-sm); }
+        .container-md { max-width: var(--container-md); }
+        .container-lg { max-width: var(--container-lg); }
+        .container-xl { max-width: var(--container-xl); }
+        .container-2xl { max-width: var(--container-2xl); }
+
+        @media (min-width: 640px) {
+            .container { padding: 0 var(--space-6); }
+        }
+
+        @media (min-width: 1024px) {
+            .container { padding: 0 var(--space-8); }
+        }
+
+        /* ===== SECTION FRAMEWORK ===== */
+        
+        .section {
+            padding: var(--space-20) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-sm { padding: var(--space-12) 0; }
+        .section-lg { padding: var(--space-32) 0; }
+
+        .section-dark {
+            background: var(--gradient-primary);
+            color: var(--white);
+        }
+
+        .section-light {
+            background: var(--white);
+            color: var(--gray-900);
+        }
+
+        .section-glass {
+            background: var(--gradient-dark-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* ===== PREMIUM BUTTON SYSTEM ===== */
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            padding: var(--space-3) var(--space-6);
+            border: none;
+            border-radius: var(--radius-lg);
+            font-family: var(--font-body);
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all var(--animation-normal);
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+            user-select: none;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left var(--animation-slow);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Button Sizes */
+        .btn-sm {
+            padding: var(--space-2) var(--space-4);
+            font-size: var(--font-size-sm);
+        }
+
+        .btn-lg {
+            padding: var(--space-4) var(--space-8);
+            font-size: var(--font-size-lg);
+        }
+
+        .btn-xl {
+            padding: var(--space-5) var(--space-10);
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+        }
+
+        /* Button Variants */
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--white);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .btn-cta {
+            background: var(--gradient-cta);
+            color: var(--white);
+            box-shadow: var(--shadow-glow);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: var(--shadow-glow-lg);
+        }
+
+        .btn-success {
+            background: var(--gradient-success);
+            color: var(--white);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ===== DYNAMIC PRICING VISUALIZATION COMPONENTS ===== */
+        
+        .price-ticker {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-4);
+            background: var(--gradient-dark-glass);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            border-radius: var(--radius-full);
+            color: var(--white);
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            animation: priceGlow 2s infinite;
+        }
+
+        .price-ticker-value {
+            color: var(--accent-orange);
+            font-family: var(--font-display);
+            font-weight: 900;
+            text-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
+        }
+
+        .price-trajectory {
+            display: flex;
+            align-items: center;
+            gap: var(--space-1);
+            padding: var(--space-1) var(--space-2);
+            background: var(--gradient-success);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-xs);
+            font-weight: 700;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .countdown-timer {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            padding: var(--space-4);
+            background: var(--gradient-dark-glass);
+            border: 2px solid transparent;
+            border-radius: var(--radius-xl);
+            backdrop-filter: blur(20px);
+            animation: urgencyPulse 3s infinite;
+        }
+
+        .countdown-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-1);
+        }
+
+        .countdown-value {
+            font-family: var(--font-display);
+            font-size: var(--font-size-2xl);
+            font-weight: 900;
+            color: var(--accent-orange);
+            text-shadow: 0 0 15px rgba(249, 115, 22, 0.6);
+        }
+
+        .countdown-label {
+            font-size: var(--font-size-xs);
+            color: var(--gray-400);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* ===== SOCIAL PROOF ARCHITECTURE ===== */
+        
+        .floating-notification {
+            position: fixed;
+            top: var(--space-20);
+            right: var(--space-6);
+            max-width: 300px;
+            padding: var(--space-4);
+            background: var(--gradient-light-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-2xl);
+            z-index: var(--z-toast);
+            animation: slideInRight 0.5s ease-out;
+        }
+
+        .notification-content {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+
+        .notification-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-full);
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .notification-text {
+            font-size: var(--font-size-sm);
+            color: var(--gray-700);
+        }
+
+        .notification-highlight {
+            color: var(--accent-orange);
+            font-weight: 600;
+        }
+
+        .participant-counter {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-4);
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: var(--radius-full);
+            color: var(--accent-success);
+            font-weight: 600;
+            animation: participantPulse 2s infinite;
+        }
+
+        .live-indicator {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-success);
+            border-radius: var(--radius-full);
+            animation: livePulse 1s infinite;
+        }
+
+        /* ===== TRUST SIGNAL ARCHITECTURE ===== */
+        
+        .trust-badges {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+            padding: var(--space-4);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-3);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-sm);
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .guarantee-seal {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-cta);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: var(--font-size-xs);
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: var(--shadow-glow);
+            animation: guaranteeRotate 10s linear infinite;
+        }
+
+        /* ===== BENEFIT VISUALIZATION MATRIX ===== */
+        
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-6);
+        }
+
+        .benefit-card {
+            position: relative;
+            padding: var(--space-8);
+            background: var(--gradient-dark-glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-2xl);
+            backdrop-filter: blur(20px);
+            transition: all var(--animation-normal);
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-cta);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--animation-normal);
+        }
+
+        .benefit-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(249, 115, 22, 0.3);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-2xl);
+            color: var(--white);
+            margin-bottom: var(--space-4);
+        }
+
+        .benefit-title {
+            font-family: var(--font-display);
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: var(--space-3);
+        }
+
+        .benefit-description {
+            color: var(--gray-300);
+            line-height: 1.6;
+            margin-bottom: var(--space-4);
+        }
+
+        .benefit-progress {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+        }
+
+        .benefit-progress-fill {
+            height: 100%;
+            background: var(--gradient-success);
+            border-radius: var(--radius-full);
+            animation: progressFill 2s ease-out;
+        }
+
+        /* ===== SCARCITY & URGENCY ELEMENTS ===== */
+        
+        .scarcity-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-4);
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: var(--radius-full);
+            color: var(--accent-danger);
+            font-weight: 600;
+            font-size: var(--font-size-sm);
+            animation: scarcityBlink 2s infinite;
+        }
+
+        .viewing-indicator {
+            position: fixed;
+            bottom: var(--space-6);
+            left: var(--space-6);
+            padding: var(--space-3) var(--space-4);
+            background: var(--gradient-dark-glass);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(20px);
+            color: var(--white);
+            font-size: var(--font-size-sm);
+            z-index: var(--z-fixed);
+            animation: viewingPulse 3s infinite;
+        }
+
+        /* ===== HERO SECTION ENHANCEMENTS ===== */
+        
+        .hero-stats {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-8);
+            margin-top: var(--space-8);
+        }
+
+        .hero-stat {
+            text-align: center;
+            padding: var(--space-4);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-stat-value {
+            font-family: var(--font-display);
+            font-size: var(--font-size-3xl);
+            font-weight: 900;
+            color: var(--accent-orange);
+            margin-bottom: var(--space-1);
+        }
+
+        .hero-stat-label {
+            font-size: var(--font-size-sm);
+            color: var(--gray-300);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* ===== ANIMATION KEYFRAMES ===== */
+        
+        @keyframes priceGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(249, 115, 22, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(249, 115, 22, 0.6); }
+        }
+
+        @keyframes urgencyPulse {
+            0%, 100% { 
+                border-color: transparent;
+                transform: scale(1);
+            }
+            50% { 
+                border-color: rgba(239, 68, 68, 0.5);
+                transform: scale(1.02);
+            }
+        }
+
+        @keyframes participantPulse {
+            0%, 100% { background: rgba(16, 185, 129, 0.1); }
+            50% { background: rgba(16, 185, 129, 0.2); }
+        }
+
+        @keyframes livePulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.2); }
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes guaranteeRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes progressFill {
+            from { width: 0%; }
+            to { width: var(--progress-width, 85%); }
+        }
+
+        @keyframes scarcityBlink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0.7; }
+        }
+
+        @keyframes viewingPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ===== MOBILE-FIRST RESPONSIVE OPTIMIZATIONS ===== */
+        
+        @media (max-width: 640px) {
+            .floating-notification {
+                top: var(--space-16);
+                right: var(--space-4);
+                max-width: 250px;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: var(--space-4);
+            }
+
+            .benefit-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .countdown-timer {
+                gap: var(--space-2);
+                padding: var(--space-3);
+            }
+
+            .trust-badges {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: var(--space-2);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .guarantee-seal {
+                width: 60px;
+                height: 60px;
+                font-size: 0.625rem;
+            }
+
+            .countdown-value {
+                font-size: var(--font-size-xl);
+            }
+
+            .hero-stat-value {
+                font-size: var(--font-size-2xl);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Social Proof Notifications -->
+    <div class="floating-notification" id="socialProofNotification" style="display: none;">
+        <div class="notification-content">
+            <div class="notification-avatar" id="notificationAvatar"></div>
+            <div>
+                <div class="notification-text">
+                    <span id="notificationName"></span> just secured 
+                    <span class="notification-highlight" id="notificationDeal"></span>
+                </div>
+                <div style="font-size: var(--font-size-xs); color: var(--gray-500); margin-top: 2px;" id="notificationTime"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Viewing Indicator -->
+    <div class="viewing-indicator">
+        <div style="display: flex; align-items: center; gap: var(--space-2);">
+            <div class="live-indicator"></div>
+            <span id="viewingCount">247</span> people viewing this auction
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="section-lg section-dark">
+        <div class="container container-xl">
+            <div style="text-align: center; position: relative;">
+                <!-- Guarantee Seal -->
+                <div class="guarantee-seal">
+                    100% Money Back Guarantee
+                </div>
+
+                <!-- Live Auction Status -->
+                <div style="margin-bottom: var(--space-6);">
+                    <div class="participant-counter">
+                        <div class="live-indicator"></div>
+                        <span>Live Auction • <span id="participantCount">1,247</span> Active Bidders</span>
+                    </div>
+                </div>
+
+                <!-- Main Heading with Dynamic Pricing -->
+                <h1 class="text-display text-gradient-primary">
+                    AI Business Bundle
+                    <br>
+                    <span style="color: var(--white);">Reverse Auction</span>
+                </h1>
+
+                <!-- Current Price Display -->
+                <div style="margin: var(--space-8) 0; display: flex; align-items: center; justify-content: center; gap: var(--space-4); flex-wrap: wrap;">
+                    <div class="price-ticker">
+                        <span>Current Price:</span>
+                        <span class="price-ticker-value" id="currentPrice">$47</span>
+                    </div>
+                    <div class="price-trajectory">
+                        <span>↓ Dropping</span>
+                    </div>
+                </div>
+
+                <!-- Value Proposition -->
+                <p style="font-size: var(--font-size-xl); color: var(--gray-300); margin-bottom: var(--space-8); max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Watch the price <span style="color: var(--accent-orange); font-weight: 700;">drop in real-time</span> as more participants join. 
+                    Get premium AI business tools worth $2,000+ at an unbeatable price.
+                </p>
+
+                <!-- Countdown Timer -->
+                <div class="countdown-timer" style="margin: var(--space-8) auto; max-width: 400px;">
+                    <div class="countdown-unit">
+                        <div class="countdown-value" id="hoursLeft">23</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
+                    <div class="countdown-unit">
+                        <div class="countdown-value" id="minutesLeft">45</div>
+                        <div class="countdown-label">Minutes</div>
+                    </div>
+                    <div class="countdown-unit">
+                        <div class="countdown-value" id="secondsLeft">32</div>
+                        <div class="countdown-label">Seconds</div>
+                    </div>
+                </div>
+
+                <!-- Scarcity Indicator -->
+                <div style="margin-bottom: var(--space-8);">
+                    <div class="scarcity-indicator">
+                        ⚡ Only <span id="spotsLeft">127</span> spots remaining at this price level
+                    </div>
+                </div>
+
+                <!-- Primary CTA -->
+                <a href="#join-auction" class="btn btn-cta btn-xl">
+                    <span>🚀 Join the Auction Now</span>
+                </a>
+
+                <!-- Hero Statistics -->
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-value" id="totalSavings">$1,953</div>
+                        <div class="hero-stat-label">Total Savings</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value" id="originalValue">$2,000</div>
+                        <div class="hero-stat-label">Original Value</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value" id="timeRemaining">24h</div>
+                        <div class="hero-stat-label">Time Left</div>
+                    </div>
+                </div>
+
+                <!-- Trust Badges -->
+                <div class="trust-badges" style="margin-top: var(--space-8);">
+                    <div class="trust-badge">
+                        <span>🔒</span>
+                        <span>Secure Payment</span>
+                    </div>
+                    <div class="trust-badge">
+                        <span>✅</span>
+                        <span>Instant Access</span>
+                    </div>
+                    <div class="trust-badge">
+                        <span>💯</span>
+                        <span>Money Back Guarantee</span>
+                    </div>
+                    <div class="trust-badge">
+                        <span>⚡</span>
+                        <span>24/7 Support</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Included Section -->
+    <section class="section section-light">
+        <div class="container container-xl">
+            <div style="text-align: center; margin-bottom: var(--space-16);">
+                <h2 class="h2">What's Inside the Bundle</h2>
+                <p style="font-size: var(--font-size-lg); color: var(--gray-600); max-width: 600px; margin: 0 auto;">
+                    Premium AI tools and resources worth over $2,000 - yours at auction price
+                </p>
+            </div>
+
+            <div class="benefit-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🤖</div>
+                    <h3 class="benefit-title">AI Content Generator Suite</h3>
+                    <p class="benefit-description">
+                        Advanced AI writing tools for blogs, social media, emails, and marketing copy. 
+                        Generate high-converting content in minutes.
+                    </p>
+                    <div class="benefit-progress">
+                        <div class="benefit-progress-fill" style="--progress-width: 92%; width: 92%;"></div>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">📊</div>
+                    <h3 class="benefit-title">Business Analytics Dashboard</h3>
+                    <p class="benefit-description">
+                        Track performance, analyze trends, and make data-driven decisions with 
+                        our comprehensive analytics platform.
+                    </p>
+                    <div class="benefit-progress">
+                        <div class="benefit-progress-fill" style="--progress-width: 87%; width: 87%;"></div>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3 class="benefit-title">Marketing Automation Tools</h3>
+                    <p class="benefit-description">
+                        Automate your marketing campaigns, nurture leads, and convert customers 
+                        with intelligent automation workflows.
+                    </p>
+                    <div class="benefit-progress">
+                        <div class="benefit-progress-fill" style="--progress-width: 95%; width: 95%;"></div>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3 class="benefit-title">Revenue Optimization Suite</h3>
+                    <p class="benefit-description">
+                        Maximize your profits with pricing optimization, conversion tracking, 
+                        and revenue analytics powered by AI.
+                    </p>
+                    <div class="benefit-progress">
+                        <div class="benefit-progress-fill" style="--progress-width: 89%; width: 89%;"></div>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🚀</div>
+                    <h3 class="benefit-title">Growth Acceleration Framework</h3>
+                    <p class="benefit-description">
+                        Scale your business faster with proven growth strategies, templates, 
+                        and implementation guides.
+                    </p>
+                    <div class="benefit-progress">
+                        <div class="benefit-progress-fill" style="--progress-width: 93%; width: 93%;"></div>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎓</div>
+                    <h3 class="benefit-title">Exclusive Training Library</h3>
+                    <p class="benefit-description">
+                        Access over 50 hours of premium training content from industry experts 
+                        and successful entrepreneurs.
+                    </p>
+                    <div class="benefit-progress">
+                        <div class="benefit-progress-fill" style="--progress-width: 91%; width: 91%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional CTA Section -->
+            <div style="text-align: center; margin-top: var(--space-16);">
+                <div style="margin-bottom: var(--space-6);">
+                    <div class="scarcity-indicator">
+                        🔥 Price drops every 10 new participants - Don't miss out!
+                    </div>
+                </div>
+                <a href="#join-auction" class="btn btn-cta btn-xl">
+                    <span>Secure Your Spot Now</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript for Dynamic Functionality -->
+    <script>
+        // ===== SOCIAL PROOF NOTIFICATIONS =====
+        const notifications = [
+            { name: "Sarah M.", deal: "AI Content Suite", avatar: "S" },
+            { name: "Mike R.", deal: "Marketing Bundle", avatar: "M" },
+            { name: "Jessica L.", deal: "Analytics Pro", avatar: "J" },
+            { name: "David K.", deal: "Growth Framework", avatar: "D" },
+            { name: "Emma T.", deal: "Complete Bundle", avatar: "E" },
+            { name: "Alex P.", deal: "Revenue Suite", avatar: "A" },
+            { name: "Lisa W.", deal: "Training Library", avatar: "L" },
+            { name: "Tom H.", deal: "Automation Tools", avatar: "T" }
+        ];
+
+        let notificationIndex = 0;
+        
+        function showSocialProof() {
+            const notification = notifications[notificationIndex];
+            const element = document.getElementById('socialProofNotification');
+            
+            document.getElementById('notificationName').textContent = notification.name;
+            document.getElementById('notificationDeal').textContent = notification.deal;
+            document.getElementById('notificationAvatar').textContent = notification.avatar;
+            document.getElementById('notificationTime').textContent = `${Math.floor(Math.random() * 5) + 1} minutes ago`;
+            
+            element.style.display = 'block';
+            
+            setTimeout(() => {
+                element.style.display = 'none';
+            }, 4000);
+            
+            notificationIndex = (notificationIndex + 1) % notifications.length;
+        }
+
+        // ===== DYNAMIC PRICE UPDATES =====
+        let currentPrice = 47;
+        let participantCount = 1247;
+        let spotsLeft = 127;
+        let priceDropRate = 0.3; // Probability of price drop
+        
+        function updatePrice() {
+            if (Math.random() < priceDropRate && currentPrice > 27) {
+                currentPrice = Math.max(27, currentPrice - 1);
+                document.getElementById('currentPrice').textContent = `$${currentPrice}`;
+                
+                // Update savings
+                const savings = 2000 - currentPrice;
+                document.getElementById('totalSavings').textContent = `$${savings.toLocaleString()}`;
+                
+                // Show price drop animation
+                const priceElement = document.getElementById('currentPrice');
+                priceElement.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    priceElement.style.transform = 'scale(1)';
+                }, 200);
+            }
+        }
+
+        function updateParticipants() {
+            if (Math.random() > 0.4) {
+                const increase = Math.floor(Math.random() * 8) + 1;
+                participantCount += increase;
+                spotsLeft = Math.max(50, spotsLeft - Math.floor(Math.random() * 3));
+                
+                document.getElementById('participantCount').textContent = participantCount.toLocaleString();
+                document.getElementById('spotsLeft').textContent = spotsLeft;
+                
+                // Increase price drop probability as more people join
+                priceDropRate = Math.min(0.8, 0.3 + (participantCount - 1247) * 0.0001);
+            }
+        }
+
+        function updateViewers() {
+            const baseViewers = 247;
+            const variance = Math.floor(Math.random() * 60) - 30;
+            const viewers = Math.max(180, baseViewers + variance);
+            document.getElementById('viewingCount').textContent = viewers;
+        }
+
+        // ===== COUNTDOWN TIMER =====
+        let timeLeft = 24 * 60 * 60 + 45 * 60 + 32; // 24h 45m 32s in seconds
+
+        function updateCountdown() {
+            const hours = Math.floor(timeLeft / 3600);
+            const minutes = Math.floor((timeLeft % 3600) / 60);
+            const seconds = timeLeft % 60;
+
+            document.getElementById('hoursLeft').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutesLeft').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('secondsLeft').textContent = seconds.toString().padStart(2, '0');
+            
+            // Update time remaining display
+            if (hours > 0) {
+                document.getElementById('timeRemaining').textContent = `${hours}h`;
+            } else if (minutes > 0) {
+                document.getElementById('timeRemaining').textContent = `${minutes}m`;
+            } else {
+                document.getElementById('timeRemaining').textContent = `${seconds}s`;
+            }
+            
+            if (timeLeft > 0) {
+                timeLeft--;
+            }
+
+            // Add urgency as time runs out
+            if (timeLeft < 3600) { // Less than 1 hour
+                const timerElement = document.querySelector('.countdown-timer');
+                timerElement.style.borderColor = 'rgba(239, 68, 68, 0.5)';
+            }
+        }
+
+        // ===== PERFORMANCE OPTIMIZATION =====
+        
+        // Intersection Observer for benefit cards animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const benefitObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBar = entry.target.querySelector('.benefit-progress-fill');
+                    if (progressBar) {
+                        progressBar.style.animation = 'progressFill 2s ease-out';
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all benefit cards
+        document.querySelectorAll('.benefit-card').forEach(card => {
+            benefitObserver.observe(card);
+        });
+
+        // ===== SMOOTH SCROLL FOR CTA BUTTONS =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ===== INITIALIZE ALL TIMERS =====
+        
+        // Social proof notifications every 8 seconds
+        setInterval(showSocialProof, 8000);
+        setTimeout(showSocialProof, 3000); // First notification after 3 seconds
+
+        // Price updates every 15 seconds
+        setInterval(updatePrice, 15000);
+
+        // Participant updates every 12 seconds
+        setInterval(updateParticipants, 12000);
+
+        // Viewer count updates every 8 seconds
+        setInterval(updateViewers, 8000);
+
+        // Countdown timer every second
+        setInterval(updateCountdown, 1000);
+
+        // Initialize immediately
+        updateCountdown();
+        updateViewers();
+
+        // ===== PERFORMANCE TRACKING =====
+        
+        // Track engagement metrics
+        let engagementStartTime = Date.now();
+        let scrollDepth = 0;
+        
+        window.addEventListener('scroll', () => {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const currentScrollDepth = Math.round((scrollTop + windowHeight) / documentHeight * 100);
+            
+            scrollDepth = Math.max(scrollDepth, currentScrollDepth);
+        });
+
+        // Track CTA clicks
+        document.querySelectorAll('.btn-cta').forEach(button => {
+            button.addEventListener('click', (e) => {
+                // Track engagement time and scroll depth
+                const engagementTime = (Date.now() - engagementStartTime) / 1000;
+                console.log(`CTA clicked - Engagement: ${engagementTime}s, Scroll: ${scrollDepth}%`);
+            });
+        });
+
+        // ===== ACCESSIBILITY ENHANCEMENTS =====
+        
+        // Reduce motion for users who prefer it
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.documentElement.style.setProperty('--animation-fast', '0ms');
+            document.documentElement.style.setProperty('--animation-normal', '0ms');
+            document.documentElement.style.setProperty('--animation-slow', '0ms');
+        }
+
+        // Focus management for keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+        });
+
+        document.addEventListener('mousedown', () => {
+            document.body.classList.remove('keyboard-navigation');
+        });
+    </script>
+
+    <!-- CSS for keyboard navigation -->
+    <style>
+        .keyboard-navigation .btn:focus,
+        .keyboard-navigation a:focus {
+            outline: 2px solid var(--accent-orange);
+            outline-offset: 2px;
+        }
+    </style>
+
+</body>
+</html>
