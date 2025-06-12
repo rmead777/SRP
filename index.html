@@ -78,13 +78,6 @@
             margin: 0 auto;
             padding: 0 var(--container-padding);
         }
-        
-        /* Better container responsive behavior */
-        @media (min-width: 1400px) {
-            .container {
-                max-width: 1320px;
-            }
-        }
 
         /* Animated Background */
         .animated-bg {
@@ -2222,102 +2215,122 @@
             padding: 40px 0;
         }
 
-        .trust-badges .trust-badge {
+        /* Trust Section - Restored 4 Horizontal Boxes Layout */
+        .trust-section {
+            background: white;
+            padding: 50px 0;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .trust-badges {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .trust-badge {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            gap: 15px;
-            padding: 15px 25px;
+            text-align: center;
+            padding: 25px 20px;
             background: white;
             border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            min-width: 200px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .trust-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .badge-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .badge-text {
             text-align: center;
         }
 
-        .trust-section .container {
-            max-width: 1000px;
+        .badge-text strong {
+            display: block;
+            color: var(--dark);
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 8px;
         }
 
-        .trust-section .trust-badges {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 0;
+        .badge-text span {
+            color: #6b7280;
+            font-size: 0.875rem;
+            line-height: 1.4;
         }
 
-        /* FAQ Section Styling */
+        /* FAQ Section Styling - Restored Clean Grid Layout */
         .faq-section {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            padding: 80px 0;
+            background: white;
+            padding: 60px 0;
+        }
+
+        .faq-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         .faq-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
         }
 
         .faq-item {
             background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid #e2e8f0;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
             transition: all 0.3s ease;
         }
 
         .faq-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
         }
 
         .faq-question {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--dark);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             line-height: 1.4;
         }
 
         .faq-answer {
-            color: #64748b;
-            line-height: 1.6;
+            color: #6b7280;
+            line-height: 1.5;
             margin: 0;
+            font-size: 0.9rem;
         }
 
-        /* Clock is Ticking Section Styling */
+        /* Clock is Ticking Section - Restored Original Layout */
         .final-cta {
-            background: var(--gradient-dark);
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
             color: white;
-            padding: 80px 0;
+            padding: 60px 0;
             text-align: center;
             position: relative;
-            overflow: hidden;
-        }
-
-        .final-cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><radialGradient id="g"><stop offset="0%" stop-color="rgba(255,255,255,0.1)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></radialGradient></defs><circle cx="50" cy="50" r="50" fill="url(%23g)"/></svg>');
-            animation: pulse 3s ease-in-out infinite;
-            opacity: 0.3;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.1); opacity: 0.1; }
         }
 
         .final-cta-content {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
@@ -2325,29 +2338,54 @@
 
         .final-cta h2 {
             color: white;
-            margin-bottom: 20px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 25px;
+            font-size: 2.2rem;
+            font-weight: 800;
         }
 
         .final-cta p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            opacity: 0.95;
+            line-height: 1.6;
         }
 
         .urgency-box {
-            background: rgba(239, 68, 68, 0.2);
-            border: 2px solid #ef4444;
+            background: linear-gradient(135deg, #ff6b9d 0%, #f093fb 100%);
+            border: none;
             border-radius: 12px;
             padding: 20px;
-            margin: 30px 0;
-            backdrop-filter: blur(10px);
+            margin: 25px auto;
+            max-width: 600px;
+            box-shadow: 0 4px 16px rgba(255, 107, 157, 0.3);
         }
 
         .urgency-box p {
             margin: 0;
-            color: #fecaca;
+            color: white;
             font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b9d 0%, #f093fb 100%);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
+            transition: all 0.3s ease;
+            margin: 20px 0;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.5);
         }
 
         /* Floating Price Tracker */
@@ -2434,21 +2472,35 @@
             opacity: 0.9;
         }
 
-        /* Expertise Revenue Section */
+        /* General Section Spacing - Reduced Vertical Whitespace */
+        section {
+            padding: 50px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        /* Expertise Revenue Section - Tighter Spacing */
         .expertise-revenue {
             background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            padding: 80px 0;
+            padding: 50px 0 !important;
         }
 
         .revenue-streams-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
+            margin-bottom: 40px !important;
         }
 
-        /* Mobile responsiveness for new sections */
+        /* Mobile responsiveness - Restored Clean Layouts */
         @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
             .comparison-table {
                 grid-template-columns: 1fr;
                 gap: 20px;
@@ -2482,32 +2534,42 @@
                 padding: 25px 20px;
             }
 
+            /* FAQ - Stack to 1 column on mobile, 2 on tablet */
             .faq-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .faq-item {
-                padding: 25px 20px;
-            }
-
-            .trust-section .trust-badges {
-                flex-direction: column;
-                align-items: center;
                 gap: 15px;
             }
 
-            .trust-badges .trust-badge {
-                min-width: 250px;
-                padding: 12px 20px;
+            .faq-item {
+                padding: 20px;
+            }
+
+            /* Trust badges - Stack to 1 column on mobile */
+            .trust-badges {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .trust-badge {
+                padding: 20px;
             }
 
             .final-cta h2 {
-                font-size: 2rem !important;
+                font-size: 1.8rem !important;
             }
 
             .final-cta p {
                 font-size: 1rem !important;
+            }
+
+            .urgency-box {
+                padding: 15px;
+                margin: 20px auto;
+            }
+
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 1.1rem;
             }
 
             .floating-price-tracker {
@@ -2521,13 +2583,21 @@
                 font-size: 1.5rem;
             }
 
-            .urgency-box {
-                padding: 15px;
-                margin: 20px 0;
-            }
-
             .revenue-streams-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        /* Tablet responsiveness */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .faq-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .trust-badges {
+                grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
             }
         }
