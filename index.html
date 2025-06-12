@@ -175,9 +175,7 @@
             color: white;
             text-align: center;
             position: relative;
-        }
-
-        /* Bonanza Logo */
+        }        /* Bonanza Logo */
         .bonanza-logo {
             margin: 0 auto 30px;
             text-align: center;
@@ -188,6 +186,324 @@
         @keyframes floatLogo {
             0%, 100% { transform: translateY(0) scale(1); }
             50% { transform: translateY(-10px) scale(1.05); }
+        }
+
+        /* Enhanced Logo System */
+        .logo-container {
+            position: relative;
+            display: inline-block;
+            transform-style: preserve-3d;
+            animation: logoFloat 4s ease-in-out infinite;
+        }
+        
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0) rotateX(0); }
+            50% { transform: translateY(-10px) rotateX(2deg); }
+        }
+        
+        /* Circular Substrate System */
+        .logo-circle-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: radial-gradient(ellipse at center 40%, 
+                #fcd34d 0%, 
+                #fbbf24 15%, 
+                #f59e0b 30%, 
+                #dc2626 50%, 
+                #991b1b 70%, 
+                #450a0a 90%);
+            box-shadow: 
+                0 0 0 5px #000,
+                0 0 0 7px #fbbf24,
+                0 15px 40px rgba(0, 0, 0, 0.5),
+                inset 0 -15px 30px rgba(0, 0, 0, 0.3);
+            z-index: -2;
+            animation: sunsetPulse 6s ease-in-out infinite;
+        }
+        
+        @keyframes sunsetPulse {
+            0%, 100% { 
+                filter: brightness(1) saturate(1);
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% { 
+                filter: brightness(1.1) saturate(1.2);
+                transform: translate(-50%, -50%) scale(1.02);
+            }
+        }
+        
+        /* Sunset Rays Effect */
+        .sunset-rays {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 270px;
+            height: 270px;
+            border-radius: 50%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .sunset-rays::before,
+        .sunset-rays::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-conic-gradient(
+                from 0deg at 50% 50%,
+                transparent 0deg,
+                rgba(251, 191, 36, 0.1) 5deg,
+                transparent 10deg
+            );
+            transform: translate(-50%, -50%);
+            animation: rayRotate 60s linear infinite;
+        }
+        
+        .sunset-rays::after {
+            background: repeating-conic-gradient(
+                from 0deg at 50% 50%,
+                transparent 0deg,
+                rgba(220, 38, 38, 0.05) 7deg,
+                transparent 14deg
+            );
+            animation-duration: 90s;
+            animation-direction: reverse;
+        }
+        
+        @keyframes rayRotate {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }          .logo-main {
+            position: relative;
+            text-align: center;
+            user-select: none;
+            z-index: 1;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
+            margin-top: -20px;
+        }
+          /* Custom Font Implementation */        .logo-text {
+            font-family: 'Arial Black', 'Helvetica Neue', Arial, sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 0.85;
+            position: relative;
+            display: block;
+            text-align: center;
+            width: 100%;
+        }
+          /* Hierarchical Text Styling */        .logo-line {
+            display: block;
+            position: relative;
+            margin: 2px 0;
+            text-align: center;
+        }
+          .logo-line-1 {
+            font-size: 2.2rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 5px;
+        }
+        
+        .logo-line-2 {
+            font-size: 2.2rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 5px;
+        }
+        
+        .logo-line-3 {
+            font-size: 2.2rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+          .logo-line-4 {
+            font-size: 2.5rem;
+            letter-spacing: 0.02em;
+            margin-top: 0;
+        }/* Strategic Color Architecture */
+        .logo-text {
+            color: transparent;
+            position: relative;
+        }        /* Black Outline Base Layer */
+        .logo-text .logo-line::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            color: #000;
+            text-shadow: 
+                3px 3px 0 #000,
+                -2px -2px 0 #000,
+                2px -2px 0 #000,
+                -2px 2px 0 #000,
+                2px 2px 0 #000,
+                1px 1px 0 #000,
+                -1px -1px 0 #000,
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }        /* Premium Gradient Enhancement */
+        .logo-text .logo-line::before {
+            content: attr(data-text);
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #fcd34d 0%, #fbbf24 50%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            z-index: 2;
+        }
+        
+        /* Star System Implementation */
+        .star-accent {
+            position: absolute;
+            top: -15px;
+            right: -25px;
+            width: 50px;
+            height: 50px;
+            animation: starRotate 20s linear infinite;
+        }
+        
+        @keyframes starRotate {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+        
+        .star {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .star::before {
+            content: "★";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: #fbbf24;
+            text-shadow: 
+                2px 2px 0 #000,
+                -1px -1px 0 #000,
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                0 0 15px rgba(251, 191, 36, 0.6);
+            filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.4));
+        }
+        
+        /* Glow Effect System */
+        .logo-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(ellipse at center, 
+                rgba(251, 191, 36, 0.3) 0%, 
+                rgba(251, 191, 36, 0.1) 40%, 
+                transparent 70%);
+            filter: blur(15px);
+            z-index: -1;
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
+        }
+          /* Responsive Scaling Matrix */        @media (max-width: 768px) {
+            .logo-line-1,
+            .logo-line-2,
+            .logo-line-3 {
+                font-size: 1.6rem;
+            }
+            
+            .logo-line-4 {
+                font-size: 1.8rem;
+            }
+            
+            .star-accent {
+                width: 40px;
+                height: 40px;
+                top: -10px;
+                right: -20px;
+            }
+            
+            .star::before {
+                font-size: 2.2rem;
+            }
+            
+            .logo-circle-bg {
+                width: 180px;
+                height: 180px;
+            }
+
+            .sunset-rays {
+                width: 200px;
+                height: 200px;
+            }
+        }          @media (max-width: 480px) {
+            .logo-line-1,
+            .logo-line-2,
+            .logo-line-3 {
+                font-size: 1.2rem;
+            }
+            
+            .logo-line-4 {
+                font-size: 1.4rem;
+            }
+            
+            .star-accent {
+                width: 30px;
+                height: 30px;
+                top: -8px;
+                right: -15px;
+            }
+            
+            .star::before {
+                font-size: 1.8rem;
+            }
+            
+            .logo-circle-bg {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .sunset-rays {
+                width: 160px;
+                height: 160px;
+            }
+        }
+        
+        /* Interactive hover state */
+        .logo-container:hover {
+            animation-play-state: paused;
+        }
+        
+        .logo-container:hover .star-accent {
+            animation-duration: 2s;
+        }
+        
+        .logo-container:hover .logo-glow {
+            animation-duration: 1s;
         }
 
         .auction-badge {
@@ -1426,41 +1742,24 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <!-- Last Buyer Bonanza Logo -->
+        <div class="container">            <!-- Last Buyer Bonanza Logo -->
             <div class="bonanza-logo">
-                <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Background circle -->
-                    <circle cx="100" cy="100" r="95" fill="#F59E0B" stroke="#FBBF24" stroke-width="5"/>
-                    
-                    <!-- Burst effect -->
-                    <g transform="translate(100, 100)">
-                        <path d="M0,-90 L10,-70 L0,-50 L-10,-70 Z" fill="#FEF3C7" opacity="0.8" transform="rotate(0)"/>
-                        <path d="M0,-90 L10,-70 L0,-50 L-10,-70 Z" fill="#FEF3C7" opacity="0.8" transform="rotate(45)"/>
-                        <path d="M0,-90 L10,-70 L0,-50 L-10,-70 Z" fill="#FEF3C7" opacity="0.8" transform="rotate(90)"/>
-                        <path d="M0,-90 L10,-70 L0,-50 L-10,-70 Z" fill="#FEF3C7" opacity="0.8" transform="rotate(135)"/>
-                        <path d="M0,-90 L10,-70 L0,-50 L-10,-70 Z" fill="#FEF3C7" opacity="0.8" transform="rotate(180)"/>
-                        <path d="M0,-90 L10,-70 L0,-50 L-10,-70 Z" fill="#FEF3C7" opacity="0.8" transform="rotate(225)"/>
-                        <path d="M0,-90 L10,-70 L0,-50 L-10,-70 Z" fill="#FEF3C7" opacity="0.8" transform="rotate(270)"/>
-                        <path d="M0,-90 L10,-70 L0,-50 L-10,-70 Z" fill="#FEF3C7" opacity="0.8" transform="rotate(315)"/>
-                    </g>
-                    
-                    <!-- Inner circle -->
-                    <circle cx="100" cy="100" r="75" fill="#DC2626" stroke="#B91C1C" stroke-width="3"/>
-                    
-                    <!-- Text -->
-                    <text x="100" y="60" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="24" font-weight="900" fill="white" transform="rotate(-5 100 60)">LAST</text>
-                    <text x="100" y="90" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="28" font-weight="900" fill="white">BUYER</text>
-                    <text x="100" y="115" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="900" fill="white">BONUS</text>
-                    <text x="100" y="140" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="18" font-weight="900" fill="#FEF3C7" transform="rotate(5 100 140)">BONANZA</text>
-                    
-                    <!-- Stars -->
-                    <text x="30" y="50" font-size="20" fill="#FCD34D">⭐</text>
-                    <text x="160" y="50" font-size="20" fill="#FCD34D">⭐</text>
-                    <text x="30" y="160" font-size="20" fill="#FCD34D">⭐</text>
-                    <text x="160" y="160" font-size="20" fill="#FCD34D">⭐</text>
-                </svg>
-                <p style="color: #FCD34D; font-weight: 700; margin-top: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+                <div class="logo-container">
+                    <div class="logo-circle-bg"></div>
+                    <div class="sunset-rays"></div>
+                    <div class="logo-glow"></div>
+                    <div class="logo-main">
+                        <div class="star-accent">
+                            <div class="star"></div>
+                        </div>
+                        <div class="logo-text">
+                            <span class="logo-line logo-line-1" data-text="LAST">LAST</span>
+                            <span class="logo-line logo-line-2" data-text="BUYER">BUYER</span>
+                            <span class="logo-line logo-line-3" data-text="BONUS">BONUS</span>
+                            <span class="logo-line logo-line-4" data-text="BONANZA">BONANZA</span>
+                        </div>
+                    </div>
+                </div>                <p style="color: #FCD34D; font-weight: 700; margin-top: 40px; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
                     Last Buyer Gets Everything FREE + AI Chatbot!
                 </p>
             </div>
